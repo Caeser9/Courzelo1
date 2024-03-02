@@ -22,7 +22,6 @@ import { AddFormateurComponent } from './core/back-office/User/add-formateur/add
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { PaginatorModule } from 'primeng/paginator';
@@ -30,9 +29,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ToolbarModule } from 'primeng/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CourseListComponent } from './cour/course-list/course-list.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddCourseComponent } from './cour/add-course/add-course.component';
-import { FormsModule } from '@angular/forms';
 import { CourseDeleteComponent } from './cour/course-delete/course-delete.component';
 import { CourseUpdateComponent } from './cour/course-update/course-update.component';
 import { StripeComponent } from './cour/stripe/stripe.component';
@@ -41,8 +38,9 @@ import { RessourceListComponent } from './cour/ressource-list/ressource-list.com
 import { RessourceMaterialsComponent } from './cour/ressource-materials/ressource-materials.component';
 import { ListComponent } from './cour/video/list/list.component';
 import { VideoService } from './service/video.service';
-import {ToastrModule, ToastrService} from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ChatComponent } from './cour/chat/chat/chat.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +58,7 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     FormateurListComponent,
     UploadFileComponent,
     AddAdminComponent,
-    AddFormateurComponent
+    AddFormateurComponent,
     CourseListComponent,
     AddCourseComponent,
     CourseDeleteComponent,
@@ -71,7 +69,6 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     RessourceMaterialsComponent,
     ListComponent,
     ChatComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -84,24 +81,13 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     ButtonModule,
     InputTextModule,
     TooltipModule,
-    ToolbarModule ,
+    ToolbarModule,
     PaginatorModule,
-    BrowserAnimationsModule
-
-
-    
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
   ],
-  providers: [ 
-],
-    
-    
-  ],
-  providers: [
-    VideoService,
-    ToastrService,
-    //{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-  ],
+  providers: [VideoService, ToastrService],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
