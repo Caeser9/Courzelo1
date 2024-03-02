@@ -5,6 +5,19 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './shared/home/home.component';
+import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
+import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BlogService } from './Blog/BlogService/blog.service';
+import { UploadFileComponent } from './Blog/upload-file/upload-file.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { UpdateBlogComponent } from './Blog/update-blog/update-blog.component';
+import { BlogDetailsComponent } from './Blog/blog-details/blog-details.component';
+import { BlogGridsComponent } from './Blog/blog-grids/blog-grids.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { LoginComponent } from './core/front-office/Formateur-Admin/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +60,15 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    AddBlogComponent,
+    ListBlogComponent,
+    UserDashboardComponent,
+    UploadFileComponent,
+    UpdateBlogComponent,
+    BlogDetailsComponent,
+    BlogGridsComponent,
+    NotFoundComponent,
+    ServerErrorComponent,  
     LoginComponent,
     RegisterComponent,
     EditProfileComponent,
@@ -73,6 +95,19 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserModule,
+    CKEditorModule,
+    
+  ],
+  providers: [BlogService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { 
+  
+}
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

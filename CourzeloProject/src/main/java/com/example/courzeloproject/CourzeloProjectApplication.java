@@ -11,11 +11,10 @@ import java.util.Collections;
 
 @SpringBootApplication
 public class CourzeloProjectApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(CourzeloProjectApplication.class, args);
     }
-
+/*
     @Bean
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -33,7 +32,7 @@ public class CourzeloProjectApplication {
 
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
-    }
+    }*/
 
 
 }
