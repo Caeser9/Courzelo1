@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './shared/home/home.component';
+import { QuestionListComponent } from './Question/question-list/question-list.component';
 import { ListDomaineComponent } from './domaine/list-domaine/list-domaine.component';
 import { UpdateDomaineComponent } from './update-domaine/update-domaine.component';
 import { DeleteDomaineComponent } from './domaine/delete-domaine/delete-domaine.component';
@@ -9,8 +10,6 @@ import { AjoutDomaineComponent } from './domaine/ajout-domaine/ajout-domaine.com
 import { PhotoComponent } from './photo/photo.component';
 import { AddCommentaireComponent } from './commentaire/add-commentaire/add-commentaire.component';
 import { ListeCommentaireComponent } from './liste-commentaire/liste-commentaire.component';
-
-
 import { SupportComponent } from './support/support.component';
 import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
@@ -110,7 +109,6 @@ const routes: Routes = [
   {path:"support",component:SupportComponent},
 
   {path:"list",component:ListReclamationComponent}
-
 //iheb 
 { path: 'domaines', component:ListDomaineComponent},
   { path: 'addDomaine', component:AjoutDomaineComponent},
@@ -119,6 +117,9 @@ const routes: Routes = [
   { path: 'uploadimg/:id', component:PhotoComponent},
   { path: 'addCommentaire', component:AddCommentaireComponent},
   { path: 'commentaires', component:ListeCommentaireComponent},
+    
+    //nour
+    {path:"question-list",component:QuestionListComponent},
   //404 error
   { path: '**', pathMatch: 'full',  component: NotFoundComponent}
 ];

@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './shared/home/home.component';
+import { QuestionListComponent } from './Question/question-list/question-list.component';
+import { AddQuestionComponent } from './Question/add-question/add-question.component';
+import { UpdateQuestionComponent } from './Question/update-question/update-question.component';
+import { DeleteQuestionComponent } from './Question/delete-question/delete-question.component';
 import { ListDomaineComponent } from './domaine/list-domaine/list-domaine.component';
 import { AjoutDomaineComponent } from './domaine/ajout-domaine/ajout-domaine.component';
 import { DeleteDomaineComponent } from './domaine/delete-domaine/delete-domaine.component';
@@ -70,13 +74,10 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ListDomaineComponent,
-    AjoutDomaineComponent,
-    DeleteDomaineComponent,
-    UpdateDomaineComponent,
-    PhotoComponent,  
-    AddCommentaireComponent,
-    ListeCommentaireComponent
+    QuestionListComponent,
+    AddQuestionComponent,
+    UpdateQuestionComponent,
+    DeleteQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -116,6 +117,13 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     ListComponent,
     ChatComponent,
     CKEditorModule,
+    ListDomaineComponent,
+    AjoutDomaineComponent,
+    DeleteDomaineComponent,
+    UpdateDomaineComponent,
+    PhotoComponent,  
+    AddCommentaireComponent,
+    ListeCommentaireComponent
   ],
   providers: [BlogService],
   bootstrap: [AppComponent]
