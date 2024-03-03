@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './shared/home/home.component';
+import { SupportComponent } from './support/support.component';
+import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
 import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -55,7 +57,7 @@ const routes: Routes = [
   { path: "addProfile", component: AddProfileComponent },
   { path: "editProfile", component: EditProfileComponent },
   { path: "upload/:id", component: UploadFileComponent },
-
+  
   { path: "formateur-list", component: FormateurListComponent },
   { path: "admin-list", component: AdminListComponent },
 
@@ -95,7 +97,12 @@ const routes: Routes = [
 { path: 'deletePole', component: DeletePoleComponent },  
 {path: 'uploadFacultePhoto/:id', component:UploadFileComponent} ,
 {path: 'uploadPolePhoto/:id', component:UploadFilePoleComponent} ,
+//nabil
+  
 
+  {path:"support",component:SupportComponent},
+
+  {path:"list",component:ListReclamationComponent}
   //404 error
   { path: '**', pathMatch: 'full',  component: NotFoundComponent}
 ];

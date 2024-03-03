@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './shared/home/home.component';
+import { SupportComponent } from './support/support.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
+import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
 import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
 import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -60,6 +65,17 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    SupportComponent,
+    ListReclamationComponent,
+    UpdateReclamationComponent,
+   
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule
     AddBlogComponent,
     ListBlogComponent,
     UserDashboardComponent,
@@ -98,7 +114,6 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserModule,
     CKEditorModule,
     
   ],
