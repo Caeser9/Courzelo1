@@ -2,6 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './shared/home/home.component';
+import { ListDomaineComponent } from './domaine/list-domaine/list-domaine.component';
+import { UpdateDomaineComponent } from './update-domaine/update-domaine.component';
+import { DeleteDomaineComponent } from './domaine/delete-domaine/delete-domaine.component';
+import { AjoutDomaineComponent } from './domaine/ajout-domaine/ajout-domaine.component';
+import { PhotoComponent } from './photo/photo.component';
+import { AddCommentaireComponent } from './commentaire/add-commentaire/add-commentaire.component';
+import { ListeCommentaireComponent } from './liste-commentaire/liste-commentaire.component';
+
+
 import { SupportComponent } from './support/support.component';
 import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
@@ -60,7 +69,6 @@ const routes: Routes = [
   
   { path: "formateur-list", component: FormateurListComponent },
   { path: "admin-list", component: AdminListComponent },
-
   { path: "addAdmin", component: AddAdminComponent },
   { path: "addFormateur", component: AddFormateurComponent },
   //oussema
@@ -98,11 +106,19 @@ const routes: Routes = [
 {path: 'uploadFacultePhoto/:id', component:UploadFileComponent} ,
 {path: 'uploadPolePhoto/:id', component:UploadFilePoleComponent} ,
 //nabil
-  
 
   {path:"support",component:SupportComponent},
 
   {path:"list",component:ListReclamationComponent}
+
+//iheb 
+{ path: 'domaines', component:ListDomaineComponent},
+  { path: 'addDomaine', component:AjoutDomaineComponent},
+  { path: 'update-domaine/:id', component:UpdateDomaineComponent},
+  { path: 'deleteDomain/:id', component:DeleteDomaineComponent},
+  { path: 'uploadimg/:id', component:PhotoComponent},
+  { path: 'addCommentaire', component:AddCommentaireComponent},
+  { path: 'commentaires', component:ListeCommentaireComponent},
   //404 error
   { path: '**', pathMatch: 'full',  component: NotFoundComponent}
 ];

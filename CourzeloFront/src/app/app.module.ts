@@ -5,8 +5,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './shared/home/home.component';
+import { ListDomaineComponent } from './domaine/list-domaine/list-domaine.component';
+import { AjoutDomaineComponent } from './domaine/ajout-domaine/ajout-domaine.component';
+import { DeleteDomaineComponent } from './domaine/delete-domaine/delete-domaine.component';
+import { UpdateDomaineComponent } from './update-domaine/update-domaine.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PhotoComponent } from './photo/photo.component';
+import { AddCommentaireComponent } from './commentaire/add-commentaire/add-commentaire.component';
+import { ListeCommentaireComponent } from './liste-commentaire/liste-commentaire.component';
 import { SupportComponent } from './support/support.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
@@ -25,7 +32,6 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { LoginComponent } from './core/front-office/Formateur-Admin/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './core/front-office/Formateur-Admin/register/register.component';
 import { EditProfileComponent } from './core/back-office/User/edit-profile/edit-profile.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
@@ -58,17 +64,19 @@ import { ListComponent } from './cour/video/list/list.component';
 import { VideoService } from './service/video.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ChatComponent } from './cour/chat/chat/chat.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    SupportComponent,
-    ListReclamationComponent,
-    UpdateReclamationComponent,
-   
+    ListDomaineComponent,
+    AjoutDomaineComponent,
+    DeleteDomaineComponent,
+    UpdateDomaineComponent,
+    PhotoComponent,  
+    AddCommentaireComponent,
+    ListeCommentaireComponent
   ],
   imports: [
     BrowserModule,
@@ -107,15 +115,7 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     RessourceMaterialsComponent,
     ListComponent,
     ChatComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     CKEditorModule,
-    
   ],
   providers: [BlogService],
   bootstrap: [AppComponent]
