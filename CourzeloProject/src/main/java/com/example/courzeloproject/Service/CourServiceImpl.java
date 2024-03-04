@@ -1,12 +1,11 @@
-package com.example.mongonew.services;
+package com.example.courzeloproject.Service;
 
-import com.example.mongonew.entities.Cour;
-import com.example.mongonew.entities.Niveau;
-import com.example.mongonew.entities.Ressource;
-import com.example.mongonew.entities.User;
-import com.example.mongonew.repository.ICourRepository;
-import com.example.mongonew.repository.IRessourceRepository;
-import com.example.mongonew.repository.IUserRepository;
+import com.example.courzeloproject.Entite.Cour;
+import com.example.courzeloproject.Entite.Niveau;
+import com.example.courzeloproject.Entite.Ressource;
+import com.example.courzeloproject.Repository.ICourRepository;
+import com.example.courzeloproject.Repository.IRessourceRepository;
+import com.example.courzeloproject.Repository.UserRepo;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -39,7 +38,7 @@ public class CourServiceImpl implements ICourService {
     @Autowired
     ICourRepository iCourRepository;
     @Autowired
-    IUserRepository iUserRepository;
+    UserRepo iUserRepository;
     @Autowired
     IRessourceRepository iRessourceRepository;
 

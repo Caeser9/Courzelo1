@@ -1,13 +1,11 @@
-package com.example.mongonew.services;
+package com.example.courzeloproject.Service;
 
-import com.example.mongonew.entities.Cour;
-import com.example.mongonew.entities.Niveau;
-import com.example.mongonew.entities.Ressource;
-import com.example.mongonew.entities.User;
+import com.example.courzeloproject.Entite.Cour;
+import com.example.courzeloproject.Entite.Niveau;
+import com.example.courzeloproject.Entite.Ressource;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
 import java.util.List;
 
 public interface ICourService {

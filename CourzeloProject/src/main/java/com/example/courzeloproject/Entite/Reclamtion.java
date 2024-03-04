@@ -18,7 +18,7 @@ import java.util.Date;
 @Document("reclamation")
 public class Reclamtion {
     @Id
-    private int reclamationId ;
+    private String reclamationId ;
     @Field("date")
     private LocalDateTime dateReclamation ;
     @Field("titre")

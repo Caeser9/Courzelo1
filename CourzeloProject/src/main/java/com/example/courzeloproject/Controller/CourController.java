@@ -1,34 +1,27 @@
-package com.example.mongonew.controller;
+package com.example.courzeloproject.Controller;
 
-import com.example.mongonew.VideosConfig.StreamingService;
-import com.example.mongonew.entities.Cour;
-import com.example.mongonew.entities.Niveau;
-import com.example.mongonew.entities.Ressource;
-import com.example.mongonew.entities.User;
-import com.example.mongonew.repository.ICourRepository;
-import com.example.mongonew.repository.IRessourceRepository;
-import com.example.mongonew.services.ICourService;
-import com.example.mongonew.services.IRessourceService;
+import com.example.courzeloproject.VideosConfig.StreamingService;
+import com.example.courzeloproject.Entite.Cour;
+import com.example.courzeloproject.Entite.Niveau;
+import com.example.courzeloproject.Entite.Ressource;
+import com.example.courzeloproject.Repository.ICourRepository;
+import com.example.courzeloproject.Repository.IRessourceRepository;
+import com.example.courzeloproject.Service.ICourService;
+import com.example.courzeloproject.Service.IRessourceService;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
-import com.stripe.model.PaymentIntent;
 import com.stripe.param.ChargeCreateParams;
-import com.stripe.param.PaymentIntentCreateParams;
 import jakarta.mail.MessagingException;
-import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -36,17 +29,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import reactor.core.publisher.Mono;
 
-import java.awt.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.example.mongonew.services.CourServiceImpl.*;
+import static com.example.courzeloproject.Service.CourServiceImpl.*;
 
 @Slf4j
 @RestController

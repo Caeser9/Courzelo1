@@ -1,4 +1,4 @@
-package com.example.mongonew.VideosConfig;
+package com.example.courzeloproject.VideosConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
+@RequestMapping("/blog")
 @CrossOrigin(origins = "http://localhost:4200")
 public class BlogRestController {
 

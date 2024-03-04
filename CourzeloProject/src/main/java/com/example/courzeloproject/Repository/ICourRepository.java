@@ -1,7 +1,7 @@
-package com.example.mongonew.repository;
+package com.example.courzeloproject.Repository;
 
-import com.example.mongonew.entities.Cour;
-import com.example.mongonew.entities.Niveau;
+import com.example.courzeloproject.Entite.Cour;
+import com.example.courzeloproject.Entite.Niveau;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

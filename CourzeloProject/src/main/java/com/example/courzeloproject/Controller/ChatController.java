@@ -1,6 +1,6 @@
-package com.example.mongonew.controller;
+package com.example.courzeloproject.Controller;
 
-import com.example.mongonew.entities.ChatMessage;
+import com.example.courzeloproject.Entite.ChatMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;

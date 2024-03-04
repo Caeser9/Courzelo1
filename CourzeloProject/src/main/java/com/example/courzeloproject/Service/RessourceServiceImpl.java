@@ -1,10 +1,9 @@
-package com.example.mongonew.services;
+package com.example.courzeloproject.Service;
 
-import com.example.mongonew.entities.Cour;
-import com.example.mongonew.entities.Ressource;
-import com.example.mongonew.repository.ICourRepository;
-import com.example.mongonew.repository.IRessourceRepository;
-import org.apache.commons.lang3.RandomStringUtils;
+import com.example.courzeloproject.Entite.Cour;
+import com.example.courzeloproject.Entite.Ressource;
+import com.example.courzeloproject.Repository.ICourRepository;
+import com.example.courzeloproject.Repository.IRessourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

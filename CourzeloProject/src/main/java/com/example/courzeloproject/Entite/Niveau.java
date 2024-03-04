@@ -1,4 +1,4 @@
-package com.example.mongonew.entities;
+package com.example.courzeloproject.Entite;
 
 public enum Niveau {
     PREMIERE,

@@ -1,4 +1,4 @@
-package com.example.mongonew.entities;
+package com.example.courzeloproject.Entite;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,18 +8,18 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Document("User")
+@Document("Ressource")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Ressource {
     @Id
-    private int idUser;
-    private String nomUser;
+    private String idRessource;
+    private String nomRessource;
+    private String photo;
     @DBRef
     private Cour cour;
+
+
 }

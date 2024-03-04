@@ -4,6 +4,7 @@ import com.example.courzeloproject.Entite.Blog;
 import com.example.courzeloproject.Entite.Interactions;
 import com.example.courzeloproject.Repository.BlogRepository;
 import com.example.courzeloproject.Repository.InteractionsRepository;
+import com.example.courzeloproject.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public class InteractionsService implements IInteractionsService{
     InteractionsRepository interactionsRepository;
     @Autowired
     BlogRepository blogRepository;
+    @Autowired
+    UserRepo userRepo;
     @Override
     public Interactions addInteraction(Interactions interactions) {
         return interactionsRepository.save(interactions);

@@ -1,7 +1,6 @@
-package com.example.mongonew.services;
+package com.example.courzeloproject.Service;
 
-import com.example.mongonew.entities.Cour;
-import com.example.mongonew.entities.Ressource;
+import com.example.courzeloproject.Entite.Ressource;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
