@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/app/environments/environment';
 import { TokenStorageService } from './token-storage-service.service';
 import { Observable, Subject, tap } from 'rxjs';
 import { Profile } from '../shared/model/profile.module';

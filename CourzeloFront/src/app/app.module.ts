@@ -13,19 +13,17 @@ import { ListDomaineComponent } from './domaine/list-domaine/list-domaine.compon
 import { AjoutDomaineComponent } from './domaine/ajout-domaine/ajout-domaine.component';
 import { DeleteDomaineComponent } from './domaine/delete-domaine/delete-domaine.component';
 import { UpdateDomaineComponent } from './update-domaine/update-domaine.component';
-import { HttpClientModule } from '@angular/common/http';
 import { PhotoComponent } from './photo/photo.component';
 import { AddCommentaireComponent } from './commentaire/add-commentaire/add-commentaire.component';
 import { ListeCommentaireComponent } from './liste-commentaire/liste-commentaire.component';
 import { SupportComponent } from './support/support.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ListReclamationComponent } from './list-reclamation/list-reclamation.component';
 import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
 import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
 import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient,HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BlogService } from './Blog/BlogService/blog.service';
 import { UploadFileComponent } from './Blog/upload-file/upload-file.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -35,7 +33,6 @@ import { BlogGridsComponent } from './Blog/blog-grids/blog-grids.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { LoginComponent } from './core/front-office/Formateur-Admin/login/login.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './core/front-office/Formateur-Admin/register/register.component';
 import { EditProfileComponent } from './core/back-office/User/edit-profile/edit-profile.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
@@ -44,7 +41,7 @@ import { StudentListComponent } from './core/back-office/User/student-list/stude
 import { AddProfileComponent } from './core/back-office/User/add-profile/add-profile.component';
 import { TwoWayFactorPageComponent } from './core/front-office/two-way-factor-page/two-way-factor-page.component';
 import { FormateurListComponent } from './core/back-office/User/formateur-list/formateur-list.component';
-import { UploadFileComponent } from './core/back-office/User/upload-file/upload-file.component';
+import { UploadFileUserComponent } from './core/back-office/User/upload-file/upload-fileUser.component';
 import { AddAdminComponent } from './core/back-office/User/add-admin/add-admin.component';
 import { AddFormateurComponent } from './core/back-office/User/add-formateur/add-formateur.component';
 import { DialogModule } from 'primeng/dialog';
@@ -68,8 +65,16 @@ import { ListComponent } from './cour/video/list/list.component';
 import { VideoService } from './service/video.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ChatComponent } from './cour/chat/chat/chat.component';
+import { FaculteListComponent } from './Faculte/faculte-list/faculte-list.component';
+import { AddFaculteComponent } from './Faculte/add-faculte/add-faculte.component';
+import { EditFaculteComponent } from './Faculte/edit-faculte/edit-faculte.component';
+import { PoleListComponent } from './Pole/pole-list/pole-list.component';
+import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
+import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
 @NgModule({
   declarations: [
+    SupportComponent,
+    UpdateReclamationComponent,
     AppComponent,
     NavbarComponent,
     FooterComponent,
@@ -77,14 +82,7 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     QuestionListComponent,
     AddQuestionComponent,
     UpdateQuestionComponent,
-    DeleteQuestionComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRoutingModule
+    DeleteQuestionComponent, 
     AddBlogComponent,
     ListBlogComponent,
     UserDashboardComponent,
@@ -95,6 +93,7 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     NotFoundComponent,
     ServerErrorComponent,  
     LoginComponent,
+    UploadFileUserComponent,
     RegisterComponent,
     EditProfileComponent,
     SideBarComponent,
@@ -116,24 +115,29 @@ import { ChatComponent } from './cour/chat/chat/chat.component';
     RessourceMaterialsComponent,
     ListComponent,
     ChatComponent,
-    CKEditorModule,
+    PoleListComponent,
+    AddPoleComponent,
+    UpdatePoleComponent,
     ListDomaineComponent,
     AjoutDomaineComponent,
     DeleteDomaineComponent,
     UpdateDomaineComponent,
-    PhotoComponent,  
+    PhotoComponent, 
+    AddFaculteComponent, 
+    FaculteListComponent,
+    AddFaculteComponent,
+    EditFaculteComponent,
     AddCommentaireComponent,
-    ListeCommentaireComponent
+    ListeCommentaireComponent,
+    ListReclamationComponent,
   ],
-  providers: [BlogService],
-  bootstrap: [AppComponent]
-})
-export class AppModule { 
-  
-}
-    HttpClientModule,
+  imports: [
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,   
+    CKEditorModule,    
     DialogModule,
     TableModule,
     ButtonModule,
@@ -142,10 +146,9 @@ export class AppModule {
     ToolbarModule,
     PaginatorModule,
     BrowserAnimationsModule,
-    ToastModule.forRoot(),
+    ToastModule,
   ],
-  providers: [VideoService, ToastrService],
-
+  providers: [BlogService,VideoService, ToastrService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

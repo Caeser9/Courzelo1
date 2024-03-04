@@ -8,7 +8,7 @@ import { Interactions } from '../InteractionsClass/interactions';
   providedIn: 'root'
 })
 export class BlogService {
-  private baseUrl='http://localhost:8097/courzelo'
+  private baseUrl='http://localhost:8282/blog'
 
   constructor(private http:HttpClient) { }
   getBlogList(): Observable<any> {  

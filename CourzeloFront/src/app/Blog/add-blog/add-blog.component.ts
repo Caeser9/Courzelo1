@@ -3,8 +3,8 @@ import { BlogService } from '../BlogService/blog.service';
 import { Blog } from '../BlogClass/blog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+//import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
 @Component({
   selector: 'app-add-blog',
   templateUrl: './add-blog.component.html',
@@ -27,6 +27,7 @@ export class AddBlogComponent implements OnInit {
     photo: '',
     status:false,
     interactions:[],
+    user:[],
   };
   submitted = false;
   public Editor = ClassicEditor as any;
@@ -67,6 +68,7 @@ export class AddBlogComponent implements OnInit {
       photo: '',
       status:false,
       interactions:[],
+      user:[],
     };
   }
 

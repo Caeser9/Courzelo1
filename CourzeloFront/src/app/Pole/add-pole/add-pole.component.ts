@@ -4,6 +4,7 @@ import { PoleClass } from '../PoleClass/pole-class';
 import { PoleServiceService } from '../PoleServices/pole-service.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-add-pole',
   templateUrl: './add-pole.component.html',
@@ -15,7 +16,6 @@ export class AddPoleComponent implements OnInit {
     adresse: new FormControl('',Validators.required),
     description: new FormControl('',Validators.required),
     photoUrl: new FormControl()
-
    });
    
    poleclass: PoleClass={

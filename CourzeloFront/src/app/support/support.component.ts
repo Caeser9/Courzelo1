@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';  
 import { FormControl, FormGroup, Validators } from '@angular/forms';  
-import { SupportService } from '../support.service'; 
+import { SupportService } from '../services/support.service'; 
 import { Support } from '../models/support.model'; 
 
 @Component({

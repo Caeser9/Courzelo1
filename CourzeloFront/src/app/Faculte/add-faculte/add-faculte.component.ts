@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-faculte',
-  templateUrl: './add-faculte.component.html',
+  templateUrl:'./add-faculte.component.html',
   styleUrls: ['./add-faculte.component.css']
 })
 export class AddFaculteComponent implements OnInit {

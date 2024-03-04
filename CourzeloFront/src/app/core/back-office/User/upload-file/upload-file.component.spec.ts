@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadFileComponent } from './upload-file.component';
+import { UploadFileComponent } from './upload-fileUser.component';
 
 describe('UploadFileComponent', () => {
   let component: UploadFileComponent;

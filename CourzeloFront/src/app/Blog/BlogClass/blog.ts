@@ -1,3 +1,4 @@
+import { User } from "src/app/shared/model/user.model";
 import { Interactions } from "../InteractionsClass/interactions";
 
 export class Blog {
@@ -10,5 +11,6 @@ export class Blog {
     photo! : string;
     status! : boolean;
     interactions!: Interactions[];
+    user!:User[];
     
 }

@@ -151,8 +151,7 @@
                                                     *ngIf="!profileForm.controls['firstName'].valid && profileForm.controls['firstName']?.touched "
                                                     style="color: #f44336;">
                                                     {{ profileForm.get("firstName").hasError("required")? "Ce champ est obligatoire ": ""}}
-                                                    {{ profileForm.get("firstName").hasError("minlength")? "Veuillez entrer un nom valide!
-                                                    ": ""}}
+                                                    {{ profileForm.get("firstName").hasError("minlength")? "Veuillez entrer un nom valide!": ""}}
                                                 
                                                 </small>
 
@@ -168,8 +167,7 @@
                                                     *ngIf="!profileForm.controls['lastName'].valid && profileForm.controls['lastName']?.touched "
                                                     style="color: #f44336;">
                                                     {{ profileForm.get("lastName").hasError("required")? "Ce champ est obligatoire ": ""}}
-                                                    {{ profileForm.get("lastName").hasError("minlength")? "Veuillez entrer un prénom valide!
-                                                    ": ""}}
+                                                    {{ profileForm.get("lastName").hasError("minlength")? "Veuillez entrer un prénom valide!": ""}}
                                 
                                                 </small>
                                             </div>
@@ -182,15 +180,10 @@
                                                 </div>
                                                 <small class="text-red-500" *ngIf="!profileForm.controls['phone'].valid && profileForm.controls['phone']?.touched "
                                                     style="color: #f44336;">
-                                                    {{ profileForm.get("phone").hasError("required")? "Ce champ est obligatoire
-                                                    ": ""}}
-                                                    {{ profileForm.get("phone").hasError("pattern") ? "Veuillez entrer un numéro valide
-                                                    ": ""}}
-                                                    {{ profileForm.get("phone").hasError("minlength") ? "Le numéro de téléphone doit contenir 8 chiffres
-                                                    ": ""}}
-                                                    {{ profileForm.get("phone").hasError("maxlength") ? "Le numéro de téléphone ne doit dépasser 8
-                                                    chiffres
-                                                    ": ""}}
+                                                    {{ profileForm.get("phone").hasError("required")? "Ce champ est obligatoire": ""}}
+                                                    {{ profileForm.get("phone").hasError("pattern") ? "Veuillez entrer un numéro valide": ""}}
+                                                    {{ profileForm.get("phone").hasError("minlength") ? "Le numéro de téléphone doit contenir 8 chiffres": ""}}
+                                                    {{ profileForm.get("phone").hasError("maxlength") ? "Le numéro de téléphone ne doit dépasser 8chiffres": ""}}
                                             
                                                 </small>
                                             </div>

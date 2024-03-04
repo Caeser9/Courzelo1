@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'; // Import FormBuilder and Validators
-import { SupportService } from '../support.service';
+import { SupportService } from '../services/support.service';
 
 @Component({
   selector: 'app-list-reclamation',

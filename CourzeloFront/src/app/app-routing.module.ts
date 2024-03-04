@@ -28,7 +28,7 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { AddProfileComponent } from './core/back-office/User/add-profile/add-profile.component';
 import { TwoWayFactorPageComponent } from './core/front-office/two-way-factor-page/two-way-factor-page.component';
 import { FormateurListComponent } from './core/back-office/User/formateur-list/formateur-list.component';
-import { UploadFileComponent } from './core/back-office/User/upload-file/upload-file.component';
+import { UploadFileUserComponent } from './core/back-office/User/upload-file/upload-fileUser.component';
 import { AddAdminComponent } from './core/back-office/User/add-admin/add-admin.component';
 import { AddFormateurComponent } from './core/back-office/User/add-formateur/add-formateur.component';
 import { CourseListComponent } from './cour/course-list/course-list.component';
@@ -49,7 +49,7 @@ import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
 import { DeletePoleComponent } from './Pole/delete-pole/delete-pole.component';
 import { PoleListComponent } from './Pole/pole-list/pole-list.component';
 import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
-import { UploadFileComponent } from './Faculte/upload-file/upload-file.component';
+import { UploadFileFacComponent } from './Faculte/upload-file/upload-fileFac.component';
 import { UploadFilePoleComponent } from './Pole/upload-file-pole/upload-file-pole.component';
 
 const routes: Routes = [
@@ -64,8 +64,7 @@ const routes: Routes = [
   //youssef
   { path: "addProfile", component: AddProfileComponent },
   { path: "editProfile", component: EditProfileComponent },
-  { path: "upload/:id", component: UploadFileComponent },
-  
+  { path: "uploadfileUser/:id", component: UploadFileUserComponent },
   { path: "formateur-list", component: FormateurListComponent },
   { path: "admin-list", component: AdminListComponent },
   { path: "addAdmin", component: AddAdminComponent },
@@ -82,46 +81,39 @@ const routes: Routes = [
   { path: 'listVideo/:nomVideo', component: ListComponent },
   { path: 'chat', component: ChatComponent },
   //kaycer
-  {path: "addBlog", component: AddBlogComponent},
-  {path: "listBlog", component: ListBlogComponent},
-  {path: "dashboard", component: UserDashboardComponent},
-  {path:"upload/:id", component:UploadFileComponent},
-  {path:"updateBlog/:id", component: UpdateBlogComponent},
-  {path: "detailsBlog/:id", component: BlogDetailsComponent},
-  {path:"blogsGrids", component: BlogGridsComponent},
+  { path: "addBlog", component: AddBlogComponent },
+  { path: "listBlog", component: ListBlogComponent },
+  { path: "dashboard", component: UserDashboardComponent },
+  { path: "upload/:id", component: UploadFileComponent },
+  { path: "updateBlog/:id", component: UpdateBlogComponent },
+  { path: "detailsBlog/:id", component: BlogDetailsComponent },
+  { path: "blogsGrids", component: BlogGridsComponent },
   //yosra 
-  { path: '', redirectTo: 'getAllFacultes', pathMatch: 'full' },
-  { path: 'getAllFacultes', component: FaculteListComponent },  
+  { path: 'getAllFacultes', component: FaculteListComponent },
   { path: 'addFaculte', component: AddFaculteComponent },
-   
-  { path: 'modifierFaculte/:id', component: EditFaculteComponent },  
-  { path: 'deleteFaculte', component: DeleteFaculteComponent },   
- 
-{ path: 'getAllPoles', component: PoleListComponent },  
-{ path: 'addPole', component: AddPoleComponent },
- 
-{ path: 'modifierPole/:id', component: UpdatePoleComponent },  
-{ path: 'deletePole', component: DeletePoleComponent },  
-{path: 'uploadFacultePhoto/:id', component:UploadFileComponent} ,
-{path: 'uploadPolePhoto/:id', component:UploadFilePoleComponent} ,
-//nabil
-
-  {path:"support",component:SupportComponent},
-
-  {path:"list",component:ListReclamationComponent}
-//iheb 
-{ path: 'domaines', component:ListDomaineComponent},
-  { path: 'addDomaine', component:AjoutDomaineComponent},
-  { path: 'update-domaine/:id', component:UpdateDomaineComponent},
-  { path: 'deleteDomain/:id', component:DeleteDomaineComponent},
-  { path: 'uploadimg/:id', component:PhotoComponent},
-  { path: 'addCommentaire', component:AddCommentaireComponent},
-  { path: 'commentaires', component:ListeCommentaireComponent},
-    
-    //nour
-    {path:"question-list",component:QuestionListComponent},
+  { path: 'modifierFaculte/:id', component: EditFaculteComponent },
+  { path: 'deleteFaculte', component: DeleteFaculteComponent },
+  { path: 'getAllPoles', component: PoleListComponent },
+  { path: 'addPole', component: AddPoleComponent },
+  { path: 'modifierPole/:id', component: UpdatePoleComponent },
+  { path: 'deletePole', component: DeletePoleComponent },
+  { path: 'uploadFacultePhoto/:id', component: UploadFileFacComponent },
+  { path: 'uploadPolePhoto/:id', component: UploadFilePoleComponent },
+  //nabil
+  { path: "support", component: SupportComponent },
+  { path: "list", component: ListReclamationComponent },
+  //iheb 
+  { path: 'domaines', component: ListDomaineComponent },
+  { path: 'addDomaine', component: AjoutDomaineComponent },
+  { path: 'update-domaine/:id', component: UpdateDomaineComponent },
+  { path: 'deleteDomain/:id', component: DeleteDomaineComponent },
+  { path: 'uploadimg/:id', component: PhotoComponent },
+  { path: 'addCommentaire', component: AddCommentaireComponent },
+  { path: 'commentaires', component: ListeCommentaireComponent },
+  //nour
+  { path: "question-list", component: QuestionListComponent },
   //404 error
-  { path: '**', pathMatch: 'full',  component: NotFoundComponent}
+  { path: '**', pathMatch: 'full', component: NotFoundComponent }
 ];
 
 @NgModule({

@@ -29,266 +29,134 @@
                         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
                             rel="stylesheet">
                         <div class="container bootdey">
-                            <div class="col-md-12 bootstrap snippets">
+                        </div>
+                        <div _ngcontent-urt-c9="" class="student-widget message-student-widget">
+                        </div>
+                    </div>
+                </div>
 
-                                <div class="panel">
-                                    <div class="panel-body">
-                                        <div class="media-block">
 
-                                            <div class="card review-sec" *ngFor="let comment of comments">
-                                                <div class="comman-space bdr-bottom-line">
-                                                    <div class="instruct-review-blk ">
-                                                        <div class="review-item">
-                                                            <div class="instructor-wrap border-0 m-0">
+                <div _ngcontent-urt-c9="" class="student-widget-group"
+                    style="border: solid;border-width: thin;border-color: lightgray">
+                    <div _ngcontent-urt-c9="" class="col-md-12">
+                        <div _ngcontent-urt-c9="" class="add-compose" style="font-family: 'Inter'; font-size: 20px;"><a
+                                _ngcontent-urt-c9="" href="javascript:void(0);">
+                                Commentaires</a></div>
+                    </div>
+                    <div _ngcontent-urt-c9="" class="col-md-12">
+                        <div _ngcontent-urt-c9="" class="chat-window">
+                            <div _ngcontent-urt-c9="" class="chat-cont-right" style="border: none;">
+                                <div _ngcontent-urt-c9="" class="chat-body" *ngFor="let comment of comments">
+                                    <div _ngcontent-urt-c9="">
+
+                                        <ul _ngcontent-urt-c9="" class="list-unstyled">
+                                            <li _ngcontent-urt-c9="" class="media received d-flex">
+
+                                                <div _ngcontent-urt-c9="" class="media-body flex-grow-1">
+                                                    <div _ngcontent-urt-c9="" class="msg-box">
+                                                        <div class="about-instructor" style="background-color: unset;">
+                                                            <div class="abt-instructor-img">
+                                                                <a href="instructor-profile.html"><img
+                                                                        src="/assets/img/user/user1.jpg" alt="img"
+                                                                        class="img-fluid"></a>
+                                                            </div>
+
+                                                        </div>
+                                                        <div _ngcontent-urt-c9="" class="msg-bg"
+                                                            style="background-color: #2d7ccc;">
+
+                                                            <div class="instructor-detail">
+                                                                <p><a style="font-size: small;color: white;">Yosra Shil</a></p>
+                                                            </div>
+                                                            <p _ngcontent-urt-c9="" style="color: white;">{{comment.commentaire}}</p>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="chat-time" style="font-size: smaller;cursor: pointer;">
+                                                        <span (click)="toggleReplyInput(comment.id)">Reply</span>
+                                                    </div>
+                                                    <div class="chat-window">
+                                                        <div class="chat-cont-right"
+                                                            style="border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;"
+                                                            *ngIf="showReplyInput[comment.id]">
+                                                            <div class="chat-footer">
+                                                                <div class="input-group">
+                                                                    <form (ngSubmit)="addReply(comment.id)"
+                                                                        style="display: inline-flex;">
+                                                                        <input _ngcontent-urt-c9="" type="text"
+                                                                            class="input-msg-send form-control"
+                                                                            name="reply" [(ngModel)]="replyText"
+                                                                            placeholder="ecrire votre reponse ici..."
+                                                                            style="margin-right: 5rem;">
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary msg-send-btn rounded-pill"><img
+                                                                                src="/assets/img/send-icon.svg"
+                                                                                alt="interaction"></button>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="comment.replay && comment.replay.length > 0">
+
+                                                        <div class="comman-space bdr-bottom-line"
+                                                            *ngFor="let reply of comment.replay">
+
+                                                            <div class="instructor-wrap border-0 m-0"
+                                                                style="display: inline-flex;">
                                                                 <div class="about-instructor">
-
-                                                                    <div class="instructor-detail">
-                                                                        <h5><a
-                                                                                href="instructor-profile.html">User 1</a>
-                                                                        </h5>
-                                                                        <p>UX/UI Designer</p>
+                                                                    <div class="abt-instructor-img">
+                                                                        <a href="instructor-profile.html"><img
+                                                                                src="/assets/img/user/user.jpg"
+                                                                                alt="img" class="img-fluid"></a>
                                                                     </div>
+
                                                                 </div>
-                                                                <div class="rating">
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star"></i>
-                                                                </div>
+                                            <li class="media received d-flex">
+                                                <div class="media-body flex-grow-1">
+                                                    <div class="msg-box">
+                                                        <div class="msg-bg" style="background-color: #476787;">
+                                                            <div class="instructor-detail">
+                                                                <p><a style="font-size: small; color: white;">Kaycer Khouini</a></p>
                                                             </div>
-                                                            <p class="rev-info">“ {{comment.commentaire}} “
+                                                            <p style="color: white;"> {{reply.commentaire}}
                                                             </p>
-                                                            <a href="javascript:void(0);" class="btn btn-reply"
-                                                                (click)="toggleReplyInput(comment.id)"><i
-                                                                    class="feather-corner-up-left"></i> Reply</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div *ngIf="comment.replay && comment.replay.length > 0">
-                                                    <div class="comman-space bdr-bottom-line"
-                                                        *ngFor="let reply of comment.replay">
-                                                        <div class="instruct-review-blk ">
-                                                            <div class="review-item">
-                                                                <div class="instructor-wrap border-0 m-0">
-                                                                    <div class="about-instructor">
-
-                                                                        <div class="instructor-detail">
-                                                                            <h5><a
-                                                                                    href="instructor-profile.html">User 2</a>
-                                                                            </h5>
-                                                                            <p>UX/UI Designer</p>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                                <p class="rev-info">“ {{ reply.commentaire}} “
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="chat-window">
-                                                    <div class="chat-cont-right"
-                                                        style="border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;"
-                                                        *ngIf="showReplyInput[comment.id]">
-                                                        <div class="chat-footer" style="width: 150%;">
-                                                            <div class="input-group">
-                                                                <div class="btn-file btn">
-                                                                    <i class="fa fa-paperclip"></i>
-                                                                    <input type="file">
-                                                                </div>
-                                                                <form (ngSubmit)="addReply(comment.id)">
-                                                                    <input type="text"
-                                                                        class="input-msg-send form-control" name="reply"
-                                                                        [(ngModel)]="replyText"
-                                                                        placeholder="Add a reply">
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary msg-send-btn rounded-pill"><img
-                                                                            src="/assets/img/send-icon.svg"
-                                                                            alt="interaction"></button>
-                                                                </form>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <!-- <div class="input-block">
-                                                <textarea rows="4" class="form-control" placeholder="Your Comments"
-                                                    [(ngModel)]="interaction.commentaire"></textarea>
-                                            </div>
-                                            <div class="submit-section">
-                                                <button class="btn submit-btn" (click)="addInteraction()"
-                                                    type="submit">Submit</button>
-                                            </div> -->
-
-                                            <div class="chat-window">
-                                                <div class="chat-cont-right"
-                                                    style="border-top-width: 0px;border-left-width: 0px;border-bottom-width: 0px;border-right-width: 0px;">
-                                                    <div class="chat-footer" style="width: 150%;">
-                                                        <div class="input-group">
-                                                            <div class="btn-file btn">
-                                                                <i class="fa fa-paperclip"></i>
-                                                                <input type="file">
-                                                            </div>
-                                                            <input type="text" class="input-msg-send form-control"
-                                                                name="commentaire"
-                                                                placeholder="Type your message here..."
-                                                                [(ngModel)]="interaction.commentaire">
-                                                            <button (click)="addInteraction()" type="submit"
-                                                                class="btn btn-primary msg-send-btn rounded-pill"><img
-                                                                    src="/assets/img/send-icon.svg"
-                                                                    alt="interaction"></button>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </li>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+                        </li>
 
+
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div _ngcontent-urt-c9="" class="chat-footer">
+                    <div _ngcontent-urt-c9="" class="input-group">
+                        <div _ngcontent-urt-c9="" class="btn-file btn"><i _ngcontent-urt-c9=""
+                                class="fa fa-paperclip"></i><input _ngcontent-urt-c9="" type="file">
+                        </div><input _ngcontent-urt-c9="" type="text" placeholder="ecrire votre commentaire ici..."
+                            [(ngModel)]="interaction.commentaire" class="input-msg-send form-control"><button
+                            _ngcontent-urt-c9="" (click)="addInteraction()" type="submit"
+                            class="btn btn-primary msg-send-btn rounded-pill"><img src="/assets/img/send-icon.svg"
+                                alt="interaction"></button>
                     </div>
                 </div>
-
             </div>
-
-            <!-- <div class="col-lg-3 col-md-12 sidebar-right theiaStickySidebar">
-
-                <div class="card search-widget blog-search blog-widget">
-                    <div class="card-body">
-                        <form class="search-form">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search..." class="form-control">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-
-                <div class="card post-widget blog-widget">
-                    <div class="card-header">
-                        <h4 class="card-title">Recent Posts</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="latest-posts">
-                            <li>
-                                <div class="post-thumb">
-                                    <a href="blog-details.html">
-                                        <img class="img-fluid" src="assets/img/blog/blog-01.jpg" alt>
-                                    </a>
-                                </div>
-                                <div class="post-info">
-                                    <h4>
-                                        <a href="blog-details.html">Learn Webs Applications Development from
-                                            Experts</a>
-                                    </h4>
-                                    <p><img class="img-fluid" src="assets/img/icon/icon-22.svg" alt>Jun 14, 2022
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="post-thumb">
-                                    <a href="blog-details.html">
-                                        <img class="img-fluid" src="assets/img/blog/blog-02.jpg" alt>
-                                    </a>
-                                </div>
-                                <div class="post-info">
-                                    <h4>
-                                        <a href="blog-details.html">Expand Your Career Opportunities With
-                                            Python</a>
-                                    </h4>
-                                    <p><img class="img-fluid" src="assets/img/icon/icon-22.svg" alt> 3 Dec 2019
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="post-thumb">
-                                    <a href="blog-details.html">
-                                        <img class="img-fluid" src="assets/img/blog/blog-03.jpg" alt>
-                                    </a>
-                                </div>
-                                <div class="post-info">
-                                    <h4>
-                                        <a href="blog-details.html">Complete PHP Programming Career
-                                            Guideline</a>
-                                    </h4>
-                                    <p><img class="img-fluid" src="assets/img/icon/icon-22.svg" alt> 3 Dec 2019
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="card category-widget blog-widget">
-                    <div class="card-header">
-                        <h4 class="card-title">Categories</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="categories">
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> Business </a>
-                            </li>
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> Courses </a>
-                            </li>
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> Education </a>
-                            </li>
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> Graphics Design
-                                </a></li>
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> Programming
-                                </a></li>
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> Web Design </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="card category-widget blog-widget">
-                    <div class="card-header">
-                        <h4 class="card-title">Archives</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="categories">
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> January 2022
-                                </a></li>
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> February 2022
-                                </a></li>
-                            <li><a href="javascript:void(0);"><i class="fas fa-angle-right"></i> April 2022 </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="card tags-widget blog-widget tags-card">
-                    <div class="card-header">
-                        <h4 class="card-title">Latest Tags</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="tags">
-                            <li><a href="javascript:void(0);" class="tag">HTML</a></li>
-                            <li><a href="javascript:void(0);" class="tag">Java Script</a></li>
-                            <li><a href="javascript:void(0);" class="tag">Css</a></li>
-                            <li><a href="javascript:void(0);" class="tag">Jquery</a></li>
-                            <li><a href="javascript:void(0);" class="tag">Java</a></li>
-                            <li><a href="javascript:void(0);" class="tag">React</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div> -->
-
         </div>
     </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
 </section>
