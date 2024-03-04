@@ -13,7 +13,7 @@ export class StripeComponent implements OnInit {
   constructor(private http: HttpClient , private ac :ActivatedRoute , private courseService:CourseService) {   }
   amount: any
   email!:string
-url= "http://localhost:9000/Courzelou/cour"
+url= "http://localhost:8282/Courzelou/cour"
   ngOnInit() {
    this.amount =this.ac.snapshot.paramMap.get('prix');
  

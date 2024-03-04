@@ -7,7 +7,7 @@ import { PoleClass } from '../PoleClass/pole-class';
 })
 export class PoleServiceService {
 
-  private baseUrl='http://localhost:9000/courzelo'
+  private baseUrl='http://localhost:8282/courzelo'
 constructor(private http:HttpClient) { }
 getPoleList(): Observable<any> {  
   return this.http.get(`${this.baseUrl}`+'/getAllPoles');  

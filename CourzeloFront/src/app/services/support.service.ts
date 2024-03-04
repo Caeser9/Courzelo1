@@ -11,7 +11,7 @@ import { Support } from '../models/support.model';
 })
 export class SupportService {
 
-  private url = 'http://localhost:9000/reclamation';
+  private url = 'http://localhost:8282/reclamation';
 
   constructor(private httpClient: HttpClient) {}
 

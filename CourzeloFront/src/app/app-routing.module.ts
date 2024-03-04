@@ -51,6 +51,8 @@ import { PoleListComponent } from './Pole/pole-list/pole-list.component';
 import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
 import { UploadFileFacComponent } from './Faculte/upload-file/upload-fileFac.component';
 import { UploadFilePoleComponent } from './Pole/upload-file-pole/upload-file-pole.component';
+import { AddQuestionComponent } from './Question/add-question/add-question.component';
+import { UpdateQuestionComponent } from './Question/update-question/update-question.component';
 
 const routes: Routes = [
   //youssef
@@ -112,6 +114,8 @@ const routes: Routes = [
   { path: 'commentaires', component: ListeCommentaireComponent },
   //nour
   { path: "question-list", component: QuestionListComponent },
+  {path:"addQuestion",component:AddQuestionComponent},
+  {path:"updateQuestion",component:UpdateQuestionComponent},
   //404 error
   { path: '**', pathMatch: 'full', component: NotFoundComponent }
 ];

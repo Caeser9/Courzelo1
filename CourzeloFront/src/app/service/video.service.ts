@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class VideoService { 
-  private apiUrl = ' http://localhost:9000/Courzelou/cour' ; // Mettez l'URL correcte de votre API
+  private apiUrl = ' http://localhost:8282/Courzelou/cour' ; // Mettez l'URL correcte de votre API
 
   constructor(private http: HttpClient) { }
 

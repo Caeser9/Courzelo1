@@ -18,7 +18,7 @@ export class SupportComponent implements OnInit {
   }  
   
   supportsaveform = new FormGroup({  
-    reclamationId: new FormControl('', [Validators.required]),  
+    reclamationId: new FormControl(''),  
     titre: new FormControl('', [Validators.required, ]),  
     description: new FormControl('', [Validators.required,Validators.minLength(10)])  
   });
@@ -45,9 +45,9 @@ export class SupportComponent implements OnInit {
     this.supportsaveform.reset();  
   }
   
-  get SupportreclamationId() {  
-    return this.supportsaveform.get('reclamationId');  
-  }  
+  // get SupportreclamationId() {  
+  //   return this.supportsaveform.get('reclamationId');  
+  // }  
   
   get Supporttitre() {  
     return this.supportsaveform.get('titre');  

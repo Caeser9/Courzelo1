@@ -7,7 +7,7 @@ import { Faculte } from '../FaculteClass/faculte';
 })
 export class FaculteService {
 
-  private baseUrl='http://localhost:9000/courzelo'
+  private baseUrl='http://localhost:8282/courzelo'
 
   constructor(private http:HttpClient) { }
   getFaculteList(): Observable<Faculte[]> {  
