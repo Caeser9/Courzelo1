@@ -42,6 +42,8 @@ public class User {
     private boolean enabled;
     private boolean active;
 
+    private int test ;
+
     @DBRef
     private List<Cour> courList =new ArrayList<>() ;
     @DBRef
