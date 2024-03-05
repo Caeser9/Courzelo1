@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -74,7 +75,7 @@ import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
 import { PoleListFrontComponent } from './Pole/pole-list-front/pole-list-front.component';
 import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-list-front.component';
 import { CommonModule } from '@angular/common';
-import { FilterPipe } from '../pipes/filter.pipe';
+
 import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
 import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
 import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
@@ -142,8 +143,7 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     ListeCommentaireComponent,
     ListReclamationComponent,
     PoleListFrontComponent,
-    FaculteListFrontComponent,
-    FilterPipe,
+    FaculteListFrontComponent,    
     QuizListComponent,
     MakeQuizComponent,
     QuizResultsComponent,
@@ -168,7 +168,8 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule,   
+    
   ],
   providers: [BlogService,VideoService, ToastrService],
   bootstrap: [AppComponent],

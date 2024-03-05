@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { QuizService } from 'src/service/quiz.service'; // Adjust the import based on your actual path
+import { QuizService } from 'src/app/service/quiz.service';// Adjust the import based on your actual path
 
 @Component({
   selector: 'app-quiz-list',

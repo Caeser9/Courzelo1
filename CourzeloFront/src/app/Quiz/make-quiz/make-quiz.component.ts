@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Quizs } from 'src/app/data/quizArray';
-import { QuizResultService } from 'src/service/quiz-result.service';
+import { QuizResultService } from 'src/app/service/quiz-result.service';
 
 @Component({
   selector: 'app-take-quiz',

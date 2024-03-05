@@ -26,9 +26,9 @@
     "@ckeditor/ckeditor5-utils": "^41.1.0",
     "@ckeditor/ckeditor5-watchdog": "^41.1.0",
     "@stomp/stompjs": "^7.0.0",
-   
     "ckeditor4-angular": "^5.1.0",
     "date-fns": "^2.29.3",
+    "@jspdf": "^2.5.1",
     "ngx-toastr": "^16.2.0",
     "npm": "^10.5.0",
     "primeicons": "^6.0.1",

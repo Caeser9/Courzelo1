@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { QuizResultService } from 'src/service/quiz-result.service';
-import { jsPDF } from 'jspdf';
-
+import { QuizResultService } from 'src/app/service/quiz-result.service';
 
 @Component({
   selector: 'app-quiz-results',
@@ -29,16 +27,16 @@ ngOnInit(): void {
   
 
 downloadResults(): void {
-  const doc = new jsPDF();
+  // const doc = new jsPDF();
 
-  let y = 10; 
-  this.questions.forEach((question, index) => {
-    doc.text(`Question ${index + 1}: ${question.question_title}`, 10, y);
-    y += 10;
-    doc.text(`Answer: ${question.right_answer}`, 10, y);
-    y += 10; 
-  });
-  doc.save('quiz-results.pdf');
+  // let y = 10; 
+  // this.questions.forEach((question, index) => {
+  //   doc.text(`Question ${index + 1}: ${question.question_title}`, 10, y);
+  //   y += 10;
+  //   doc.text(`Answer: ${question.right_answer}`, 10, y);
+  //   y += 10; 
+  // });
+  // doc.save('quiz-results.pdf');
 }
 
 }

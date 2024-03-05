@@ -10,7 +10,7 @@ import { QuestionWrapper } from 'src/app/model/QuestionWrapper.model';
 })
 export class QuizService {
 
-  private baseURL = "http://localhost:9000/courzelo/quiz";
+  private baseURL = "http://localhost:8080/quiz";
 
   constructor(private httpClient: HttpClient) { }
 
