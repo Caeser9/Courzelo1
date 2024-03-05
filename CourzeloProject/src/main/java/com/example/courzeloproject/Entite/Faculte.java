@@ -34,6 +34,8 @@ public class Faculte implements Serializable {
     Pole pole;
     @DBRef
     Set<User> users;
+    @DBRef
+    User user;
 
 
 
