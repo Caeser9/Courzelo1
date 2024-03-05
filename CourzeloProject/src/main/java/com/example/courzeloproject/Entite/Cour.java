@@ -28,9 +28,15 @@ public class Cour {
     private TypeCour typeCour;
     private String photo;
     private double prix;
+    private int test;
+    @DBRef
+    private User user ;
     @DBRef
     private List<Ressource> ressourceList=new ArrayList<>();
-
+    @DBRef
+    private  Domaine domaine;
+//    @DBRef
+//    List<User> listEtudiants =new ArrayList<>();
 
 
 }

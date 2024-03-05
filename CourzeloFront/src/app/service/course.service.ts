@@ -9,7 +9,7 @@ import { Ressource } from '../model/Ressource';
 export class CourseService {
 
   course!:course
-  url='http://localhost:8282/Courzelou/cour'
+  url='http://localhost:8282/cour'
    constructor(private http :HttpClient) { }
    getCourse(){
      return this.http.get(this.url+"/getCour");
