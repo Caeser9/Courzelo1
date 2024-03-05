@@ -41,13 +41,17 @@ public class CourServiceImpl implements ICourService {
     UserRepo iUserRepository;
     @Autowired
     IRessourceRepository iRessourceRepository;
+    @Autowired
+    UserRepo userRepo;
+
 
     @Override
-    public Cour ajouterCour(Cour c) {
+    public Cour ajouterCour(Cour c ) {
         String idc = RandomStringUtils.randomAlphabetic(10);
         c.setIdCour(idc);
         Date date = new Date();
         c.setDate(date);
+
         List<Ressource> ressourceList = new ArrayList<>();
         ressourceList = c.getRessourceList();
         iRessourceRepository.saveAll(ressourceList);

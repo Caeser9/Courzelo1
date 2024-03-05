@@ -1,7 +1,7 @@
 package com.example.courzeloproject.Repository;
 
-
 import com.example.courzeloproject.Entite.Faculte;
+
 import com.example.courzeloproject.Entite.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-
 public interface UserRepository extends MongoRepository<User, String> {
     Optional<User> findByUsername(String username);
    // User findById(String id) ;
@@ -24,6 +23,4 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     User getById(long l);
     User findByVerificationCode(String code);
-
-
 }

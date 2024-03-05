@@ -7,9 +7,9 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class CommentaireService {
-  private baseUrl = 'http://localhost:8082/Courzelo/Commentaire/addCommentaire'; 
-  private baseUrl1 = 'http://localhost:8082/Courzelo/Commentaire/Commentaires'; 
-  private baseUrl2 = 'http://localhost:8082/Courzelo/Commentaire/Commentaire'; 
+  private baseUrl = 'http://localhost:8282/Commentaire/addCommentaire'; 
+  private baseUrl1 = 'http://localhost:8282/Commentaire/Commentaires'; 
+  private baseUrl2 = 'http://localhost:8282/Commentaire/Commentaire'; 
   
 
   constructor(private http: HttpClient) { }
@@ -28,12 +28,12 @@ updateCommentaire(commentaireId: string, updatedCommentaire: Commentaire): Obser
   return this.http.put<Commentaire>(url, updatedCommentaire);
 }
 getCommentaire(id: string): Observable<Commentaire> {
-  const url = `http://localhost:8082/Courzelo/Commentaire/cc/${id}`;
+  const url = `http://localhost:8282/Commentaire/cc/${id}`;
   return this.http.get<Commentaire>(url);
   }
 
     enregistrerReponse(commentaireId: string, reponse: string): Observable<any> {
-      const url = `http://localhost:8082/Courzelo/Commentaire/${commentaireId}/reponse`;
+      const url = `http://localhost:8282/Commentaire/${commentaireId}/reponse`;
       return this.http.post(url, reponse);
     }
     
@@ -44,7 +44,7 @@ getCommentaire(id: string): Observable<Commentaire> {
           corp: corp
         };
         
-        return this.http.post<any>('http://localhost:8082/Courzelo/send-email', request);
+        return this.http.post<any>('http://localhost:8282/send-email', request);
       }
     }
 
