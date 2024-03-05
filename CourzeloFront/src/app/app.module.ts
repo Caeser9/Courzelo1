@@ -71,6 +71,9 @@ import { EditFaculteComponent } from './Faculte/edit-faculte/edit-faculte.compon
 import { PoleListComponent } from './Pole/pole-list/pole-list.component';
 import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
 import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
+import { PoleListFrontComponent } from './Pole/pole-list-front/pole-list-front.component';
+import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-list-front.component';
+
 @NgModule({
   declarations: [
     SupportComponent,
@@ -130,6 +133,9 @@ import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
     AddCommentaireComponent,
     ListeCommentaireComponent,
     ListReclamationComponent,
+    PoleListFrontComponent,
+    FaculteListFrontComponent,
+    
   ],
   imports: [
     BrowserModule,

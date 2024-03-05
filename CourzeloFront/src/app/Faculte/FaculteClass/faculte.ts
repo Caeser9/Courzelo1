@@ -1,4 +1,5 @@
 import { PoleClass } from "src/app/Pole/PoleClass/pole-class";
+import { User } from "src/app/shared/model/user.model";
 
 export class Faculte {
     codeFaculte ! : String ;
@@ -7,7 +8,7 @@ export class Faculte {
     telephone ! : number;
     description ! : String;
     photoUrl ! : String;
-    
-    //  pole ! : PoleClass;
+    users!: User[]
+    // pole ! : PoleClass;
 
 }
