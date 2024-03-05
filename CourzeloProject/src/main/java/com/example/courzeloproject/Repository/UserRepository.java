@@ -22,4 +22,5 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     User getById(long l);
     User findByVerificationCode(String code);
+    /****/
 }
