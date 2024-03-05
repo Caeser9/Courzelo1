@@ -33,7 +33,8 @@ export class AddFaculteComponent implements OnInit {
     telephone: 0,
     description: '',
     photoUrl: '',
-    
+    // pole:'',
+    users :[]
    
   };
   submitted = false;
@@ -69,6 +70,7 @@ export class AddFaculteComponent implements OnInit {
       telephone:0,
       description:'',
       photoUrl:'',
+      users :[]
       
 
     }

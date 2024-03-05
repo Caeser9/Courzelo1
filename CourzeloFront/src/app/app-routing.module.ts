@@ -53,9 +53,14 @@ import { UploadFileFacComponent } from './Faculte/upload-file/upload-fileFac.com
 import { UploadFilePoleComponent } from './Pole/upload-file-pole/upload-file-pole.component';
 import { AddQuestionComponent } from './Question/add-question/add-question.component';
 import { UpdateQuestionComponent } from './Question/update-question/update-question.component';
+
+import { PoleListFrontComponent } from './Pole/pole-list-front/pole-list-front.component';
+import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-list-front.component';
+
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { AuthGuard } from './core/Guard/auth.guard';
+
 
 const routes: Routes = [
   //youssef
@@ -100,15 +105,18 @@ const routes: Routes = [
   { path: "blogsGrids", component: BlogGridsComponent },
   //yosra 
   { path: 'getAllFacultes/:id', component: FaculteListComponent },
+  { path: 'getAllFacultesFront/:id', component: FaculteListFrontComponent },
   { path: 'addFaculte/:id', component: AddFaculteComponent },
   { path: 'modifierFaculte/:id', component: EditFaculteComponent },
   { path: 'deleteFaculte', component: DeleteFaculteComponent },
   { path: 'getAllPoles', component: PoleListComponent },
+  { path: 'getAllPolesFront', component: PoleListFrontComponent },
   { path: 'addPole', component: AddPoleComponent },
   { path: 'modifierPole/:id', component: UpdatePoleComponent },
   { path: 'deletePole', component: DeletePoleComponent },
   { path: 'uploadFacultePhoto/:id', component: UploadFileFacComponent },
   { path: 'uploadPolePhoto/:id', component: UploadFilePoleComponent },
+  
   //nabil
   { path: "support", component: SupportComponent },
   { path: "list", component: ListReclamationComponent },

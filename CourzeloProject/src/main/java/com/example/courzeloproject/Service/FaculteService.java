@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -147,6 +148,7 @@ PoleRepository poleRepository;
         String timestamp = String.valueOf(System.currentTimeMillis());
         return timestamp + "_" + originalFileName;
     }
+    
     public void sendAddedFaculteEmail(User user) {
         String toAddress = user.getEmail();
         String senderName = "EDULINK";
