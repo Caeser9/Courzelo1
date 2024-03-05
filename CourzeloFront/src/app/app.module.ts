@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-
+import { CKEditorComponent } from 'ckeditor4-angular';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -150,12 +150,12 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     LoginParticipantComponent
   ],
   imports: [
+    
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,   
-    CKEditorModule,    
+    AppRoutingModule,      
     DialogModule,
     TableModule,
     ButtonModule,
@@ -165,11 +165,12 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     PaginatorModule,
     BrowserAnimationsModule,
     ToastModule,
+    CKEditorModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,   
-    
+    HttpClientModule,  
+         
   ],
   providers: [BlogService,VideoService, ToastrService],
   bootstrap: [AppComponent],
