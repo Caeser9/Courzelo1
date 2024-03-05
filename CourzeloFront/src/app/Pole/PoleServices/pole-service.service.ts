@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {HttpClient}from "@angular/common/http";
 import { PoleClass } from '../PoleClass/pole-class';
+import { Faculte } from 'src/app/Faculte/FaculteClass/faculte';
 @Injectable({
   providedIn: 'root'
 })
 export class PoleServiceService {
 
-  private baseUrl='http://localhost:8282/courzelo'
+  private baseUrl='http://localhost:8282/Pole'
 constructor(private http:HttpClient) { }
 getPoleList(): Observable<any> {  
   return this.http.get(`${this.baseUrl}`+'/getAllPoles');  
@@ -47,4 +48,8 @@ getPhoto(photo: String): string{
   const photoUrl = `${this.baseUrl}/downloadpole/${photo}`;
   return `${this.baseUrl}/downloadpole/${photo}`;
 }
+affecterFaculteApole(id:string , faculte:Faculte){
+  return this.http.post(`${this.baseUrl}/affecterFaculteApole/${id}`,faculte);
+}
+
 }

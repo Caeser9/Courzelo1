@@ -99,8 +99,8 @@ const routes: Routes = [
   { path: "detailsBlog/:id", component: BlogDetailsComponent },
   { path: "blogsGrids", component: BlogGridsComponent },
   //yosra 
-  { path: 'getAllFacultes', component: FaculteListComponent },
-  { path: 'addFaculte', component: AddFaculteComponent },
+  { path: 'getAllFacultes/:id', component: FaculteListComponent },
+  { path: 'addFaculte/:id', component: AddFaculteComponent },
   { path: 'modifierFaculte/:id', component: EditFaculteComponent },
   { path: 'deleteFaculte', component: DeleteFaculteComponent },
   { path: 'getAllPoles', component: PoleListComponent },

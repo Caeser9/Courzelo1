@@ -1,6 +1,7 @@
 package com.example.courzeloproject.Repository;
 
 
+
 import com.example.courzeloproject.Entite.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -22,5 +23,5 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     User getById(long l);
     User findByVerificationCode(String code);
-    /****/
+ 
 }

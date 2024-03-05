@@ -1,6 +1,7 @@
 package com.example.courzeloproject.Service;
 
 import com.example.courzeloproject.Entite.Faculte;
+import com.example.courzeloproject.Entite.User;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,4 +16,8 @@ public interface IFaculteService {
     String storeFile(MultipartFile file, String faculteCode);
 
     Resource loadFileAsResource(String fileName);
+    List<Faculte> getFaculteByPoleId(String codep);
+    Faculte addFaculteToPole(String polec, Faculte faculte) ;
+    public void sendAddedFaculteEmail(User user);
+
 }

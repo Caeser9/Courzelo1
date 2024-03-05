@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-
+@RequestMapping("Pole")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 
 public class PoleController {
     @Autowired
     IPoleService iPoleService;
+    @Autowired
+    IFaculteService iFaculteService;
     @PostMapping("/addPole")
     public Pole AddPole(@RequestBody Pole pole) {
         return iPoleService.addPole(pole);
@@ -54,4 +56,9 @@ public class PoleController {
                 .body(resource);
 
     }
+    @PostMapping("/affecterFaculteApole/{codep}")
+    Pole affecterFaculteApole(@RequestBody Faculte fac,@PathVariable("codep") String codep){
+        return iPoleService.affecterFaculteApole(fac,codep);
+    }
+
 }

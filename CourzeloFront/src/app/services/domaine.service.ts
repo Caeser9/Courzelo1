@@ -8,18 +8,18 @@ import { Domaine } from '../models/domaine';
   providedIn: 'root'
 })
 export class DomaineService {
-  private apiUrl = 'http://localhost:8082/Courzelo/Domaine/Domaine';
-  private saveUrl: string = 'http://localhost:8082/Courzelo/Domaine/addDomaine';
+  private apiUrl = 'http://localhost:8282/Domaine/Domaine';
+  private saveUrl: string = 'http://localhost:8282/Domaine/addDomaine';
   private usersUrl: string;
-  private updateUrl: string = 'http://localhost:8082/Courzelo/Domaine/Domaine'
+  private updateUrl: string = 'http://localhost:8282/Domaine/Domaine'
   
   
 
-  constructor(private http: HttpClient) {  this.usersUrl = 'http://localhost:8082/Courzelo/Domaine/Domaines'}
+  constructor(private http: HttpClient) {  this.usersUrl = 'http://localhost:8282/Domaine/Domaines'}
   
   
   getDomaines(): Observable<Domaine[]> {
-    return this.http.get<Domaine[]>('http://localhost:8082/Courzelo/Domaine/Domaines');
+    return this.http.get<Domaine[]>('http://localhost:8282/Domaine/Domaines');
   }
 
   deleteDomaine(id: string): Observable<any> {
@@ -38,7 +38,7 @@ updateDomaine(domaine: Domaine, id:any): Observable<Domaine> {
   return this.http.put<Domaine>(url, domaine);
 }
 getDomaine(id: string): Observable<Domaine> {
-const url = `http://localhost:8082/Courzelo/Domaine/dd/${id}`;
+const url = `http://localhost:8282/Domaine/dd/${id}`;
 return this.http.get<Domaine>(url);
 }
 getPhoto(photo: string): string{
