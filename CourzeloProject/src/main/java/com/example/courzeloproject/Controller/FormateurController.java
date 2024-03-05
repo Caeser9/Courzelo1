@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/auth")
 public class FormateurController {
@@ -72,18 +72,18 @@ public class FormateurController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUserAF(@Valid @RequestBody SignupRequest signUpRequest) {
-            if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-                return ResponseEntity
-                        .badRequest()
-                        .body(new MessageResponse("Error: Username is already taken!"));
-            }
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
 
-            if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-                return ResponseEntity
-                        .badRequest()
-                        .body(new MessageResponse("Error: Email is already in use!"));
-            }
-            //generation du mdp
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+        //generation du mdp
         String randomCode = RandomStringUtils.random(8,true,true);
         signUpRequest.setPassword(randomCode);
 
@@ -135,6 +135,7 @@ public class FormateurController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
+
 
 
 

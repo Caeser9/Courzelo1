@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FileService {
-  private baseUrl='http://localhost:8082/Courzelo/Domaine'
+  private baseUrl='http://localhost:8282/Domaine'
   constructor(private http:HttpClient) { }
   uploadPhoto(id: string, file: File): Observable<any> {
     const uploadUrl = `${this.baseUrl}/upload/${id}`;

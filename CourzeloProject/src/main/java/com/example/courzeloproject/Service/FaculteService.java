@@ -1,9 +1,14 @@
 package com.example.courzeloproject.Service;
 
 import com.example.courzeloproject.Entite.Faculte;
+import com.example.courzeloproject.Entite.Pole;
+import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.FaculteRepository;
 import com.example.courzeloproject.Repository.PoleRepository;
 
+import com.example.courzeloproject.Repository.UserRepo;
+import com.example.courzeloproject.Repository.UserRepository;
+import com.example.courzeloproject.dto.MailDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,13 +23,20 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Slf4j
 public class FaculteService implements IFaculteService{
+    @Autowired
+    EmailSender iServiceEmail;
+    @Autowired
+    UserRepo userRepository;
 @Autowired
     FaculteRepository faculteRepository;
+@Autowired
+PoleRepository poleRepository;
     @Value("${file.upload-dir}")
     private String uploadDir;
     @Override
@@ -99,10 +111,51 @@ public class FaculteService implements IFaculteService{
             throw new RuntimeException("File not found: " + fileName, e);
         }
     }
+
+    @Override
+    public List<Faculte> getFaculteByPoleId(String codep) {
+
+
+        return faculteRepository.findFacultesByPoleCodePole(codep);
+    }
+
+    @Override
+    public Faculte addFaculteToPole(String polec, Faculte faculte) {
+        Pole pole = poleRepository.findById(polec).orElse(null);
+        User user1=userRepository.findUserById("user1");
+
+        if (pole != null) {
+            if (pole.getFacultes() == null) {
+                pole.setFacultes(new ArrayList<>());
+
+            }
+            faculte.setUser(user1);
+            faculte.setPole(pole);
+            Faculte savedFaculte = faculteRepository.save(faculte);
+            pole.getFacultes().add(savedFaculte);
+            poleRepository.save(pole);
+           // sendAddedFaculteEmail(user1);
+            return faculte;
+        }
+
+        return null;
+    }
+
     private String generateNewFileName(String originalFileName) {
         // You can customize this method to generate a unique file name.
         // For example, appending a timestamp or using a UUID.
         String timestamp = String.valueOf(System.currentTimeMillis());
         return timestamp + "_" + originalFileName;
+    }
+    public void sendAddedFaculteEmail(User user) {
+        String toAddress = user.getEmail();
+        String senderName = "EDULINK";
+        String subject = "Faculte Added";
+        String content = "Hello, "
+                + "This email sent to inform you that there is a new added Faculte aded to this pole ." ;
+
+
+        MailDto mail = new MailDto(toAddress, senderName, subject, content);
+        iServiceEmail.sendEmail(mail);
     }
 }
