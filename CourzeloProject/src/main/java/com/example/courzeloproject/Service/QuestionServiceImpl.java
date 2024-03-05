@@ -62,7 +62,7 @@ public class QuestionServiceImpl implements IQuestionService {
         return questionRepository.existsById(id);
     }
 
-    /*public Question updateQuestion(String id, Question question) {
+    public Question updateQuestion(String id, Question question) {
         Question existQuestion = questionRepository.findById(id).get();
 
         if (existQuestion.getId()!= "") {
@@ -76,24 +76,10 @@ public class QuestionServiceImpl implements IQuestionService {
             existQuestion.setRight_answer(question.getRight_answer());
         }
         return questionRepository.save(existQuestion) ;
-    }*/
-    public Question updateQuestion(String id, Question question) {
-        Optional<Question> optionalQuestion = questionRepository.findById(id);
-        if (optionalQuestion.isPresent()) {
-            Question existQuestion = optionalQuestion.get();
-            existQuestion.setCategory(question.getCategory());
-            existQuestion.setDifficultylevel(question.getDifficultylevel());
-            existQuestion.setOption1(question.getOption1());
-            existQuestion.setOption2(question.getOption2());
-            existQuestion.setOption3(question.getOption3());
-            existQuestion.setOption4(question.getOption4());
-            existQuestion.setQuestion_title(question.getQuestion_title());
-            existQuestion.setRight_answer(question.getRight_answer());
-            return questionRepository.save(existQuestion);
-        } else {
-            // Gérer le cas où aucune question avec l'ID donné n'est trouvée
-            // Par exemple, vous pouvez lever une exception ou retourner null
-            return null;
-        }
+    }
+
+    @Override
+    public Question getQuestionById(String id) {
+        return questionRepository.findById(id).get();
     }
 }

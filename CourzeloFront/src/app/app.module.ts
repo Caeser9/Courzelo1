@@ -71,6 +71,13 @@ import { EditFaculteComponent } from './Faculte/edit-faculte/edit-faculte.compon
 import { PoleListComponent } from './Pole/pole-list/pole-list.component';
 import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
 import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
+import { CommonModule } from '@angular/common';
+import { FilterPipe } from '../pipes/filter.pipe';
+import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
+import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
+import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
+
+
 @NgModule({
   declarations: [
     SupportComponent,
@@ -130,6 +137,10 @@ import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
     AddCommentaireComponent,
     ListeCommentaireComponent,
     ListReclamationComponent,
+    FilterPipe,
+    QuizListComponent,
+    MakeQuizComponent,
+    QuizResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -147,6 +158,10 @@ import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
     PaginatorModule,
     BrowserAnimationsModule,
     ToastModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [BlogService,VideoService, ToastrService],
   bootstrap: [AppComponent],
