@@ -148,7 +148,7 @@ public class CourController {
     }
 
     @PostMapping("/stripe/{amount}")
-    public String payer(@PathVariable("amount") Long amount ) throws StripeException {
+    public void payer(@PathVariable("amount") Long amount ) throws StripeException {
         Stripe.apiKey = "sk_test_51K1TBAIBKkiTlXRIgX1qQhWhoWBv4IYaWpIXb0dml7OZjZtwjaxMtiILLjoEXupBoon5Zk810WAOkQvVYncB5C61009SjLwRZU";
 
         ChargeCreateParams params =
@@ -159,7 +159,6 @@ public class CourController {
                         .build();
 
         Charge charge = Charge.create(params);
-return "success";
     }
 
     @GetMapping(value = "video/{title}", produces = "video/mp4")
@@ -172,7 +171,7 @@ return "success";
     }
 
     @PostMapping("/sendHtmlEmail/{recepientEmail}/{amount}")
-    public String sendHtmlEmail(@PathVariable("recepientEmail") String recepientEmail ,@PathVariable("amount") Long amount) throws MessagingException {
+    public void sendHtmlEmail(@PathVariable("recepientEmail") String recepientEmail ,@PathVariable("amount") Long amount) throws MessagingException {
         String htmlMessage = "<html>"
                 + "<head>"
                 + "<style>"
@@ -212,10 +211,9 @@ return "success";
         helper.setFrom("youssefkchaou4@gmail.com");
 
         mailSender.send(mimeMessage);
-        return  "success";
     }
     @PostMapping("/PdfGenerator/{amount}")
-    public String PdfGenerator(@PathVariable("amount" )Long amount) throws DocumentException, IOException, URISyntaxException {
+    public void PdfGenerator(@PathVariable("amount" )Long amount) throws DocumentException, IOException, URISyntaxException {
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream("iTextImageExample.pdf"));
         document.open();
@@ -235,7 +233,6 @@ return "success";
         document.add(table);
 
         document.close();
-        return "success";
     }
     @GetMapping("/findByNomCourOrDescription/{recherche}")
     public List<Cour> findByNomCourOrDescriptions( @PathVariable("recherche") String recherche ) {

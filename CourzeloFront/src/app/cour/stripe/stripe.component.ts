@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from 'src/app/service/course.service';
 
 @Component({
@@ -10,10 +10,10 @@ import { CourseService } from 'src/app/service/course.service';
 })
 export class StripeComponent implements OnInit {
   clientSecret: string | null = null;
-  constructor(private http: HttpClient , private ac :ActivatedRoute , private courseService:CourseService) {   }
+  constructor(private http: HttpClient , private ac :ActivatedRoute , private courseService:CourseService , private router:Router) {   }
   amount: any
   email!:string
-url= "http://localhost:8282/Courzelou/cour"
+url= "http://localhost:8282/cour"
   ngOnInit() {
    this.amount =this.ac.snapshot.paramMap.get('prix');
  
@@ -25,8 +25,8 @@ url= "http://localhost:8282/Courzelou/cour"
     });
     this.courseService.sendHtmlEmail(this.email,this.amount).subscribe(
       () => {
-        console.log(this.email)
         alert("email envoyé !!");
+        this.router.navigate(['/courselist']);
       },
       (error) => {        
         console.error("Erreur lors de l'envoie de mail :", error);
@@ -37,6 +37,7 @@ pdfGenerator(){
   this.courseService.PdfGenerator(this.amount).subscribe(
     () => {
       alert("facture génerer !!");
+      this.router.navigate(['/courselist']);
     },
     (error) => {
       console.log(this.email)
