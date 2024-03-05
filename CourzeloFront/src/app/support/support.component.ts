@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';  
 import { FormControl, FormGroup, Validators } from '@angular/forms';  
-import { SupportService } from '../services/support.service'; 
+import { SupportService } from '../services/support.service';
 import { Support } from '../models/support.model'; 
 
 @Component({
@@ -18,17 +18,15 @@ export class SupportComponent implements OnInit {
   }  
   
   supportsaveform = new FormGroup({  
-    reclamationId: new FormControl(''),  
-    titre: new FormControl('', [Validators.required, ]),  
-    description: new FormControl('', [Validators.required,Validators.minLength(10)])  
+    titre: new FormControl('', [Validators.required]),  
+    description: new FormControl('', [Validators.required, Validators.minLength(10)])  
   });
   
   
   saveSupport() {  
     const support: Support = { 
-      reclamationId: this.supportsaveform.get('reclamationId')!.value!,  
-      titre  : this.supportsaveform.get('titre')!.value!,  
-      description  : this.supportsaveform.get('description')!.value! , 
+      titre: this.supportsaveform.get('titre')!.value!,  
+      description: this.supportsaveform.get('description')!.value! , 
       dateReclamation: new Date(),
     };
 
@@ -44,10 +42,6 @@ export class SupportComponent implements OnInit {
       );  
     this.supportsaveform.reset();  
   }
-  
-  // get SupportreclamationId() {  
-  //   return this.supportsaveform.get('reclamationId');  
-  // }  
   
   get Supporttitre() {  
     return this.supportsaveform.get('titre');  

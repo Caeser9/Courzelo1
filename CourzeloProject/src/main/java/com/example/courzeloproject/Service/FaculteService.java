@@ -6,6 +6,7 @@ import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.FaculteRepository;
 import com.example.courzeloproject.Repository.PoleRepository;
 
+import com.example.courzeloproject.Repository.UserRepo;
 import com.example.courzeloproject.Repository.UserRepository;
 import com.example.courzeloproject.dto.MailDto;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,7 @@ public class FaculteService implements IFaculteService{
     @Autowired
     EmailSender iServiceEmail;
     @Autowired
-    UserRepository userRepository;
+    UserRepo userRepository;
 @Autowired
     FaculteRepository faculteRepository;
 @Autowired

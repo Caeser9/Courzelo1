@@ -34,27 +34,27 @@ public class QuizServiceImpl implements IQuizService{
     }
 
     @Override
-   public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(String id) {
+    public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(String id) {
 
-       Optional<Quiz> optionalQuiz = quizRepository.findById(id);
-       if (optionalQuiz.isPresent()) {
-           Quiz quiz = optionalQuiz.get();
-           List<QuestionWrapper> questionWrappers = new ArrayList<>();
-           for (Question question : quiz.getQuestions()) {
-               QuestionWrapper questionWrapper = new QuestionWrapper();
+        Optional<Quiz> optionalQuiz = quizRepository.findById(id);
+        if (optionalQuiz.isPresent()) {
+            Quiz quiz = optionalQuiz.get();
+            List<QuestionWrapper> questionWrappers = new ArrayList<>();
+            for (Question question : quiz.getQuestions()) {
+                QuestionWrapper questionWrapper = new QuestionWrapper();
 
-               questionWrapper.setQuestion_title(question.getQuestion_title());
-               questionWrapper.setOption1(question.getOption1());
-               questionWrapper.setOption2(question.getOption2());
-               questionWrapper.setOption3(question.getOption3());
-               questionWrapper.setOption4(question.getOption4());
-               questionWrappers.add(questionWrapper);
-           }
-           return new ResponseEntity<>(questionWrappers, HttpStatus.OK);
-       } else {
-           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-       }
-   }
+                questionWrapper.setQuestion_title(question.getQuestion_title());
+                questionWrapper.setOption1(question.getOption1());
+                questionWrapper.setOption2(question.getOption2());
+                questionWrapper.setOption3(question.getOption3());
+                questionWrapper.setOption4(question.getOption4());
+                questionWrappers.add(questionWrapper);
+            }
+            return new ResponseEntity<>(questionWrappers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
     @Override
@@ -70,7 +70,11 @@ public class QuizServiceImpl implements IQuizService{
         }
         return new ResponseEntity<>(right,HttpStatus.OK);
     }
-    }
 
+    @Override
+    public ResponseEntity<List<Quiz>> getAllQuizs() {
+        return new ResponseEntity<>(quizRepository.findAll(),HttpStatus.OK);
+    }
+}
 
 

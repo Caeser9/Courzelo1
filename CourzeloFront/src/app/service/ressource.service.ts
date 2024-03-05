@@ -7,7 +7,7 @@ import { Ressource } from '../model/Ressource';
 })
 export class RessourceService {
 
-  url='http://localhost:8282/Courzelou/cour'
+  url='http://localhost:8282/cour'
 
   constructor(private http: HttpClient) { }
   deleteRessource(id:string){

@@ -42,4 +42,11 @@ public class QuizController {
        return quizService.calculateResult(id,answers) ;
     }
 
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Quiz>> getAllQuizs()
+    {
+        return quizService.getAllQuizs();
+    }
+
+
 }

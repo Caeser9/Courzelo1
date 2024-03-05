@@ -15,6 +15,9 @@ public interface IQuestionService {
 
     public Question updateQuestion( String id, Question question);
 
+    /* get question by id */
+    public Question getQuestionById(String id);
+
 
 
 

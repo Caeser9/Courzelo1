@@ -8,9 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Document(collection = "user")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +17,6 @@ import java.util.Set;
 @Setter
 @ToString
 public class User {
-
     @Id
     private String id;
 
@@ -43,6 +41,14 @@ public class User {
     private String resetPasswordToken;
     private boolean enabled;
     private boolean active;
+
+    private int test ;
+    private String test2 ;
+
+    @DBRef
+    private List<Cour> courList =new ArrayList<>() ;
+    @DBRef
+    private Faculte faculte ;
 
     public User(String username, String email, String password) {
         this.username = username;

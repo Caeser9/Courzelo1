@@ -11,7 +11,7 @@ import { Support } from '../models/support.model';
 })
 export class SupportService {
 
-  private url = 'http://localhost:8282/reclamation';
+  private url = 'http://localhost:9000/reclamation';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -29,4 +29,15 @@ export class SupportService {
   deleteSupport(id: string): Observable<any> {
     return this.httpClient.delete(`${this.url}/deleteReclamation/${id}`);
   }
+  getReclamationById(reclamationId: string): Observable<Support> {
+    return this.httpClient.get<Support>(`${this.url}/getReclamationById/${reclamationId}`);
+  }
+  searchReclamationsByTitle(title: string): Observable<Support[]> {
+    return this.httpClient.get<Support[]>(`${this.url}/searchByTitle?title=${title}`);
+}
+getAllReclamationsSort(): Observable<Support[]> {
+  return this.httpClient.get<Support[]>(`${this.url}/getAllReclamationsSortedByTitle`);
+}
+
+  
 }

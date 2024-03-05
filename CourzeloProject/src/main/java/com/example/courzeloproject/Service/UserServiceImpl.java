@@ -47,7 +47,7 @@ public class UserServiceImpl implements IUserService{
     public void deleteUser(User u){
         repo.delete(u);
     }
-//    public List<User> getUserByRole(String role){
+    //    public List<User> getUserByRole(String role){
 //        return repo.findByRolesName(role);
 //    }
     public List<User> getUsersByRole(ERole roleName) {
@@ -72,7 +72,7 @@ public class UserServiceImpl implements IUserService{
         repo.save(user);
 /*		String lien = "http://localhost:4200/login";
 		String toAddress = user.getEmail();
-		String senderName = "EDULINK";
+		String senderName = "Courzelo";
 		String subject = "Activation Compte";
 		String content = "Monsieur/Madame [[email]],<br>"
 				+ "Votre compte est devient active :<br>" + "<p><a href=\"" + lien
@@ -89,7 +89,7 @@ public class UserServiceImpl implements IUserService{
         user.setActive(false);
         repo.save(user);
 	/*	String toAddress = user.getEmail();
-		String senderName = "EDULINK";
+		String senderName = "Courzelo";
 		String subject = "Activation Compte";
 		String content = "Monsieur/Madame [[email]],<br>"
 				+ "Votre compte est devient desactive :<br>"

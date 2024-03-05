@@ -4,30 +4,88 @@ import com.example.courzeloproject.Entite.Reclamtion;
 import com.example.courzeloproject.Repository.ReclamationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Arrays;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReclamationService implements IReclamationServicelmp {
 
     @Autowired
-     ReclamationRepository reclamationRepository;
+    ReclamationRepository reclamationRepository;
+
+    @Autowired
+    EmailSenderService emailSenderService; // Inject EmailSenderService
+
+
+    private static final List<String> BAD_WORDS = Arrays.asList("nabil", "hamdi", "aymen");
 
     @Override
     public Reclamtion addReclamation(Reclamtion reclamtion) {
+        // Sanitize description
+        sanitizeDescription(reclamtion);
+
         reclamtion.setDateReclamation(LocalDateTime.now());
-        return reclamationRepository.insert(reclamtion);
+        Reclamtion newReclamation = reclamationRepository.insert(reclamtion);
+
+        // Send email notification for the new reclamation
+        emailSenderService.sendSimpleEmail("pipolatounes@gmail.com",
+                "Nouvelle réclamation ajoutée",
+                "Une nouvelle réclamation a été ajoutée avec le titre : " + reclamtion.getTitre());
+
+        // Send SMS notification for the new reclamation
+        /*smsSenderService.sendSMS(reclamtion.getTitre());
+        Twilio.init(twilioConfig.getAccountSid(), twilioConfig.getAuthToken());*/
+
+        return newReclamation;
     }
 
     @Override
     public Reclamtion updateReclamation(Reclamtion reclamtion) {
+        reclamtion.setDateReclamation(LocalDateTime.now());
+        // Sanitize description
+        sanitizeDescription(reclamtion);
+
         return reclamationRepository.save(reclamtion);
     }
 
+    // Method to sanitize the description by replacing bad words with asterisks
+    private void sanitizeDescription(Reclamtion reclamtion) {
+        String description = reclamtion.getDescription();
+        for (String badWord : BAD_WORDS) {
+            // Replace bad words with asterisks
+            description = description.replaceAll("(?i)" + badWord, "*".repeat(badWord.length()));
+        }
+        reclamtion.setDescription(description);
+    }
+
     @Override
-    public void  deleteReclamation(int reclamationId) {
+    public void deleteReclamation(int reclamationId) {
         reclamationRepository.deleteById(reclamationId);
+    }
 
+    @Override
+    public List<Reclamtion> getAllReclamations() {
+        return reclamationRepository.findAll();
+    }
 
+    @Override
+    public Optional<Reclamtion> getReclamationById(int reclamationId) {
+        return reclamationRepository.findById(reclamationId);
+    }
+
+    @Override
+    public List<Reclamtion> searchReclamationsByTitle(String title) {
+        return reclamationRepository.findByTitreContainingIgnoreCase(title);
+    }
+
+    @Override
+    public List<Reclamtion> getAllReclamationsSortedByTitle() {
+        List<Reclamtion> reclamations = reclamationRepository.findAll();
+        reclamations.sort(Comparator.comparing(Reclamtion::getTitre));
+        return reclamations;
     }
 }
