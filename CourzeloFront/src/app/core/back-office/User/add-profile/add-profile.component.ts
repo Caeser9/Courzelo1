@@ -47,7 +47,7 @@ export class AddProfileComponent implements OnInit{
       this.profileService.addProfile(this.profile).subscribe(
         (data : Profile) => {
           
-          this.router.navigateByUrl(`/upload/${data.id}`);
+          this.router.navigateByUrl(`/user/upload/${data.id}`);
           console.log("ahawa: ", data.id);
           
         },

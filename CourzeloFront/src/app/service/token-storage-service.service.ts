@@ -7,7 +7,6 @@ const ROLE_KEY = 'auth-role';
   providedIn: 'root'
 })
 export class TokenStorageService {
-
   constructor() { }
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
@@ -30,5 +29,4 @@ export class TokenStorageService {
   }
   logout() {
     window.sessionStorage.clear();
-  }
-}
+  }}

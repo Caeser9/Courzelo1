@@ -21,14 +21,14 @@ import { BlogDetailsComponent } from './Blog/blog-details/blog-details.component
 import { BlogGridsComponent } from './Blog/blog-grids/blog-grids.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { LoginComponent } from './core/front-office/Formateur-Admin/login/login.component';
-import { RegisterComponent } from './core/front-office/Formateur-Admin/register/register.component';
+
 import { EditProfileComponent } from './core/back-office/User/edit-profile/edit-profile.component';
 import { AdminListComponent } from './core/back-office/User/admin-list/admin-list.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { AddProfileComponent } from './core/back-office/User/add-profile/add-profile.component';
 import { TwoWayFactorPageComponent } from './core/front-office/two-way-factor-page/two-way-factor-page.component';
 import { FormateurListComponent } from './core/back-office/User/formateur-list/formateur-list.component';
-import { UploadFileUserComponent } from './core/back-office/User/upload-file/upload-fileUser.component';
+import { UploadFileUserComponent } from './core/back-office/User/upload-file-user/upload-fileUser.component';
 import { AddAdminComponent } from './core/back-office/User/add-admin/add-admin.component';
 import { AddFormateurComponent } from './core/back-office/User/add-formateur/add-formateur.component';
 import { CourseListComponent } from './cour/course-list/course-list.component';
@@ -53,24 +53,32 @@ import { UploadFileFacComponent } from './Faculte/upload-file/upload-fileFac.com
 import { UploadFilePoleComponent } from './Pole/upload-file-pole/upload-file-pole.component';
 import { AddQuestionComponent } from './Question/add-question/add-question.component';
 import { UpdateQuestionComponent } from './Question/update-question/update-question.component';
+import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
+import { RegisterComponent } from './core/front-office/Participant/register/register.component';
+import { AuthGuard } from './core/Guard/auth.guard';
 
 const routes: Routes = [
   //youssef
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "verify-code", component: TwoWayFactorPageComponent },
+  {path:"login",component:LoginParticipantComponent},
+  {path:"login-id",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+  { path:"verify-code", component: TwoWayFactorPageComponent },
+
   //dev
   { path: "navbar", component: NavbarComponent },
   { path: "sidebar", component: SideBarComponent },
   { path: "home", component: HomeComponent },
+
   //youssef
-  { path: "addProfile", component: AddProfileComponent },
-  { path: "editProfile", component: EditProfileComponent },
-  { path: "uploadfileUser/:id", component: UploadFileUserComponent },
-  { path: "formateur-list", component: FormateurListComponent },
-  { path: "admin-list", component: AdminListComponent },
-  { path: "addAdmin", component: AddAdminComponent },
-  { path: "addFormateur", component: AddFormateurComponent },
+  {path:"addProfile",component:AddProfileComponent, canActivate : [AuthGuard]},
+  {path:"editProfile",component:EditProfileComponent, canActivate : [AuthGuard]},
+  {path:"user/upload/:id", component:UploadFileUserComponent, canActivate : [AuthGuard]},
+
+  {path:"formateur-list",component:FormateurListComponent, canActivate : [AuthGuard]} ,   
+  {path:"admin-list",component:AdminListComponent, canActivate : [AuthGuard]},
+
+  {path:"addAdmin",component:AddAdminComponent, },
+  {path:"addFormateur",component:AddFormateurComponent, canActivate : [AuthGuard]},
   //oussema
   { path: "courselist", component: CourseListComponent },
   { path: "add-course", component: AddCourseComponent },
