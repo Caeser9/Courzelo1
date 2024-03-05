@@ -22,8 +22,8 @@ import { UpdateReclamationComponent } from './update-reclamation/update-reclamat
 import { AddBlogComponent } from './Blog/add-blog/add-blog.component';
 import { ListBlogComponent } from './Blog/list-blog/list-blog.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient,HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BlogService } from './Blog/BlogService/blog.service';
 import { UploadFileComponent } from './Blog/upload-file/upload-file.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -33,7 +33,7 @@ import { BlogGridsComponent } from './Blog/blog-grids/blog-grids.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { LoginComponent } from './core/front-office/Formateur-Admin/login/login.component';
-import { RegisterComponent } from './core/front-office/Formateur-Admin/register/register.component';
+
 import { EditProfileComponent } from './core/back-office/User/edit-profile/edit-profile.component';
 import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { AdminListComponent } from './core/back-office/User/admin-list/admin-list.component';
@@ -41,7 +41,7 @@ import { StudentListComponent } from './core/back-office/User/student-list/stude
 import { AddProfileComponent } from './core/back-office/User/add-profile/add-profile.component';
 import { TwoWayFactorPageComponent } from './core/front-office/two-way-factor-page/two-way-factor-page.component';
 import { FormateurListComponent } from './core/back-office/User/formateur-list/formateur-list.component';
-import { UploadFileUserComponent } from './core/back-office/User/upload-file/upload-fileUser.component';
+import { UploadFileUserComponent } from './core/back-office/User/upload-file-user/upload-fileUser.component';
 import { AddAdminComponent } from './core/back-office/User/add-admin/add-admin.component';
 import { AddFormateurComponent } from './core/back-office/User/add-formateur/add-formateur.component';
 import { DialogModule } from 'primeng/dialog';
@@ -71,6 +71,8 @@ import { EditFaculteComponent } from './Faculte/edit-faculte/edit-faculte.compon
 import { PoleListComponent } from './Pole/pole-list/pole-list.component';
 import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
 import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
+import { RegisterComponent } from './core/front-office/Participant/register/register.component';
+import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 @NgModule({
   declarations: [
     SupportComponent,
@@ -130,6 +132,7 @@ import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
     AddCommentaireComponent,
     ListeCommentaireComponent,
     ListReclamationComponent,
+    LoginParticipantComponent
   ],
   imports: [
     BrowserModule,

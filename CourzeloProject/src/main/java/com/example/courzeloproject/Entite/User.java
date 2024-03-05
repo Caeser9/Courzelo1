@@ -18,7 +18,6 @@ import java.util.Set;
 @Setter
 @ToString
 public class User {
-
     @Id
     private String id;
 
