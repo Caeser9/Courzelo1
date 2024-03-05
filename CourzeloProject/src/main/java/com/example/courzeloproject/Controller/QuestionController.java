@@ -39,7 +39,15 @@ public class QuestionController {
     @DeleteMapping("delete/{id}")
     public void deleteQuestion(@PathVariable("id") String id)
     {
-         questionService.deleteQuestion(id);
+
+        questionService.deleteQuestion(id);
+    }
+
+    @DeleteMapping("hedhyDelete/{id}")
+    public String deleteTest(@PathVariable("id") String id)
+    {
+        questionService.deleteQuestion(id);
+        return ("okk");
     }
 
     @PutMapping("update/{id}")

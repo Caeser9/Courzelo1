@@ -71,6 +71,12 @@ import { EditFaculteComponent } from './Faculte/edit-faculte/edit-faculte.compon
 import { PoleListComponent } from './Pole/pole-list/pole-list.component';
 import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
 import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
+import { CommonModule } from '@angular/common';
+import { FilterPipe } from '../pipes/filter.pipe';
+import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
+import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
+import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
+
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 @NgModule({
@@ -132,7 +138,12 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     AddCommentaireComponent,
     ListeCommentaireComponent,
     ListReclamationComponent,
+    FilterPipe,
+    QuizListComponent,
+    MakeQuizComponent,
+    QuizResultsComponent,
     LoginParticipantComponent
+
   ],
   imports: [
     BrowserModule,
@@ -150,6 +161,10 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     PaginatorModule,
     BrowserAnimationsModule,
     ToastModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [BlogService,VideoService, ToastrService],
   bootstrap: [AppComponent],
