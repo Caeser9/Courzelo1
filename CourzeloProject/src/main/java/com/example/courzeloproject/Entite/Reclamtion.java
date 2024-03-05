@@ -9,7 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.Arrays;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,10 +23,29 @@ public class Reclamtion {
     @Field("date")
     private LocalDateTime dateReclamation ;
     @Field("titre")
+
     private String titre ;
     @Field("description")
 
     private String description ;
+
+    public void setDescription(String description) {
+        // Check for bad words in the description
+        this.description = sanitizeDescription(description);
+    }
+
+    // Method to sanitize the description by replacing bad words with asterisks
+    private String sanitizeDescription(String text) {
+     // bad wods list
+        List<String> badWords = Arrays.asList("nabil", "hamdi", "aymen");
+
+        // Replace bad words with ***
+        for (String badWord : badWords) {
+
+            text = text.replaceAll("(?i)" + badWord, "*".repeat(badWord.length()));
+        }
+        return text;
+    }
 
 
 }

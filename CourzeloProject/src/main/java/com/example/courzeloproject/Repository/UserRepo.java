@@ -11,6 +11,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepo extends MongoRepository<User,Integer> {
     Optional<User> findByUsername(String username);
+
     User findById(String id) ;
     @Query("{'roles.name': ?0}")
     List<User>  findByRolesName(String role) ;
@@ -21,4 +22,6 @@ public interface UserRepo extends MongoRepository<User,Integer> {
 
     User getById(long l);
     User findByVerificationCode(String code);
+
+    User findUserById(String id);
 }

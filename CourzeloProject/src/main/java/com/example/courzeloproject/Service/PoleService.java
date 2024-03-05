@@ -5,6 +5,7 @@ import com.example.courzeloproject.Entite.Pole;
 import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.FaculteRepository;
 import com.example.courzeloproject.Repository.PoleRepository;
+import com.example.courzeloproject.Repository.UserRepo;
 import com.example.courzeloproject.Repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import java.util.List;
 @Slf4j
 public class PoleService implements IPoleService{
     @Autowired
-    UserRepository userRepository;
+    UserRepo userRepository;
     @Autowired
     PoleRepository poleRepository;
     @Autowired
