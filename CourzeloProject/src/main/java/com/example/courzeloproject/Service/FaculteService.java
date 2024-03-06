@@ -73,7 +73,7 @@ PoleRepository poleRepository;
     }
 
     @Override
-    public String storeFile(MultipartFile file, String faculteCode)  {
+    public Faculte storeFile(MultipartFile file, String faculteCode)  {
         String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
         String newFileName = generateNewFileName(originalFileName);
 
@@ -89,9 +89,8 @@ PoleRepository poleRepository;
 
             Faculte faculte = faculteRepository.findFaculteByCodeFaculte(faculteCode);
             faculte.setPhotoUrl(newFileName);
-            faculteRepository.save(faculte); // Save the updated blog entity
+            return faculteRepository.save(faculte); // Save the updated blog entity
 
-            return newFileName;
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file: " + newFileName, e);
         }
@@ -115,8 +114,6 @@ PoleRepository poleRepository;
 
     @Override
     public List<Faculte> getFaculteByPoleId(String codep) {
-
-
         return faculteRepository.findFacultesByPoleCodePole(codep);
     }
 
@@ -135,7 +132,7 @@ PoleRepository poleRepository;
             Faculte savedFaculte = faculteRepository.save(faculte);
             pole.getFacultes().add(savedFaculte);
             poleRepository.save(pole);
-           // sendAddedFaculteEmail(user1);
+            sendAddedFaculteEmail(user1);
             return faculte;
         }
 

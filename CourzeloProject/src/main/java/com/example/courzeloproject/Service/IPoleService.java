@@ -13,7 +13,7 @@ public interface IPoleService {
     public List<Pole> getAllPoles();
     Pole DetailsPole(String codePole);
     Pole updatePole(Pole pole,String id);
-    String storeFile(MultipartFile file, String poleCode);
+    Pole storeFile(MultipartFile file, String poleCode);
 
     Resource loadFileAsResource(String fileName);
     Pole affecterFaculteApole (Faculte f,String codep);

@@ -60,6 +60,7 @@ import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { AuthGuard } from './core/Guard/auth.guard';
+import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
 
 
 const routes: Routes = [
@@ -120,6 +121,7 @@ const routes: Routes = [
   //nabil
   { path: "support", component: SupportComponent },
   { path: "list", component: ListReclamationComponent },
+  {path:"update/:id" , component: UpdateReclamationComponent},
   //iheb 
   { path: 'domaines', component: ListDomaineComponent },
   { path: 'addDomaine', component: AjoutDomaineComponent },

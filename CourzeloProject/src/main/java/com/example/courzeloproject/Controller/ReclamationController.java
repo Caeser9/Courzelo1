@@ -28,7 +28,7 @@ public class ReclamationController {
     }
 
     @DeleteMapping("/deleteReclamation/{reclamationId}")
-    public void deleteReclamation(@PathVariable("reclamationId") int reclamationId) {
+    public void deleteReclamation(@PathVariable("reclamationId") String reclamationId) {
         reclamationService.deleteReclamation(reclamationId);
     }
 
@@ -38,13 +38,9 @@ public class ReclamationController {
     }
 
     @GetMapping("/getReclamationById/{reclamationId}")
-    public ResponseEntity<Reclamtion> getReclamationById(@PathVariable("reclamationId") int reclamationId) {
-        Optional<Reclamtion> reclamation = reclamationService.getReclamationById(reclamationId);
-        if (reclamation.isPresent()) {
-            return ResponseEntity.ok(reclamation.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public Reclamtion getReclamationById(@PathVariable("reclamationId") String reclamationId) {
+        return  reclamationService.getReclamationById(reclamationId);
+
     }
     @GetMapping("/searchByTitle")
     public List<Reclamtion> searchReclamationsByTitle(@RequestParam String title) {

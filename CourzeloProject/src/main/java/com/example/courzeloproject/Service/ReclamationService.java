@@ -62,8 +62,9 @@ public class ReclamationService implements IReclamationServicelmp {
     }
 
     @Override
-    public void deleteReclamation(int reclamationId) {
-        reclamationRepository.deleteById(reclamationId);
+    public void deleteReclamation(String reclamationId) {
+        Reclamtion reclamation = reclamationRepository.findReclamtionByreclamationId(reclamationId);
+        reclamationRepository.delete(reclamation);
     }
 
     @Override
@@ -72,8 +73,8 @@ public class ReclamationService implements IReclamationServicelmp {
     }
 
     @Override
-    public Optional<Reclamtion> getReclamationById(int reclamationId) {
-        return reclamationRepository.findById(reclamationId);
+    public Reclamtion getReclamationById(String reclamationId) {
+        return reclamationRepository.findReclamtionByreclamationId(reclamationId);
     }
 
     @Override
