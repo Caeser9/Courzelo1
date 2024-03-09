@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,11 +32,11 @@ public class ForgetPasswordController {
     @Value("${services.reset-password}")
     private String resetPassword;
     @Autowired
-    EmailSender emailSender ;
-
+    private EmailSender emailSender ;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private PasswordEncoder bCryptPasswordEncoder;
+
 
     @PostMapping("/forgot_password")
     public ResponseEntity<ApiResponse> processForgotPassword(@RequestBody User user) {
@@ -44,6 +45,7 @@ public class ForgetPasswordController {
         userService.resetPassword(token, email);
         String resetPasswordLink = resetPassword + token;
         sendResetPasswordEmail(resetPasswordLink, user);
+
         return new ResponseEntity<>(new ApiResponse(user, "success", false), HttpStatus.OK);
     }
 
