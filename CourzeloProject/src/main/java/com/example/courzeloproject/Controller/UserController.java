@@ -32,5 +32,12 @@ public class UserController {
         return userService.verify(verificationCode) ;
 
     }
+    @DeleteMapping("/user/delete")
+    public void deleteParticipant(){
+
+         userService.deleteUser();
+        System.out.println("user supprime ");
+    }
+
 
 }

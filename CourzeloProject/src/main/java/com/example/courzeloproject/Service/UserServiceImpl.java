@@ -6,10 +6,17 @@ import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.UserRepo;
 import com.example.courzeloproject.dto.MailDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -17,35 +24,36 @@ public class UserServiceImpl implements IUserService{
     UserRepo repo ;
     @Autowired
     EmailSender emailSender ;
-    private static int counterXXX = 0;
-    private static int counterYYYY = 0;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMddHHmmssSSS");
     public String generateIdentifier() {
-        String XXX = String.format("%03d", incrementXXX());
-        String YYYY = String.format("%04d", incrementYYYY());
-        return XXX + "Courzelo" + YYYY;
-    }
-
-    private static synchronized int incrementXXX() {
-        return counterXXX++;
-    }
-
-    private static synchronized int incrementYYYY() {
-        return counterYYYY++;
+        // Obtenir la date et l'heure actuelles
+        LocalDateTime now = LocalDateTime.now();
+        // Formater la date et l'heure selon le format spécifié
+        String formattedDateTime = now.format(formatter);
+        formattedDateTime = formattedDateTime.substring(0, 4) + "courzelo" + formattedDateTime.substring(4);
+        // Retourner l'identifiant généré
+        return formattedDateTime;
     }
 
 
     public User addUser(User u){
         return repo.save(u);
     }
+
     public User updateUser(User u){
         return repo.save(u);
     }
     public User updateUserById(String id){
-        User u = repo.findById(id) ;
+        User u = repo.findById(id).get() ;
         return repo.save(u);
     }
-    public void deleteUser(User u){
-        repo.delete(u);
+    public void deleteUser(){
+
+        repo.removeAllByVerificationCodeIsNotNull() ;
     }
     //    public List<User> getUserByRole(String role){
 //        return repo.findByRolesName(role);
@@ -67,7 +75,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     public void activerUser(String idUser) {
-        User user = repo.findById(idUser);
+        User user = repo.findById(idUser).get();
         user.setActive(true);
         repo.save(user);
 /*		String lien = "http://localhost:4200/login";
@@ -85,7 +93,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     public void desactiverUser(String idUser) {
-        User user = repo.findById(idUser);
+        User user = repo.findById(idUser).get();
         user.setActive(false);
         repo.save(user);
 	/*	String toAddress = user.getEmail();
@@ -103,11 +111,10 @@ public class UserServiceImpl implements IUserService{
 
     public void sendVerificationEmail(User user, String lien) {
         String toAddress = user.getEmail();
-        String senderName = "EDULINK";
-        String subject = "Veuillez vérifier votre inscription";
-        String content = "Monsieur/Madame [[email]],<br>"
-                + "Veuillez cliquer sur le lien ci-dessous pour valider votre inscription:<br>"
-                + "<p><a href=\"" + lien ;
+        String senderName = "Courzelo";
+        String subject = "Please verify your registration";
+        String content = "Sir/Madam \n "
+                + "Verification Code : " + lien ;
 
 
         MailDto mail = new MailDto(toAddress, senderName, lien, subject, content);
@@ -116,10 +123,14 @@ public class UserServiceImpl implements IUserService{
     public void sendInformationEmail(User user,String code) {
         String toAddress = user.getEmail();
         String senderName = "Courzelo";
-        String subject = "Veuillez vérifier votre inscription";
-        String content = "Monsieur/Madame ,<br>"
-                + "Bienvenue sur notre plateforme Courzelo ! Votre identifiant est" +
-                " : "+user.getUsername()+" et votre mot de passe est : "+code;
+        String subject = "Welcome To Courzelo";
+        String content = "Dear Sir/Madam,\n"
+                + "We are delighted to welcome you to our Courzelo platform! \nYour username is" +
+                " : "+user.getUsername()+" \nyour password is: "+code+"  .\n"
+                + "If you have any questions or need assistance, please don't hesitate to contact us.\n"
+                + "Best regards,\n"
+                + "The Courzelo Team";
+
 
         MailDto mail = new MailDto(toAddress, senderName, subject, content);
         emailSender.sendEmail(mail);
@@ -138,6 +149,48 @@ public class UserServiceImpl implements IUserService{
         }
 
     }
+
+    public Optional<User> getByResetPasswordToken(String token) {
+        return repo.findByResetPasswordToken(token);
+    }
+    public void resetPassword(String token, String email) throws UsernameNotFoundException {
+        User user = repo.findByEmail(email);
+        if (user != null) {
+            user.setResetPasswordToken(token);
+            repo.save(user);
+        } else {
+            throw new UsernameNotFoundException("Could not find any customer with the email " + email);
+        }
+    }
+
+    @Transactional
+    public void changePassword(String id, String oldPassword, String password) throws Exception {
+        Optional<User> user = repo.findById(id);
+        if (user.isPresent()) {
+            try {
+                changePassword(user.get(), oldPassword, password);
+            } catch (Exception e) {
+                throw new Exception("");
+            }
+        } else {
+            throw new Exception();
+        }
+    }
+
+    @Transactional
+    public void changePassword(User user, String oldPassword, String password) throws Exception {
+        if (!bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new Exception("");
+        }
+        changePassword(user, password);
+    }
+    @Transactional
+    public void changePassword(User user, String password) {
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        repo.save(user);
+
+    }
+
 
 
 }

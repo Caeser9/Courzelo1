@@ -35,13 +35,17 @@ registerAdmin() {
     this.authService.signupWithIdentifiant(this.user).subscribe(
       (data) => {
 
-       console.log("kdhee el user " , this.user)
+        alert("Formateur registered successfully!") 
+        this.resetForm();
       
       },
       (error) => {
         alert("this email already exist !!! ")
-       console.log("erreur register .component")
+      
       }
     );
+  }
+  resetForm() {
+    this.AdminForm.reset(); // Réinitialiser le formulaire à son état initial
   }
 }

@@ -8,12 +8,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class LoginEmailRequest {
-    @NotBlank
-    private String email;
+@AllArgsConstructor
+public class RequestChangePassword {
 
+    private String user_id;
+    @NotBlank
+    private String oldPassword;
     @NotBlank
     private String password;
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -28,6 +29,8 @@ public class Reclamtion {
     @Field("description")
 
     private String description ;
+    @DBRef
+    private User user ;
 
     public void setDescription(String description) {
         // Check for bad words in the description

@@ -44,12 +44,12 @@
             <h6 class="font-weight-normal">Enter the code </h6>
             <div class="come-soon-box">
                 <div class="subscribe-soon">
-                    <form (ngSubmit)="verfiyCode()">
+                    <form >
                         <div class="form-group">
                           <label for="verificationCode">Code de vérification:</label>
                           <input type="text" class="form-control" id="verificationCode" name="verificationCode" [(ngModel)]="verificationCode" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Valider</button>
+                        <button type="submit" class="btn btn-primary" (click)="verifyCode()">Valider</button>
                       </form>
                      
                 </div>

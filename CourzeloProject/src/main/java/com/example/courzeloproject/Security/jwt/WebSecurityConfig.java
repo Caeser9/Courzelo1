@@ -40,7 +40,10 @@ public class WebSecurityConfig {
         return authProvider;
     }
 
-
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig)
             throws Exception {

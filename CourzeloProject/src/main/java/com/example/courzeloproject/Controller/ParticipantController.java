@@ -9,6 +9,7 @@ import com.example.courzeloproject.Security.jwt.JwtUtils;
 import com.example.courzeloproject.Service.UserDetailsImpl;
 import com.example.courzeloproject.Service.UserServiceImpl;
 import com.example.courzeloproject.payload.request.LoginEmailRequest;
+import com.example.courzeloproject.payload.request.LoginRequest;
 import com.example.courzeloproject.payload.request.SignupEmailRequest;
 import com.example.courzeloproject.payload.response.MessageResponse;
 import jakarta.validation.Valid;
@@ -54,24 +55,26 @@ public class ParticipantController {
     @Value("http://localhost:4200/login/verifyCode/")
     private String login;
     @PostMapping("/signinWithEmail")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginEmailRequest loginEmailRequest) {
+    public ResponseEntity<?> authenticateAF(@Valid @RequestBody LoginEmailRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginEmailRequest.getEmail(), loginEmailRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities()
-                .stream()
+        List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
-        User user = userRepository.getById(Long.parseLong(userDetails.getId()));
+
         return ResponseEntity.ok(new JwtResponse(jwt,
-                user,
+                userDetails.getId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
                 roles));
     }
+
 
     @PostMapping("/signupWithEmail")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupEmailRequest signupEmailRequest) {
@@ -96,7 +99,7 @@ public class ParticipantController {
         user.setVerificationCode(randomCode);
         user.setEnabled(false);
         userRepository.save(user);
-        String siteURL = login + user.getVerificationCode();
+        String siteURL = user.getVerificationCode();
         this.userService.sendVerificationEmail(user, siteURL);
         return ResponseEntity.ok(new MessageResponse(user.toString()));
     }

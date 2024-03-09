@@ -36,9 +36,9 @@ public class UserDetailsImpl implements UserDetails {
                 .collect(Collectors.toList());
 
         return new UserDetailsImpl(
-                user.getId(),
-                user.getUsername(),
+                user.getId().toString(),
                 user.getEmail(),
+                user.getUsername(),
                 user.getPassword(),
                 authorities);
     }
@@ -62,7 +62,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     @Override

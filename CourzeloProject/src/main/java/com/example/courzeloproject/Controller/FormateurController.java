@@ -50,7 +50,7 @@ public class FormateurController {
     @Autowired
     JwtUtils jwtUtils;
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> authenticateAF(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -127,7 +127,10 @@ public class FormateurController {
                 }
             });
         }
-        user.setUsername(userService.generateIdentifier());
+        String ident = RandomStringUtils.random(7,false,true) ;
+        ident = ident.substring(0, 4) + "courzelo" + ident.substring(4);
+
+         user.setUsername(ident);
         user.setRoles(roles);
 
         userRepository.save(user);

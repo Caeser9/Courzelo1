@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';  
 import { SupportService } from '../services/support.service';
 import { Support } from '../models/support.model'; 
+import { User } from '../shared/model/user.model';
+import { TokenStorageService } from '../service/token-storage-service.service';
 
 @Component({
   selector: 'app-support',
@@ -9,7 +11,7 @@ import { Support } from '../models/support.model';
   styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
-  constructor(private supportService: SupportService) { }  
+  constructor(private supportService: SupportService,private token : TokenStorageService) { }  
   
   submitted = false;  
   
@@ -28,6 +30,7 @@ export class SupportComponent implements OnInit {
       titre: this.supportsaveform.get('titre')!.value!,  
       description: this.supportsaveform.get('description')!.value! , 
       dateReclamation: new Date(),
+      user: new User(),
     };
 
     this.submitted = true;  
@@ -35,10 +38,14 @@ export class SupportComponent implements OnInit {
   }
   
   save(support: Support) {  
+    support.user = this.token.getUser()
+   
     this.supportService.createSupport(support)  
       .subscribe(
-        data => console.log(data,('Réclamation supprimée avec succès.')), 
+       
+        data => console.log(data,('Réclamation supprimée avec succès.') , console.log("yekdem ")), 
         error => console.log(error)
+        
       );  
     this.supportsaveform.reset();  
   }

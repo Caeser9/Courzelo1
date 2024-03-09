@@ -32,10 +32,10 @@ public class Faculte implements Serializable {
     private String photoUrl;
     @DBRef
     Pole pole;
+
     @DBRef
     Set<User> users;
-    @DBRef
-    User user;
+
 
 
 
