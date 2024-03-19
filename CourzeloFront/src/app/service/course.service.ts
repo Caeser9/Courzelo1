@@ -76,5 +76,8 @@ export class CourseService {
     return this.http.get(`${this.url}/findByNomCourOrDescription/${search}`);
 
   }
+  getCourByDomaine(idDomaine : String){
+    return this.http.get(`${this.url}/getCourByDomaine/${idDomaine}`);
+  }
   
 }

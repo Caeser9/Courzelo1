@@ -85,7 +85,7 @@ const routes: Routes = [
   {path:"addAdmin",component:AddAdminComponent, },
   {path:"addFormateur",component:AddFormateurComponent, canActivate : [AuthGuard]},
   //oussema
-  { path: "courselist", component: CourseListComponent },
+  { path: "courselist/:idDomaine", component: CourseListComponent },
   { path: "add-course", component: AddCourseComponent },
   { path: "delete-course", component: CourseDeleteComponent },
   { path: "course-update/:id", component: CourseUpdateComponent },
@@ -133,7 +133,7 @@ const routes: Routes = [
   {path:"addQuestion",component:AddQuestionComponent},
   {path:"updateQuestion",component:UpdateQuestionComponent},
   //404 error
-  { path: '**', pathMatch: 'full', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

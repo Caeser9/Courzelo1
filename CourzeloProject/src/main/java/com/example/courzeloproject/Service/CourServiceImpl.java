@@ -1,9 +1,11 @@
 package com.example.courzeloproject.Service;
 
 import com.example.courzeloproject.Entite.Cour;
+import com.example.courzeloproject.Entite.Domaine;
 import com.example.courzeloproject.Entite.Niveau;
 import com.example.courzeloproject.Entite.Ressource;
 import com.example.courzeloproject.Repository.ICourRepository;
+import com.example.courzeloproject.Repository.IDomaineRepo;
 import com.example.courzeloproject.Repository.IRessourceRepository;
 import com.example.courzeloproject.Repository.UserRepo;
 import com.itextpdf.text.DocumentException;
@@ -43,7 +45,8 @@ public class CourServiceImpl implements ICourService {
     IRessourceRepository iRessourceRepository;
     @Autowired
     UserRepo userRepo;
-
+@Autowired
+    IDomaineRepo iDomaineRepo;
 
     @Override
     public Cour ajouterCour(Cour c ) {
@@ -51,7 +54,9 @@ public class CourServiceImpl implements ICourService {
         c.setIdCour(idc);
         Date date = new Date();
         c.setDate(date);
+        Domaine d=iDomaineRepo.findDomaineByNom(c.getNomDomaine());
 
+        c.setDomaine(d);
         List<Ressource> ressourceList = new ArrayList<>();
         ressourceList = c.getRessourceList();
         iRessourceRepository.saveAll(ressourceList);
@@ -216,6 +221,11 @@ public class CourServiceImpl implements ICourService {
     public List<Cour> rechercheCour(String recherche) {
         return iCourRepository.findByNomCourIgnoreCaseOrDescriptionIgnoreCase(recherche,recherche);
 
+    }
+
+    @Override
+    public List<Cour> getCourByDomaine(String idDomaine) {
+        return iCourRepository.findCoursByDomaine_Id(idDomaine);
     }
 
 

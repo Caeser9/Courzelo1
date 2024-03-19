@@ -1,3 +1,4 @@
+import { Domaine } from "../models/domaine";
 import { Ressource } from "./Ressource";
 
 export class course {
@@ -8,4 +9,5 @@ export class course {
     ressource!:Ressource[];
     photo!:string;
     prix!:any
+    nomDomaine!:string;
   }

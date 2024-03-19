@@ -238,4 +238,8 @@ public class CourController {
     public List<Cour> findByNomCourOrDescriptions( @PathVariable("recherche") String recherche ) {
         return iCourService.rechercheCour(recherche);
     }
+    @GetMapping("/getCourByDomaine/{idDomaine}")
+    public List<Cour> getCourByDomaine( @PathVariable("idDomaine") String idDomaine) {
+   return iCourService.getCourByDomaine(idDomaine);
+    }
     }

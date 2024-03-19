@@ -1,6 +1,7 @@
 package com.example.courzeloproject.Service;
 
 import com.example.courzeloproject.Entite.Cour;
+import com.example.courzeloproject.Entite.Domaine;
 import com.example.courzeloproject.Entite.Niveau;
 import com.example.courzeloproject.Entite.Ressource;
 import org.springframework.core.io.Resource;
@@ -23,5 +24,6 @@ public interface ICourService {
     List<Cour> findCoursByDateGreaterThan();
     List<Cour> filterByNiveau(Niveau niveau);
    public List<Cour> rechercheCour(String recherche);
+    public List<Cour> getCourByDomaine(String idDomaine);
 
 }

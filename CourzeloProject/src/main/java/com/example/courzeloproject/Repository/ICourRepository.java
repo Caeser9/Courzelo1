@@ -16,4 +16,5 @@ public interface ICourRepository extends MongoRepository<Cour,String> {
     List<Cour> findByDateGreaterThan(Date date);
     List<Cour> findCoursByNiveau(Niveau niveau);
     List<Cour> findByNomCourIgnoreCaseOrDescriptionIgnoreCase(String nomCour, String description);
+    List<Cour> findCoursByDomaine_Id(String idDomaine);
 }

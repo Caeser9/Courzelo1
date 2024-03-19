@@ -82,6 +82,7 @@ import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component
 
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
+import { CalendarClassComponent } from './calendar-class/calendar-class.component';
 
 @NgModule({
   declarations: [
@@ -147,7 +148,8 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     QuizListComponent,
     MakeQuizComponent,
     QuizResultsComponent,
-    LoginParticipantComponent
+    LoginParticipantComponent,
+    CalendarClassComponent
   ],
   imports: [
     
