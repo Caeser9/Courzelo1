@@ -40,7 +40,7 @@ import static com.example.courzeloproject.Service.CourServiceImpl.*;
 @Slf4j
 @RestController
 @RequestMapping("/cour")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 public class CourController {
     @Autowired
     ICourService iCourService;
