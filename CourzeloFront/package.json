@@ -27,6 +27,7 @@
     "@ckeditor/ckeditor5-watchdog": "^41.1.0",
     "@stomp/stompjs": "^7.0.0",
     "@types/socket.io": "^3.0.2",
+    "angular2-notifications": "^16.0.1",
     "ckeditor4-angular": "^5.1.0",
     "date-fns": "^2.29.3",
     "jspdf": "^2.5.1",

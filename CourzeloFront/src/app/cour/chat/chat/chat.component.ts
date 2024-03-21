@@ -44,8 +44,7 @@ export class ChatComponent implements OnInit {
 */
 
 
-
-
+date=new Date();
 username = '';
 message :any = '';
 messages = [];
