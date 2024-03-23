@@ -64,7 +64,6 @@ import { RessourceListComponent } from './cour/ressource-list/ressource-list.com
 import { RessourceMaterialsComponent } from './cour/ressource-materials/ressource-materials.component';
 import { ListComponent } from './cour/video/list/list.component';
 import { VideoService } from './service/video.service';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ChatComponent } from './cour/chat/chat/chat.component';
 import { FaculteListComponent } from './Faculte/faculte-list/faculte-list.component';
 import { AddFaculteComponent } from './Faculte/add-faculte/add-faculte.component';
@@ -79,11 +78,11 @@ import { CommonModule } from '@angular/common';
 import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
 import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
 import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
+import { ToastrModule } from 'ngx-toastr';
 
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { CalendarClassComponent } from './calendar-class/calendar-class.component';
-
 @NgModule({
   declarations: [
     SupportComponent,
@@ -172,9 +171,10 @@ import { CalendarClassComponent } from './calendar-class/calendar-class.componen
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,  
-         
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [BlogService,VideoService, ToastrService],
+  providers: [BlogService,VideoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
