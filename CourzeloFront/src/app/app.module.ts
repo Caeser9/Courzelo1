@@ -83,6 +83,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { CalendarClassComponent } from './calendar-class/calendar-class.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 @NgModule({
   declarations: [
     SupportComponent,
@@ -172,7 +173,8 @@ import { CalendarClassComponent } from './calendar-class/calendar-class.componen
     FormsModule,
     HttpClientModule,  
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PickerModule
   ],
   providers: [BlogService,VideoService],
   bootstrap: [AppComponent],

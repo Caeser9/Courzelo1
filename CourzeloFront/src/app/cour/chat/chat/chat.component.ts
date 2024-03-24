@@ -6,15 +6,21 @@ import Pusher from 'pusher-js';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  
 })
 export class ChatComponent implements OnInit {
 date=new Date();
 username = '';
 message :any = '';
 messages = [];
+emojiSelectionne:any
+showEmojiPicker = false; 
 
 constructor(private http: HttpClient ,private toastr: ToastrService) {
+}
+addEmoji(event: any) {
+  this.message += event.emoji.native;
 }
 
 ngOnInit(): void {
@@ -39,5 +45,9 @@ submit(): void {
   }).subscribe(() => this.message = '');
   this.toastr.success(this.message , this.username +' '+'a envoyé un message ');
 
+}
+toggleEmojiPicker() {
+  // Inversez l'état pour afficher ou masquer la barre d'emojis
+  this.showEmojiPicker = !this.showEmojiPicker;
 }
 }
