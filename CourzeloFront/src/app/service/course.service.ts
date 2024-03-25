@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { course } from 'src/app/model/Course';
 import { Observable } from 'rxjs';
 import { Ressource } from '../model/Ressource';
+import { FicheModuleCour } from '../model/ChatMessage';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +17,10 @@ export class CourseService {
    }
    postCourse(course:course){
       return this.http.post(this.url+"/ajouterCour",course)
+   }
+   ajouterFicheModule(fiche :FicheModuleCour){
+   return  this.http.post("http://localhost:8282/FicheModuleCour/ajouterFicheModule",fiche)
+
    } 
    deleteCourse(id:string){
     return this.http.delete(`${this.url}/supprimerCour/${id}`);
@@ -78,6 +83,10 @@ export class CourseService {
   }
   getCourByDomaine(idDomaine : String){
     return this.http.get(`${this.url}/getCourByDomaine/${idDomaine}`);
+  }
+  PdfGeneratorFicheModule(fiche : FicheModuleCour){
+    return this.http.post(this.url+"/PdfGeneratorFicheModule",fiche);
+
   }
   
 }

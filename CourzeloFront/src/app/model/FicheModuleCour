@@ -1,4 +1,3 @@
-import { Chapitre } from "./Chapitre";
 
 export class FicheModuleCour {
     idFicheCour!:string;
@@ -6,6 +5,5 @@ export class FicheModuleCour {
     objectif!: string;
     niveau!:string;
     ects!:Number;
-    chapitreList!:Chapitre[]
     
   }

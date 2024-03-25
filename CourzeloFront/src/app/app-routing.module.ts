@@ -60,6 +60,8 @@ import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { AuthGuard } from './core/Guard/auth.guard';
+import { FicheModuleCour } from './model/ChatMessage';
+import { AddFicheModuleComponent } from './cour/add-fiche-module/add-fiche-module.component';
 
 
 const routes: Routes = [
@@ -95,6 +97,8 @@ const routes: Routes = [
   { path: "ressource-materials/:id", component: RessourceMaterialsComponent },
   { path: 'listVideo/:nomVideo', component: ListComponent },
   { path: 'chat', component: ChatComponent },
+  { path: "add-ficheCour", component: AddFicheModuleComponent },
+
   //kaycer
   { path: "addBlog", component: AddBlogComponent },
   { path: "listBlog", component: ListBlogComponent },
