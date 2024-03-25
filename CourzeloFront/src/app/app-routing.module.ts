@@ -64,6 +64,7 @@ import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
 import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
 import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
 import { AuthParticipantGuard } from './core/Guard/guardParticipant/auth-participant.guard';
+import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -79,6 +80,10 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
 
   //youssef
+
+
+  {path:"reset-password/:resetPasswordToken",component: ResetPasswordComponent },
+
   {path:"addProfile",component:AddProfileComponent, canActivate : [AuthGuard]},
   {path:"editProfile",component:EditProfileComponent, canActivate : [AuthGuard]},
   {path:"user/upload/:id", component:UploadFileUserComponent, canActivate : [AuthGuard]},

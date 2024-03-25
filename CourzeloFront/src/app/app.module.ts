@@ -85,6 +85,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { MessageService } from 'primeng/api';
+import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -151,7 +152,8 @@ import { MessageService } from 'primeng/api';
     MakeQuizComponent,
     FilterPipe,
     QuizResultsComponent,
-    LoginParticipantComponent
+    LoginParticipantComponent,
+    ResetPasswordComponent
   ],
   imports: [
     

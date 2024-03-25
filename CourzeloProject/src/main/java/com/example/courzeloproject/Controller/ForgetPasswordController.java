@@ -40,7 +40,7 @@ public class ForgetPasswordController {
 
     @PostMapping("/forgot_password")
     public ResponseEntity<ApiResponse> processForgotPassword(@RequestBody User user) {
-        String token = RandomStringUtils.random(30);
+        String token = RandomStringUtils.randomAlphabetic(30);
         String email = user.getEmail();
         userService.resetPassword(token, email);
         String resetPasswordLink = resetPassword + token;
@@ -53,9 +53,9 @@ public class ForgetPasswordController {
         String toAddress = user.getEmail();
         String senderName = "Courzelo";
         String subject = "Voici le lien pour réinitialiser votre mot de passe";
-        String content = "<p>Bonjour,</p>" + "<p>Vous avez demandé la réinitialisation de votre mot de passe.</p>"
-                + "<p>Cliquez sur le lien ci-dessous pour changer votre mot de passe :</p>" + "<p><a href=\"" + lien
-                + "\">Modifier mot de passe</a></p>" + "<br>"
+        String content = "\nBonjour,\n" + "\nVous avez demandé la réinitialisation de votre mot de passe.\n"
+                + "\nCliquez sur le lien ci-dessous pour changer votre mot de passe :</p>" + "<p><a href=\"" + lien
+                + "\">Modifier mot de passe</a>\n"
                 + "<p>Ignorez cet e-mail si vous vous souvenez votre mot de passe, "
                 + "ou vous n'avez pas fait la demande.</p>" + "<p>Merci,</p> <br>" + "Edulink.";
 
@@ -71,14 +71,15 @@ public class ForgetPasswordController {
     }
 
     @PostMapping("/reset_password/{resetPasswordToken}")
-    User processResetPassword(@RequestBody User resetPassword, @PathVariable String resetPasswordToken, HttpServletRequest request) {
+    User processResetPassword(@RequestBody User resetPassword,
+                              @PathVariable String resetPasswordToken) {
         return userRepository.findByResetPasswordToken(resetPasswordToken)
                 .map(user -> {
                     String confirmpassword = bCryptPasswordEncoder.encode(resetPassword.getPassword());
                     user.setPassword(confirmpassword);
                     user.setResetPasswordToken(null);
                     userRepository.save(user);
-                    sendVerificationEmail(user, getSiteURL(request));
+                  //  sendVerificationEmail(user, getSiteURL(request));
                     return userRepository.save(user);
                 })
                 .orElseGet(() -> {
