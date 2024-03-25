@@ -74,7 +74,9 @@ public class UserServiceImpl implements IUserService{
 
         return usersWithRole;
     }
-
+    public List<User> getAllUsers(){
+        return repo.findAll() ;
+    }
     public void activerUser(String idUser) {
         User user = repo.findById(idUser).get();
         user.setActive(true);

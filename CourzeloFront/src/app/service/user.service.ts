@@ -34,3 +34,4 @@ deleteUser(): Observable<void> {
 
 
 }
+(window as any).UserService = UserService;

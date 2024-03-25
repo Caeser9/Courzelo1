@@ -86,6 +86,7 @@ import { RegisterComponent } from './core/front-office/Participant/register/regi
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { MessageService } from 'primeng/api';
 import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
+import { VideoCallComponent } from './video-call/video-call.component';
 
 @NgModule({
   declarations: [
@@ -153,7 +154,8 @@ import { ResetPasswordComponent } from './core/front-office/reset-password/reset
     FilterPipe,
     QuizResultsComponent,
     LoginParticipantComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    VideoCallComponent
   ],
   imports: [
     

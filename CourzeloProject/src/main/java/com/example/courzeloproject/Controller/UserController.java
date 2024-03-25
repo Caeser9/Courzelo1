@@ -27,6 +27,11 @@ public class UserController {
     public List<User> getFormateur(@PathVariable("role") ERole role){
         return userService.getUsersByRole(role) ;
     }
+
+    @GetMapping("/user")
+    public List<User> getAllUser(){
+        return userService.getAllUsers() ;
+    }
     @GetMapping("/auth/connect/{verificationCode}")
     public boolean verifyUser(@PathVariable String verificationCode) {
         return userService.verify(verificationCode) ;

@@ -14,6 +14,6 @@ public interface IUserService {
     public boolean verify(String verificationCode) ;
     public List<User> getUsersByRole(ERole roleName) ;
 
-
+    public List<User> getAllUsers() ;
 
 }

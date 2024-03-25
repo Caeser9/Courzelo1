@@ -65,6 +65,7 @@ import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
 import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
 import { AuthParticipantGuard } from './core/Guard/guardParticipant/auth-participant.guard';
 import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
+import { VideoCallComponent } from './video-call/video-call.component';
 
 
 const routes: Routes = [
@@ -93,6 +94,10 @@ const routes: Routes = [
 
   {path:"addAdmin",component:AddAdminComponent, },
   {path:"addFormateur",component:AddFormateurComponent},
+  {path:"video-call",redirectTo:'assets/VideoCallZegoCloud/videoCall.html'},
+  {path:"new-meet",redirectTo:'assets/VideoCallZegoCloud/createMeet.html'},
+
+
   //oussema
   { path: "courselist", component: CourseListComponent , canActivate : [AuthParticipantGuard]},
   { path: "add-course", component: AddCourseComponent , canActivate : [AuthGuard]},
