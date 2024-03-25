@@ -83,6 +83,7 @@ import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { CalendarClassComponent } from './calendar-class/calendar-class.component';
+import { NgToastModule } from 'ng-angular-popup' // to be added
 
 @NgModule({
   declarations: [
@@ -172,7 +173,9 @@ import { CalendarClassComponent } from './calendar-class/calendar-class.componen
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,  
-         
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    NgToastModule
   ],
   providers: [BlogService,VideoService, ToastrService],
   bootstrap: [AppComponent],
