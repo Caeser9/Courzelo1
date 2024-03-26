@@ -29,7 +29,7 @@ public class ForgetPasswordController {
     @Autowired
     private UserRepo userRepository;
 
-    @Value("${services.reset-password}")
+    @Value("${services.reset-password")
     private String resetPassword;
     @Autowired
     private EmailSender emailSender ;
@@ -40,24 +40,25 @@ public class ForgetPasswordController {
 
     @PostMapping("/forgot_password")
     public ResponseEntity<ApiResponse> processForgotPassword(@RequestBody User user) {
-        String token = RandomStringUtils.randomAlphabetic(30);
+        String token = RandomStringUtils.randomAlphabetic(8);
         String email = user.getEmail();
         userService.resetPassword(token, email);
-        String resetPasswordLink = resetPassword + token;
-        sendResetPasswordEmail(resetPasswordLink, user);
+        String resetPasswordLink = resetPassword;
+        sendResetPasswordEmail(resetPasswordLink, user,token);
 
         return new ResponseEntity<>(new ApiResponse(user, "success", false), HttpStatus.OK);
     }
 
-    private void sendResetPasswordEmail(String lien, User user) {
+    private void sendResetPasswordEmail(String lien, User user,String token) {
         String toAddress = user.getEmail();
         String senderName = "Courzelo";
         String subject = "Voici le lien pour réinitialiser votre mot de passe";
         String content = "\nBonjour,\n" + "\nVous avez demandé la réinitialisation de votre mot de passe.\n"
-                + "\nCliquez sur le lien ci-dessous pour changer votre mot de passe :</p>" + "<p><a href=\"" + lien
-                + "\">Modifier mot de passe</a>\n"
-                + "<p>Ignorez cet e-mail si vous vous souvenez votre mot de passe, "
-                + "ou vous n'avez pas fait la demande.</p>" + "<p>Merci,</p> <br>" + "Edulink.";
+                + "\nCliquez sur le lien ci-dessous pour changer votre mot de passe :" + "\nlien :" + lien
+                +"\nVoici le code pour vous pouvez modifier votre mot de passe : \n"
+                +"\nCode : "+token
+                + "\nIgnorez cet e-mail si vous vous souvenez votre mot de passe, "
+                + "ou vous n'avez pas fait la demande." + "\nMerci,\n " + "Courzelo .";
 
         MailDto mail = new MailDto(toAddress, senderName, lien, subject, content);
         emailSender.sendEmail(mail);
@@ -79,7 +80,7 @@ public class ForgetPasswordController {
                     user.setPassword(confirmpassword);
                     user.setResetPasswordToken(null);
                     userRepository.save(user);
-                  //  sendVerificationEmail(user, getSiteURL(request));
+                    sendVerificationEmail(user);
                     return userRepository.save(user);
                 })
                 .orElseGet(() -> {
@@ -94,14 +95,14 @@ public class ForgetPasswordController {
         return siteURL.replace(request.getServletPath(), "");
     }
 
-    private void sendVerificationEmail(User user, String siteURL) {
+    private void sendVerificationEmail(User user) {
         String toAddress = user.getEmail();
-        String senderName = "VERIFIST";
+        String senderName = "Courzelo";
         String subject = "Confirmation de réinitialisation de mot de passe";
-        String content = "<p>Bonjour,</p>" + "<p>Votre mot de passe a été réinitialiser avec succes!</p>"
-                + "<p>Merci,</p> <br>" + "Verifist.";
+        String content = "Bonjour," + " Votre mot de passe a été réinitialiser avec succes!"
+                + "Merci, \n" + "Courzelo.";
 
-        MailDto mail = new MailDto(toAddress, senderName, siteURL, subject, content);
+        MailDto mail = new MailDto(toAddress, senderName, subject, content);
         emailSender.sendEmail(mail);
     }
 

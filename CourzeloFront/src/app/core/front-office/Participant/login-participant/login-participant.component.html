@@ -1,8 +1,11 @@
+
 <body>
     <p-toast></p-toast>
-    <p-dialog [(visible)]="forgetPasswordDialog" [style]="{width: '450px'}"
-        header="Vous avez oublié votre mot de passe ?" [draggable]="false" [resizable]="false" [modal]="true"
-        class="p-fluid">
+    <p-dialog [(visible)]="forgetPasswordDialog" 
+    [style]="{width: '550px','background-color': '#ADD8E6', 'border-radius': '10px'}"
+        header="Vous avez oublié votre mot de passe ?" [draggable]="false" [resizable]="false" [modal]="false"
+        class="welcome-login"
+       >
         <ng-template pTemplate="content">
             <p class="text-500">Renseignez l'e-mail utilisé lors de votre inscription afin de recevoir un lien de
                 réinitialisation de mot de passe.</p>
@@ -26,11 +29,16 @@
 
         </ng-template>
         <ng-template pTemplate="footer">
-            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text"
-                (click)="hideDialog()"></button>
-            <button pButton pRipple label="Réinitialiser " icon="pi pi-check" class="p-button-text"
-                (click)="forgetPassword()"></button>
+            <div class="button-container">
+                <button pButton pRipple label="Annuler" class="btn btn-danger"
+                    (click)="hideDialog()"></button>
+            </div>
+            <div class="button-container">
+                <button pButton pRipple label="Réinitialiser " class="btn btn-success"
+                    (click)="forgetPassword()"></button>
+            </div>
         </ng-template>
+        
     </p-dialog>
 
     <!-- Main Wrapper -->
@@ -107,7 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="forgot">
-                                    <span><a class="forgot-link" href="forgot-password.html">Forgot Password
+                                    <span><a class="forgot-link" (click)="forgetPasswordDialog=true">Forgot Password
                                             ?</a></span>
                                 </div>
                                 <div class="remember-me">
@@ -118,10 +126,6 @@
                                 </div>
                                 <div class="col-12 text-danger" *ngIf="loginForm.valid && isLoginFailed">
                                     Bad credentials !
-                                </div>
-                                <div class="col-12">
-                                    <a class="secondary-button " (click)="forgetPasswordDialog=true">Mot de passe
-                                        oublié?</a>
                                 </div>
                                 <div class="d-grid">
                                     <button class="btn btn-primary btn-start" type="submit"

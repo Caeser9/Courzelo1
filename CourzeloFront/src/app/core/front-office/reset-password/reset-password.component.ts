@@ -21,6 +21,7 @@ export class ResetPasswordComponent implements OnInit {
 
     ngOnInit(): void {
       this.resetPasswordForm = this.formBuilder.group({
+        token: [''],
         password: ['', [Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$")]],
         confirmPassword: [''],
       },
@@ -31,21 +32,26 @@ export class ResetPasswordComponent implements OnInit {
       );
   
 
-      this.resetPasswordToken = this.activatedRoute.snapshot.paramMap.get('resetPasswordToken');
-        console.log("resetPasswordToken")
-      this.authService.getUserByResetPasswordToken(this.resetPasswordToken).subscribe(
-        (data) => {
-         
-          this.user = data;
-        }
-      );
+
     }
+
+
 
     get registerFormControl() {
       return this.resetPasswordForm.controls;
     }
     resetPassword() {
+      this.resetPasswordToken = this.resetPasswordForm.value.token
 
+        console.log("resetPasswordToken")
+      this.authService.getUserByResetPasswordToken(this.resetPasswordForm.value.token).subscribe(
+        (data) => {
+         
+          this.user = data;
+          
+        }
+      );
+      console.log(this.user)
       this.authService.resetPassword(this.resetPasswordToken, this.user).subscribe(
         (data) => {
   

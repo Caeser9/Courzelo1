@@ -69,21 +69,18 @@ import { VideoCallComponent } from './video-call/video-call.component';
 
 
 const routes: Routes = [
-  //youssef
-  {path:"login",component:LoginParticipantComponent},
-  {path:"login-id",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  { path:"verify-code", component: TwoWayFactorPageComponent },
-
   //dev
   { path: "navbar", component: NavbarComponent },
   { path: "sidebar", component: SideBarComponent },
   { path: "home", component: HomeComponent },
 
   //youssef
+  {path:"login",component:LoginParticipantComponent},
+  {path:"login-id",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+  { path:"verify-code", component: TwoWayFactorPageComponent },
 
-
-  {path:"reset-password/:resetPasswordToken",component: ResetPasswordComponent },
+  {path:"reset-password",component: ResetPasswordComponent },
 
   {path:"addProfile",component:AddProfileComponent, canActivate : [AuthGuard]},
   {path:"editProfile",component:EditProfileComponent, canActivate : [AuthGuard]},
@@ -94,6 +91,8 @@ const routes: Routes = [
 
   {path:"addAdmin",component:AddAdminComponent, },
   {path:"addFormateur",component:AddFormateurComponent},
+
+  //videoCall
   {path:"video-call",redirectTo:'assets/VideoCallZegoCloud/videoCall.html'},
   {path:"new-meet",redirectTo:'assets/VideoCallZegoCloud/createMeet.html'},
 
