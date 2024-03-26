@@ -66,6 +66,7 @@ import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component
 import { AuthParticipantGuard } from './core/Guard/guardParticipant/auth-participant.guard';
 import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
 import { VideoCallComponent } from './video-call/video-call.component';
+import { ChangePasswordComponent } from './core/back-office/User/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -81,6 +82,7 @@ const routes: Routes = [
   { path:"verify-code", component: TwoWayFactorPageComponent },
 
   {path:"reset-password",component: ResetPasswordComponent },
+  {path:"change-password",component: ChangePasswordComponent },
 
   {path:"addProfile",component:AddProfileComponent, canActivate : [AuthGuard]},
   {path:"editProfile",component:EditProfileComponent, canActivate : [AuthGuard]},

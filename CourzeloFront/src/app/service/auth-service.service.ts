@@ -46,7 +46,7 @@ export class AuthServiceService {
     return this.http.post(`${this.apiURL}auth/forgot_password`, user);
   }
 
-  changePassword(user_id: string, password: string, oldPassword: string) {
+  changePassword(user_id: any, password: string, oldPassword: string) {
     return this.http.post(`${this.apiURL}auth/change-password`, {
       user_id,
       oldPassword,
