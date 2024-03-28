@@ -98,12 +98,10 @@ public class BlogService implements IBlogService {
 
     @Override
     public Blog addOnlyBlog(Blog blog) {
-        User user1 = userRepository.findById("user1");
-        User user2 = userRepository.findById("user2");
         Calendar cal = Calendar.getInstance();
         blog.setDateBlog(LocalDate.now());
         blog.setStatus(false);
-        blog.setUser(user1);
+
         //sendAddedBlogEmail(user2);
         return blogRepository.save(blog);
     }
@@ -111,7 +109,7 @@ public class BlogService implements IBlogService {
     @Override
     public Blog ApproveBlog(String id) {
         Blog blogToApprove = blogRepository.findBlogByBlogCode(id);
-        User user = userRepository.findById("user1");
+
         blogToApprove.setStatus(true);
         //sendApprovedEmail(user);
         return blogRepository.save(blogToApprove);
@@ -120,7 +118,7 @@ public class BlogService implements IBlogService {
     @Override
     public List<Blog> ApproveAllBlogs() {
         List<Blog> blogsToApprove = blogRepository.findAll();
-        User user = userRepository.findById("user1");
+
         for (Blog blog : blogsToApprove) {
             if (!blog.getStatus()) {
                 blog.setStatus(true);
@@ -184,13 +182,13 @@ public class BlogService implements IBlogService {
     @Override
     public Blog addInteractionToBlog(String blogId, Interactions interaction) {
         Blog blog = blogRepository.findById(blogId).orElse(null);
-        User user1 = userRepository.findById("user1");
+
         if (blog != null) {
             if (blog.getInteractions() == null) {
                 blog.setInteractions(new ArrayList<>());
 
             }
-            interaction.setUser(user1);
+
             interaction.setBlog(blog);
             Interactions savedInteraction = interactionsRepository.save(interaction);
             blog.getInteractions().add(savedInteraction);
@@ -204,12 +202,12 @@ public class BlogService implements IBlogService {
 
     public Interactions addReply(String parentInteractionId, Interactions reply) {
         Interactions parentInteraction = interactionsRepository.findById(parentInteractionId).orElse(null);
-        User user2= userRepository.findById("user2");
+
         if (parentInteraction != null) {
             if (parentInteraction.getReplay() == null) {
                 parentInteraction.setReplay(new ArrayList<>());
             }
-            reply.setUser(user2);
+
             reply.setParentInteraction(parentInteraction);
             Interactions savedReply = interactionsRepository.save(reply);
             parentInteraction.getReplay().add(savedReply);

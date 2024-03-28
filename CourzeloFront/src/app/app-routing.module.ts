@@ -60,22 +60,31 @@ import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { AuthGuard } from './core/Guard/auth.guard';
+import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
+import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
+import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
+import { AuthParticipantGuard } from './core/Guard/guardParticipant/auth-participant.guard';
+import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
+import { VideoCallComponent } from './video-call/video-call.component';
+import { ChangePasswordComponent } from './core/back-office/User/change-password/change-password.component';
 import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
 
 
 const routes: Routes = [
-  //youssef
-  {path:"login",component:LoginParticipantComponent},
-  {path:"login-id",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  { path:"verify-code", component: TwoWayFactorPageComponent },
-
   //dev
   { path: "navbar", component: NavbarComponent },
   { path: "sidebar", component: SideBarComponent },
   { path: "home", component: HomeComponent },
 
   //youssef
+  {path:"login",component:LoginParticipantComponent},
+  {path:"login-id",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+  { path:"verify-code", component: TwoWayFactorPageComponent },
+
+  {path:"reset-password",component: ResetPasswordComponent },
+  {path:"change-password",component: ChangePasswordComponent },
+
   {path:"addProfile",component:AddProfileComponent, canActivate : [AuthGuard]},
   {path:"editProfile",component:EditProfileComponent, canActivate : [AuthGuard]},
   {path:"user/upload/:id", component:UploadFileUserComponent, canActivate : [AuthGuard]},
@@ -84,56 +93,67 @@ const routes: Routes = [
   {path:"admin-list",component:AdminListComponent, canActivate : [AuthGuard]},
 
   {path:"addAdmin",component:AddAdminComponent, },
-  {path:"addFormateur",component:AddFormateurComponent, canActivate : [AuthGuard]},
+  {path:"addFormateur",component:AddFormateurComponent},
+
+  //videoCall
+  {path:"video-call",redirectTo:'assets/VideoCallZegoCloud/videoCall.html'},
+  {path:"new-meet",redirectTo:'assets/VideoCallZegoCloud/createMeet.html'},
+
+
   //oussema
-  { path: "courselist", component: CourseListComponent },
-  { path: "add-course", component: AddCourseComponent },
-  { path: "delete-course", component: CourseDeleteComponent },
-  { path: "course-update/:id", component: CourseUpdateComponent },
-  { path: "course-stripe/:prix", component: StripeComponent },
-  { path: "add-ressource/:id", component: AddRessourceComponent },
-  { path: "ressource-list/:id", component: RessourceListComponent },
-  { path: "ressource-materials/:id", component: RessourceMaterialsComponent },
-  { path: 'listVideo/:nomVideo', component: ListComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: "courselist", component: CourseListComponent , canActivate : [AuthParticipantGuard]},
+  { path: "add-course", component: AddCourseComponent , canActivate : [AuthGuard]},
+  { path: "delete-course", component: CourseDeleteComponent , canActivate : [AuthGuard]},
+  { path: "course-update/:id", component: CourseUpdateComponent , canActivate : [AuthGuard]},
+  { path: "course-stripe/:prix", component: StripeComponent , canActivate : [AuthParticipantGuard]},
+  { path: "add-ressource/:id", component: AddRessourceComponent , canActivate : [AuthGuard]},
+  { path: "ressource-list/:id", component: RessourceListComponent , canActivate : [AuthParticipantGuard]},
+  { path: "ressource-materials/:id", component: RessourceMaterialsComponent , canActivate : [AuthParticipantGuard]},
+  { path: 'listVideo/:nomVideo', component: ListComponent , canActivate : [AuthParticipantGuard]},
+  { path: 'chat', component: ChatComponent , canActivate : [AuthParticipantGuard]},
   //kaycer
-  { path: "addBlog", component: AddBlogComponent },
-  { path: "listBlog", component: ListBlogComponent },
+  { path: "addBlog", component: AddBlogComponent , canActivate : [AuthParticipantGuard]},
+  { path: "listBlog", component: ListBlogComponent , canActivate : [AuthParticipantGuard]},
   { path: "dashboard", component: UserDashboardComponent },
-  { path: "upload/:id", component: UploadFileComponent },
-  { path: "updateBlog/:id", component: UpdateBlogComponent },
-  { path: "detailsBlog/:id", component: BlogDetailsComponent },
-  { path: "blogsGrids", component: BlogGridsComponent },
+  { path: "upload/:id", component: UploadFileComponent , canActivate : [AuthParticipantGuard]},
+  { path: "updateBlog/:id", component: UpdateBlogComponent , canActivate : [AuthParticipantGuard]},
+  { path: "detailsBlog/:id", component: BlogDetailsComponent , canActivate : [AuthParticipantGuard]},
+  { path: "blogsGrids", component: BlogGridsComponent , canActivate : [AuthParticipantGuard] },
   //yosra 
-  { path: 'getAllFacultes/:id', component: FaculteListComponent },
-  { path: 'getAllFacultesFront/:id', component: FaculteListFrontComponent },
-  { path: 'addFaculte/:id', component: AddFaculteComponent },
-  { path: 'modifierFaculte/:id', component: EditFaculteComponent },
-  { path: 'deleteFaculte', component: DeleteFaculteComponent },
-  { path: 'getAllPoles', component: PoleListComponent },
-  { path: 'getAllPolesFront', component: PoleListFrontComponent },
-  { path: 'addPole', component: AddPoleComponent },
-  { path: 'modifierPole/:id', component: UpdatePoleComponent },
-  { path: 'deletePole', component: DeletePoleComponent },
-  { path: 'uploadFacultePhoto/:id', component: UploadFileFacComponent },
-  { path: 'uploadPolePhoto/:id', component: UploadFilePoleComponent },
+  { path: 'getAllFacultes/:id', component: FaculteListComponent , canActivate : [AuthGuard]},
+  { path: 'getAllFacultesFront/:id', component: FaculteListFrontComponent , canActivate : [AuthParticipantGuard]},
+  { path: 'addFaculte/:id', component: AddFaculteComponent , canActivate : [AuthGuard]},
+  { path: 'modifierFaculte/:id', component: EditFaculteComponent, canActivate : [AuthGuard] },
+  { path: 'deleteFaculte', component: DeleteFaculteComponent , canActivate : [AuthGuard]},
+  { path: 'getAllPoles', component: PoleListComponent , canActivate : [AuthGuard]},
+  { path: 'getAllPolesFront', component: PoleListFrontComponent, canActivate : [AuthParticipantGuard] },
+  { path: 'addPole', component: AddPoleComponent , canActivate : [AuthGuard] },
+  { path: 'modifierPole/:id', component: UpdatePoleComponent , canActivate : [AuthGuard]},
+  { path: 'deletePole', component: DeletePoleComponent , canActivate : [AuthGuard]},
+  { path: 'uploadFacultePhoto/:id', component: UploadFileFacComponent , canActivate : [AuthGuard]},
+  { path: 'uploadPolePhoto/:id', component: UploadFilePoleComponent , canActivate : [AuthGuard]},
   
   //nabil
+  { path: "support", component: SupportComponent , canActivate : [AuthParticipantGuard]},
+  { path: "list", component: ListReclamationComponent , canActivate : [AuthGuard]},
   { path: "support", component: SupportComponent },
   { path: "list", component: ListReclamationComponent },
   {path:"update/:id" , component: UpdateReclamationComponent},
   //iheb 
-  { path: 'domaines', component: ListDomaineComponent },
-  { path: 'addDomaine', component: AjoutDomaineComponent },
-  { path: 'update-domaine/:id', component: UpdateDomaineComponent },
-  { path: 'deleteDomain/:id', component: DeleteDomaineComponent },
-  { path: 'uploadimg/:id', component: PhotoComponent },
-  { path: 'addCommentaire', component: AddCommentaireComponent },
-  { path: 'commentaires', component: ListeCommentaireComponent },
+  { path: 'domaines', component: ListDomaineComponent , canActivate : [AuthParticipantGuard]},
+  { path: 'addDomaine', component: AjoutDomaineComponent , canActivate : [AuthGuard]},
+  { path: 'update-domaine/:id', component: UpdateDomaineComponent , canActivate : [AuthGuard]},
+  { path: 'deleteDomain/:id', component: DeleteDomaineComponent , canActivate : [AuthGuard]},
+  { path: 'uploadimg/:id', component: PhotoComponent , canActivate : [AuthGuard] },
+  { path: 'addCommentaire', component: AddCommentaireComponent , canActivate : [AuthParticipantGuard]},
+  { path: 'commentaires', component: ListeCommentaireComponent , canActivate : [AuthGuard]},
   //nour
-  { path: "question-list", component: QuestionListComponent },
-  {path:"addQuestion",component:AddQuestionComponent},
-  {path:"updateQuestion",component:UpdateQuestionComponent},
+  { path: "question-list", component: QuestionListComponent , canActivate : [AuthGuard]},
+  {path:"addQuestion",component:AddQuestionComponent, canActivate : [AuthGuard]},
+  {path:"updateQuestion/:id",component:UpdateQuestionComponent, canActivate : [AuthGuard]},
+  {path:"quiz-list",component:QuizListComponent, canActivate : [AuthGuard]},
+  { path: 'quiz/:id', component: MakeQuizComponent , canActivate : [AuthGuard]},
+  { path: 'quiz-results', component: QuizResultsComponent , canActivate : [AuthGuard]},
   //404 error
   { path: '**', pathMatch: 'full', component: NotFoundComponent }
 ];

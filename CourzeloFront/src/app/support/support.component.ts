@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';  
 import { FormControl, FormGroup, Validators } from '@angular/forms';  
 import { SupportService } from '../services/support.service';
-import { Support } from '../models/support.model'; 
+import { Support } from '../models/support.model';
+import { User } from '../shared/model/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
+  //constructor(private supportService: SupportService,private token : TokenStorageService) { }  
   constructor(private supportService: SupportService, private route: ActivatedRoute , private router: Router ) { }  
   
   submitted = false;  
@@ -29,6 +31,7 @@ export class SupportComponent implements OnInit {
       titre: this.supportsaveform.get('titre')!.value!,  
       description: this.supportsaveform.get('description')!.value! , 
       dateReclamation: new Date(),
+      user: new User(),
     };
 
 
@@ -37,10 +40,14 @@ export class SupportComponent implements OnInit {
   }
   
   save(support: Support) {  
+    support.user = this.token.getUser()
+   
     this.supportService.createSupport(support)  
       .subscribe(
-        data => console.log(data,('Réclamation supprimée avec succès.')), 
+       
+        data => console.log(data,('Réclamation supprimée avec succès.') , console.log("yekdem ")), 
         error => console.log(error)
+        
       );  
     this.supportsaveform.reset();  
     this.router.navigate(['/list']);

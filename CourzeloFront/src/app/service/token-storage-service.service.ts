@@ -29,4 +29,19 @@ export class TokenStorageService {
   }
   logout() {
     window.sessionStorage.clear();
-  }}
+  }
+
+  public getUserId(): string | null {
+    const userDataString: string | null = sessionStorage.getItem(USER_KEY);
+    if (userDataString) {
+        const userData = JSON.parse(userDataString);
+        return userData.id; // Accédez à la propriété 'id' dans l'objet userData
+    }
+    return null; // Retourne null si aucune donnée n'est trouvée dans la session
+}
+
+
+
+}
+
+  

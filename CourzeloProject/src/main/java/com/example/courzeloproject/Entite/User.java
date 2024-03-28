@@ -33,6 +33,7 @@ public class User {
     @Size(max = 120)
     private String password;
 
+
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
@@ -41,12 +42,10 @@ public class User {
     private String resetPasswordToken;
     private boolean enabled;
     private boolean active;
+//
+//    @DBRef
+//    private List<Cour> courList =new ArrayList<>() ;
 
-    private int test ;
-    private String test2 ;
-
-    @DBRef
-    private List<Cour> courList =new ArrayList<>() ;
     @DBRef
     private Faculte faculte ;
 
@@ -65,4 +64,9 @@ public class User {
         this.username = identification;
         this.password = password;
     }
+    public User( String password) {
+
+        this.password = password;
+    }
+
 }

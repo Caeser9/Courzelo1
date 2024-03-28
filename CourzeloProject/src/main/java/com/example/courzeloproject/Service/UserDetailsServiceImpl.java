@@ -15,12 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     UserRepo userRepository;
+
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
-
-        return UserDetailsImpl.build(user);
+    public UserDetails loadUserByUsername(String emailOrIdent) throws UsernameNotFoundException {
+        User user = userRepository.findUserByEmailOrUsername(emailOrIdent, emailOrIdent);
+        if (user == null) {
+            throw new UsernameNotFoundException("User Not Found with email or identification: " + emailOrIdent);
+        } else {
+            return UserDetailsImpl.build(user);
+        }
     }
 }

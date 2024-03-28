@@ -6,7 +6,6 @@ import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.FaculteRepository;
 import com.example.courzeloproject.Repository.PoleRepository;
 import com.example.courzeloproject.Repository.UserRepo;
-import com.example.courzeloproject.Repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +20,6 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

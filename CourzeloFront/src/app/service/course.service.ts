@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { course } from 'src/app/model/Course';
 import { Observable } from 'rxjs';
 import { Ressource } from '../model/Ressource';
+import { TokenStorageService } from './token-storage-service.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,21 +11,28 @@ export class CourseService {
 
   course!:course
   url='http://localhost:8282/cour'
-   constructor(private http :HttpClient) { }
+   constructor(private http :HttpClient,private tokenStorageService :TokenStorageService) { }
+
+   httpOptions = {
+    headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.tokenStorageService.getToken(),
+        'Content-Type': 'application/json'
+    })
+};
    getCourse(){
-     return this.http.get(this.url+"/getCour");
+     return this.http.get(this.url+"/getCour",this.httpOptions);
    }
    postCourse(course:course){
-      return this.http.post(this.url+"/ajouterCour",course)
+      return this.http.post(this.url+"/ajouterCour",course,this.httpOptions)
    } 
    deleteCourse(id:string){
-    return this.http.delete(`${this.url}/supprimerCour/${id}`);
+    return this.http.delete(`${this.url}/supprimerCour/${id}`,this.httpOptions);
   }
   modifierCourse(id:string , course:course){
-    return this.http.put(`${this.url}/modifierCour/${id}`,course);
+    return this.http.put(`${this.url}/modifierCour/${id}`,course,this.httpOptions);
   }
   getCourseTrier(){
-    return this.http.get(this.url+"/findAllByOrderByDateDesc");
+    return this.http.get(this.url+"/findAllByOrderByDateDesc",this.httpOptions);
   }
   uploadPhoto(id: string, file: File): Observable<any> {
     const uploadUrl = `${this.url}/upload/${id}`;
@@ -35,10 +43,10 @@ export class CourseService {
     return this.http.post(uploadUrl, formData);
   }
   getCourById(id:string ){
-    return this.http.get(`${this.url}/getCourbyid/${id}`);
+    return this.http.get(`${this.url}/getCourbyid/${id}`,this.httpOptions);
   }
   getRessourceByCourId(id:string){
-    return this.http.get(`${this.url}/getRessourcesByCourId/${id}`);
+    return this.http.get(`${this.url}/getRessourcesByCourId/${id}`,this.httpOptions);
 
     
   }
@@ -48,7 +56,7 @@ export class CourseService {
     return `${this.url}/download/${photo}`;
   }
   affecterRessourceAcour(id:string , ressource:Ressource){
-    return this.http.post(`${this.url}/affecterRessourcesACour/${id}`,ressource);
+    return this.http.post(`${this.url}/affecterRessourcesACour/${id}`,ressource,this.httpOptions);
   }
   uploadPhotoRessource(id: string, file: File): Observable<any> {
     const uploadUrl = `${this.url}/uploadRessource/${id}`;
@@ -59,11 +67,11 @@ export class CourseService {
     return this.http.post(uploadUrl, formData);
   }
   findCoursByDateGreaterThan(){
-    return this.http.get(`${this.url}/findCoursByDateGreaterThan`);
+    return this.http.get(`${this.url}/findCoursByDateGreaterThan`,this.httpOptions);
 
   }
   filterByNiveau(niveau:string){
-    return this.http.get(`${this.url}/filterByNiveau/${niveau}`);
+    return this.http.get(`${this.url}/filterByNiveau/${niveau}`,this.httpOptions);
   }
   sendHtmlEmail(email:string , amount:any){
     return this.http.post(`${this.url}/sendHtmlEmail/${email}/${amount}`,{});
@@ -73,7 +81,7 @@ export class CourseService {
 
   }
   rechercheMultiCritere(search: String){
-    return this.http.get(`${this.url}/findByNomCourOrDescription/${search}`);
+    return this.http.get(`${this.url}/findByNomCourOrDescription/${search}`,this.httpOptions);
 
   }
   

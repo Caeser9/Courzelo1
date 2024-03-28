@@ -7,9 +7,13 @@ import java.util.List;
 
 public interface IUserService {
     public User addUser(User u) ;
+
+    public void deleteUser();
+   // public void deleteUser
   //  public List<User> getUserByRole(String role) ;
     public boolean verify(String verificationCode) ;
     public List<User> getUsersByRole(ERole roleName) ;
 
+    public List<User> getAllUsers() ;
 
 }

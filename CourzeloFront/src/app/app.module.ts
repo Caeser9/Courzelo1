@@ -79,9 +79,15 @@ import { CommonModule } from '@angular/common';
 import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
 import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
 import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
+import { FilterPipe } from './pipes/filter.pipe';
+
 
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
+import { MessageService } from 'primeng/api';
+import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
+import { VideoCallComponent } from './video-call/video-call.component';
+import { ChangePasswordComponent } from './core/back-office/User/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -146,8 +152,12 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     FaculteListFrontComponent,    
     QuizListComponent,
     MakeQuizComponent,
+    FilterPipe,
     QuizResultsComponent,
-    LoginParticipantComponent
+    LoginParticipantComponent,
+    ResetPasswordComponent,
+    VideoCallComponent,
+    ChangePasswordComponent
   ],
   imports: [
     
@@ -172,7 +182,7 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     HttpClientModule,  
          
   ],
-  providers: [BlogService,VideoService, ToastrService],
+  providers: [BlogService,VideoService, ToastrService,MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -27,5 +27,11 @@ getUser(role: any) {
 getUserById(id: number): Observable<User> {
   return this.http.get<User>(`${this.apiURL}/${id}`, this.httpOptions);
 }
+deleteUser(): Observable<void> {
+  return this.http.delete<void>(`${this.apiURL}/delete`, this.httpOptions );
+}
+
+
 
 }
+(window as any).UserService = UserService;
