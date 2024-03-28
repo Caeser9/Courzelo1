@@ -67,6 +67,7 @@ import { AuthParticipantGuard } from './core/Guard/guardParticipant/auth-partici
 import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
 import { VideoCallComponent } from './video-call/video-call.component';
 import { ChangePasswordComponent } from './core/back-office/User/change-password/change-password.component';
+import { UpdateReclamationComponent } from './update-reclamation/update-reclamation.component';
 
 
 const routes: Routes = [
@@ -135,6 +136,9 @@ const routes: Routes = [
   //nabil
   { path: "support", component: SupportComponent , canActivate : [AuthParticipantGuard]},
   { path: "list", component: ListReclamationComponent , canActivate : [AuthGuard]},
+  { path: "support", component: SupportComponent },
+  { path: "list", component: ListReclamationComponent },
+  {path:"update/:id" , component: UpdateReclamationComponent},
   //iheb 
   { path: 'domaines', component: ListDomaineComponent , canActivate : [AuthParticipantGuard]},
   { path: 'addDomaine', component: AjoutDomaineComponent , canActivate : [AuthGuard]},

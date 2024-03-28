@@ -47,9 +47,9 @@ public class FaculteController {
     }
 
     @PostMapping("/uploadfaculte/{id}")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("photo") MultipartFile file, @PathVariable("id") String faculteCode) {
-        String fileName = iFaculteService.storeFile(file,faculteCode);
-        return ResponseEntity.ok().body(fileName);
+    public Faculte handleFileUpload(@RequestParam("photo") MultipartFile file, @PathVariable("id") String faculteCode) {
+        return iFaculteService.storeFile(file,faculteCode);
+
     }
 
     @GetMapping("/downloadfaculte/{fileName}")

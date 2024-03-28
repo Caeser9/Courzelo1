@@ -13,7 +13,7 @@ public interface IFaculteService {
     public List<Faculte> getAllFacultes();
     Faculte DetailsFaculte(String codeFaculte);
     Faculte updatefaculte(Faculte faculte,String id);
-    String storeFile(MultipartFile file, String faculteCode);
+    Faculte storeFile(MultipartFile file, String faculteCode);
 
     Resource loadFileAsResource(String fileName);
     List<Faculte> getFaculteByPoleId(String codep);

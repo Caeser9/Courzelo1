@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';  
 import { FormControl, FormGroup, Validators } from '@angular/forms';  
 import { SupportService } from '../services/support.service';
-import { Support } from '../models/support.model'; 
+import { Support } from '../models/support.model';
 import { User } from '../shared/model/user.model';
-import { TokenStorageService } from '../service/token-storage-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-support',
@@ -11,7 +11,8 @@ import { TokenStorageService } from '../service/token-storage-service.service';
   styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
-  constructor(private supportService: SupportService,private token : TokenStorageService) { }  
+  //constructor(private supportService: SupportService,private token : TokenStorageService) { }  
+  constructor(private supportService: SupportService, private route: ActivatedRoute , private router: Router ) { }  
   
   submitted = false;  
   
@@ -33,6 +34,7 @@ export class SupportComponent implements OnInit {
       user: new User(),
     };
 
+
     this.submitted = true;  
     this.save(support);  
   }
@@ -48,6 +50,7 @@ export class SupportComponent implements OnInit {
         
       );  
     this.supportsaveform.reset();  
+    this.router.navigate(['/list']);
   }
   
   get Supporttitre() {  

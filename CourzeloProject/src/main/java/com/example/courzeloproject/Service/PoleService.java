@@ -68,7 +68,7 @@ public class PoleService implements IPoleService{
     }
 
     @Override
-    public String storeFile(MultipartFile file, String poleCode) {
+    public Pole storeFile(MultipartFile file, String poleCode) {
         String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
         String newFileName = generateNewFileName(originalFileName);
 
@@ -84,9 +84,9 @@ public class PoleService implements IPoleService{
 
             Pole pole = poleRepository.findPoleByCodePole(poleCode);
             pole.setPhotoUrl(newFileName);
-            poleRepository.save(pole); // Save the updated blog entity
+            return poleRepository.save(pole); // Save the updated blog entity
 
-            return newFileName;
+
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file: " + newFileName, e);
         }
