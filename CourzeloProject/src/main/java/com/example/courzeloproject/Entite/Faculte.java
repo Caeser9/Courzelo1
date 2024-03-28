@@ -18,7 +18,6 @@ import java.util.Set;
 @Document(collection = "Faculte")
 public class Faculte implements Serializable {
     @Id
-
     private String codeFaculte;
     @NotBlank
     private String nom;
@@ -32,10 +31,10 @@ public class Faculte implements Serializable {
     private String photoUrl;
     @DBRef
     Pole pole;
+
     @DBRef
     Set<User> users;
-    @DBRef
-    User user;
+
 
 
 

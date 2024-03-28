@@ -33,9 +33,9 @@ export class BlogService {
     return this.http.get<Blog>(`${this.baseUrl}/getDetailsBlog/${id}`);  
   }  
  
-  getComment(id: string): Observable<Interactions> {  
-    return this.http.get<Interactions>(`${this.baseUrl}/getinteractions/${id}`);  
-  }  
+  getComment(id: string): Observable<Interactions> {
+    return this.http.get<Interactions>(`${this.baseUrl}/getinteractions/${id}`);
+  }
   
   
   updateBlog(id: string, blog: Blog): Observable<Object> {  

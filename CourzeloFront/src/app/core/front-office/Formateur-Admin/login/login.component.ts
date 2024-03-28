@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   profile: Profile
 
+  isShow = false;
+  userResetPassword: any = {};
+  forgetPasswordDialog: boolean = false;
+  resetPasswordForm: FormGroup;
+
  constructor(private formBuilder: FormBuilder, private authService: AuthServiceService,
   private tokenStorage: TokenStorageService,
   private router: Router,
@@ -30,7 +35,9 @@ export class LoginComponent implements OnInit{
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-    
+    this.resetPasswordForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+    });
 }
 login(){
   console.log(this.user)
@@ -70,5 +77,34 @@ login(){
 
     }
   )};
+
+  
+  forgetPassword() {
+    if (this.resetPasswordForm.valid) {
+      this.forgetPasswordDialog = false;
+
+      this.authService.forgetPassword(this.userResetPassword).subscribe(
+        (data) => {
+          this.isShow = true;
+
+          setTimeout(() => {
+            this.isShow = false;
+            document.getElementById('hideMeAfter5Seconds');
+          }, 6000);
+
+
+        },
+        () => {
+        }
+      );
+
+    }
+
+  }
+  hideDialog() {
+    this.forgetPasswordDialog = false;
+  }
+
+
 }
 

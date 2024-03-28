@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { CKEditorComponent } from 'ckeditor4-angular';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -71,10 +72,26 @@ import { EditFaculteComponent } from './Faculte/edit-faculte/edit-faculte.compon
 import { PoleListComponent } from './Pole/pole-list/pole-list.component';
 import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
 import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
+import { PoleListFrontComponent } from './Pole/pole-list-front/pole-list-front.component';
+import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-list-front.component';
+import { CommonModule } from '@angular/common';
+
+import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
+import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
+import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
+import { FilterPipe } from './pipes/filter.pipe';
+
+
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
+
 import { AddClassComponent } from './Class/add-class/add-class.component';
 import { ClassListComponent } from './Class/class-list/class-list.component';
+import { MessageService } from 'primeng/api';
+import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
+import { VideoCallComponent } from './video-call/video-call.component';
+import { ChangePasswordComponent } from './core/back-office/User/change-password/change-password.component';
+
 @NgModule({
   declarations: [
     SupportComponent,
@@ -137,14 +154,24 @@ import { ClassListComponent } from './Class/class-list/class-list.component';
     LoginParticipantComponent,
     AddClassComponent,
     ClassListComponent
+    PoleListFrontComponent,
+    FaculteListFrontComponent,    
+    QuizListComponent,
+    MakeQuizComponent,
+    FilterPipe,
+    QuizResultsComponent,
+    LoginParticipantComponent,
+    ResetPasswordComponent,
+    VideoCallComponent,
+    ChangePasswordComponent
   ],
   imports: [
+    
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,   
-    CKEditorModule,    
+    AppRoutingModule,      
     DialogModule,
     TableModule,
     ButtonModule,
@@ -154,8 +181,14 @@ import { ClassListComponent } from './Class/class-list/class-list.component';
     PaginatorModule,
     BrowserAnimationsModule,
     ToastModule,
+    CKEditorModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,  
+         
   ],
-  providers: [BlogService,VideoService, ToastrService],
+  providers: [BlogService,VideoService, ToastrService,MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

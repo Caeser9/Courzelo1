@@ -21,6 +21,7 @@ public class ReclamationService implements IReclamationServicelmp {
     EmailSenderService emailSenderService; // Inject EmailSenderService
 
 
+
     private static final List<String> BAD_WORDS = Arrays.asList("nabil", "hamdi", "aymen");
 
     @Override
@@ -37,8 +38,6 @@ public class ReclamationService implements IReclamationServicelmp {
                 "Une nouvelle réclamation a été ajoutée avec le titre : " + reclamtion.getTitre());
 
         // Send SMS notification for the new reclamation
-        /*smsSenderService.sendSMS(reclamtion.getTitre());
-        Twilio.init(twilioConfig.getAccountSid(), twilioConfig.getAuthToken());*/
 
         return newReclamation;
     }
@@ -63,8 +62,9 @@ public class ReclamationService implements IReclamationServicelmp {
     }
 
     @Override
-    public void deleteReclamation(int reclamationId) {
-        reclamationRepository.deleteById(reclamationId);
+    public void deleteReclamation(String reclamationId) {
+        Reclamtion reclamation = reclamationRepository.findReclamtionByreclamationId(reclamationId);
+        reclamationRepository.delete(reclamation);
     }
 
     @Override
@@ -73,8 +73,8 @@ public class ReclamationService implements IReclamationServicelmp {
     }
 
     @Override
-    public Optional<Reclamtion> getReclamationById(int reclamationId) {
-        return reclamationRepository.findById(reclamationId);
+    public Reclamtion getReclamationById(String reclamationId) {
+        return reclamationRepository.findReclamtionByreclamationId(reclamationId);
     }
 
     @Override

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/app/model/Question.model';
+import { QuestionService } from 'src/app/service/question.service';
 import { Router } from '@angular/router';
-import { QuestionService } from 'src/app/shared/service/question.service';
 
 
 @Component({
@@ -11,7 +11,8 @@ import { QuestionService } from 'src/app/shared/service/question.service';
 })
 export class AddQuestionComponent implements OnInit {
   question: Question = new Question();
-  constructor(private questionService: QuestionService,private router: Router) { }
+  constructor(private questionService: QuestionService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }

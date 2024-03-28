@@ -13,11 +13,14 @@ public interface IFaculteService {
     public List<Faculte> getAllFacultes();
     Faculte DetailsFaculte(String codeFaculte);
     Faculte updatefaculte(Faculte faculte,String id);
-    String storeFile(MultipartFile file, String faculteCode);
+    Faculte storeFile(MultipartFile file, String faculteCode);
 
     Resource loadFileAsResource(String fileName);
     List<Faculte> getFaculteByPoleId(String codep);
     Faculte addFaculteToPole(String polec, Faculte faculte) ;
     public void sendAddedFaculteEmail(User user);
+
+    //youssef
+    Faculte getFaculteByName (String nomF);
 
 }

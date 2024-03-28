@@ -10,4 +10,7 @@ import java.util.List;
 public interface FaculteRepository extends MongoRepository<Faculte,String> {
     Faculte findFaculteByCodeFaculte(String code);
     List<Faculte> findFacultesByPoleCodePole (String codeP);
+
+    //youssef
+    Faculte findByNom (String nomF);
 }
