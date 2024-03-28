@@ -26,16 +26,16 @@
                         <img src="assets/img/user/user1.jpg" alt="User Image" class="avatar-img rounded-circle">
                     </div>
                 </div>
-<<<<<<< HEAD
+
               <!-- 
                 <div class="media-body flex-grow-1">
                     <table *ngFor="let msg of messages">
                         <tr *ngFor="let msg of messages">
-=======
+
                 <div class="media-body flex-grow-1">
                     <table *ngFor="let msg of messages">
                         <tr>
->>>>>>> origin/Oussema
+
                             <td class="user-name">{{msg.username}}</td>
 
                         </tr>
@@ -45,10 +45,9 @@
                         </tr>
                     </table>
                 </div>
-<<<<<<< HEAD
-                -->
-=======
->>>>>>> origin/Oussema
+  -->
+
+
             </a>
         </div>
     </div>
@@ -106,7 +105,7 @@
             <i class="fa fa-paperclip"></i>
             <input type="file">
         </div>
-<<<<<<< HEAD
+
         <form (submit)="submit($event)" class="d-flex align-items-center">
     <div class="input-group flex-grow-1">
         <input type="text" class="input-msg-send form-control" placeholder="Type your message here..." #messageInput (change)="message = messageInput.value" />
@@ -117,19 +116,9 @@
     <button type="submit" class="btn btn-primary ml-2">Send</button>
 </form>
 
-=======
-        <form (submit)="submit()" class="d-flex align-items-center">
-            <div class="input-group flex-grow-1">
-                <input type="text" class="input-msg-send form-control" placeholder="Type your message here..." #messageInput (change)="message = messageInput.value" />
-            </div>
-            <!-- Bouton pour afficher/masquer la barre d'emojis -->
-            <button type="button" class="btn btn-primary ml-2" (click)="toggleEmojiPicker()">😀</button>
-            <!-- Intégration du sélecteur d'emoji avec une taille réduite -->
-            <emoji-mart *ngIf="showEmojiPicker" (emojiClick)="addEmoji($event)" class="emoji-picker"></emoji-mart>
-            <!-- Bouton d'envoi du message -->
-            <button type="submit" class="btn btn-primary ml-2">Send</button>
-        </form>
->>>>>>> origin/Oussema
+
+    
+
         
         
     </div>
