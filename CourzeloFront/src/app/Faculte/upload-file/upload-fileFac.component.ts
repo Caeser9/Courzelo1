@@ -38,7 +38,7 @@ export class UploadFileFacComponent implements OnInit {
     if (this.selectedFile) {
       // Use the BlogService to upload the file
       console.log(this.faculteId);
-  
+
       this.faculteSrvice.uploadPhoto(this.faculteId, this.selectedFile).subscribe(
         (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {
@@ -46,14 +46,15 @@ export class UploadFileFacComponent implements OnInit {
             // console.log(`File is ${percentDone}% uploaded.`);
           } else if (event instanceof HttpResponse) {
             console.log('File is completely uploaded!', event);
-            this.router.navigate(['/getAllFacultes']);
+
           }
+          this.router.navigate(['/getAllPoles']);
         },
         (error: any) => {
-          console.error('Error uploading file:', error);          
+          console.error('Error uploading file:', error);
         }
       );
-      
+
     }
   }
 

@@ -1,11 +1,13 @@
 package com.example.courzeloproject.Controller;
 
 import com.example.courzeloproject.Entite.ERole;
+import com.example.courzeloproject.Entite.Faculte;
 import com.example.courzeloproject.Entite.Role;
 import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.RoleRepo;
 import com.example.courzeloproject.Repository.UserRepo;
 import com.example.courzeloproject.Security.jwt.JwtUtils;
+import com.example.courzeloproject.Service.IFaculteService;
 import com.example.courzeloproject.Service.UserDetailsImpl;
 import com.example.courzeloproject.Service.UserServiceImpl;
 import com.example.courzeloproject.payload.request.LoginRequest;
@@ -45,12 +47,15 @@ public class FormateurController {
     UserServiceImpl userService;
 
     @Autowired
+    IFaculteService iFaculteService;
+
+    @Autowired
     PasswordEncoder encoder;
 
     @Autowired
     JwtUtils jwtUtils;
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> authenticateAF(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -72,11 +77,11 @@ public class FormateurController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUserAF(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
-        }
+//        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(new MessageResponse("Error: Username is already taken!"));
+//        }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
@@ -127,9 +132,14 @@ public class FormateurController {
                 }
             });
         }
-        user.setUsername(userService.generateIdentifier());
-        user.setRoles(roles);
+        String ident = RandomStringUtils.random(7,false,true) ;
+        ident = ident.substring(0, 4) + "courzelo" + ident.substring(4);
 
+         user.setUsername(ident);
+        user.setRoles(roles);
+        //Affecter a une faculté
+        Faculte faculte =iFaculteService.getFaculteByName(signUpRequest.getNomFaculte());
+        user.setFaculte(faculte);
         userRepository.save(user);
         this.userService.sendInformationEmail(user,randomCode);
 

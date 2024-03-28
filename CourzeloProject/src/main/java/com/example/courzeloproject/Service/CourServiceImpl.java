@@ -51,7 +51,6 @@ public class CourServiceImpl implements ICourService {
         c.setIdCour(idc);
         Date date = new Date();
         c.setDate(date);
-
         List<Ressource> ressourceList = new ArrayList<>();
         ressourceList = c.getRessourceList();
         iRessourceRepository.saveAll(ressourceList);

@@ -16,7 +16,7 @@
                         <div class="settings-widget dash-profile mb-3">
                             <div class="settings-menu p-0">
                                 <div class="profile-bg">
-                                    <h5>Beginner</h5>
+                                    <h5>Super Admin</h5>
                                     <img src="assets/img/profile-bg.jpg" alt="">
                                     <div class="profile-img">
                                         <a href="student-profile.html"><img src="assets/img/user/user11.jpg" alt=""></a>
@@ -25,7 +25,7 @@
                                 <div class="profile-group">
                                     <div class="profile-name text-center">
                                         <h4><a href="student-profile.html">Rolands R</a></h4>
-                                        <p>Student</p>
+                                        
                                     </div>
                                     <div class="go-dashboard text-center">
                                         <a href="deposit-student-dashboard.html" class="btn btn-primary">Go to Dashboard</a>
@@ -38,21 +38,37 @@
                                 <h3>ACCOUNT SETTINGS</h3>
                                 <ul>
                                     <li class="nav-item active">
-                                        <a href="setting-edit-profile.html" class="nav-link">
+                                        <a  [routerLink]="['/editProfile']" class="nav-link">
                                             <i class="feather-settings"></i> Edit Profile
                                         </a>
+                                        
                                     </li>
-                                   <!-- <li class="nav-item">
-                                        <a href="setting-student-security.html" class="nav-link">
+                                    <li class="nav-item">
+                                        <a  [routerLink]="['/addAdmin']" class="nav-link">
+                                            <i class="feather-user-plus"></i> Add Admin
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a  [routerLink]="['/addFormateur']" class="nav-link">
+                                            <i class="feather-user-plus"></i> Add Fomateur
+                                        </a>
+                                    </li>                                 
+                                    <li class="nav-item">
+                                        <a  [routerLink]="['/admin-list']" class="nav-link">
+                                            <i class="feather-book"></i> Admin List
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a [routerLink]="['/formateur-list']" class="nav-link">
+                                            <i class="feather-book"></i> Instructor List
+                                        </a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a [routerLink]="['/change-password']" class="nav-link">
                                             <i class="feather-user"></i> Security
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="setting-student-social-profile.html" class="nav-link">
-                                            <i class="feather-refresh-cw"></i> Social Profiles
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
+                                     <!--<li class="nav-item">
                                         <a href="setting-student-notification.html" class="nav-link">
                                             <i class="feather-bell"></i> Notifications
                                         </a>
@@ -72,19 +88,15 @@
                                             <i class="feather-user"></i> Linked Accounts
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="setting-student-referral.html" class="nav-link">
-                                            <i class="feather-user-plus"></i> Referrals
-                                        </a>
-                                    </li>
+                                    
                                     <li class="nav-item">
                                         <a href="login.html" class="nav-link">
                                             <i class="feather-power"></i> Sign Out
                                         </a>
-                                    </li>-->
-                                </ul>
-                                <h3>SUBSCRIPTION</h3>
-                             <!--   <ul>
+                                    </li>
+                                </ul>-->
+                                <!-- <h3>SUBSCRIPTION</h3>
+                                <ul>
                                     <li class="nav-item">
                                         <a href="setting-student-subscription.html" class="nav-link ">
                                             <i class="feather-calendar"></i> My Subscriptions
@@ -104,8 +116,8 @@
                                         <a href="setting-student-invoice.html" class="nav-link">
                                             <i class="feather-clipboard"></i> Invoice
                                         </a>
-                                    </li>
-                                </ul>--> 
+                                    </li>-->
+                                </ul> 
                             </div>
                         </div>					
                     </div>

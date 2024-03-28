@@ -56,4 +56,15 @@ export class FaculteService {
     return this.http.get<Faculte>(`${this.baseUrl}/getFaculteByPoleId/${id}`);  
   }
 
+  //youssef 
+
+  getAllfaculte(): Observable<Object>{
+    return this.http.get(`${this.baseUrl}`+'/getAllFacultes');  
+
+  }
+  getFaculteByname(name:string): Observable<Object>{
+    return this.http.get(`${this.baseUrl}/getfaculteByNom/${name}`);  
+
+  }
+
 }

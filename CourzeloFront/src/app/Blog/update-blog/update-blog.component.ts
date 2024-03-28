@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from '../BlogClass/blog';
-import { map, of, switchMap } from 'rxjs';
+//import { map, of, switchMap } from 'rxjs/dist/types';
 import { BlogService } from '../BlogService/blog.service';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 

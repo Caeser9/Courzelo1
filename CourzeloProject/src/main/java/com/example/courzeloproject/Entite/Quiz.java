@@ -24,4 +24,6 @@ public class Quiz {
     @DBRef //@manytomany w kol
     private List<Question> questions=new ArrayList<>();
 
+
+
 }

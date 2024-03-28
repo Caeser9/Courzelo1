@@ -77,4 +77,9 @@ public class QuestionServiceImpl implements IQuestionService {
         }
         return questionRepository.save(existQuestion) ;
     }
+
+    @Override
+    public Question getQuestionById(String id) {
+        return questionRepository.findById(id).get();
+    }
 }

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ReclamationRepository extends MongoRepository<Reclamtion, Integer> {
     List<Reclamtion> findByTitreContainingIgnoreCase(String titre);
+    Reclamtion findReclamtionByreclamationId(String id);
 
 }
