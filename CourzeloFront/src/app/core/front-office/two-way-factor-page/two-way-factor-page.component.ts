@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthServiceService } from 'src/app/service/auth-service.service';
 import { TokenStorageService } from 'src/app/service/token-storage-service.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-two-way-factor-page',
@@ -20,32 +21,42 @@ export class TwoWayFactorPageComponent {
     private tokenStorage: TokenStorageService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private userService: UserService
    ) { }
 
 
   
-  verfiyCode(){
+   verifyCode() {
     console.log(this.verificationCode);
+    let remainingAttempts = 1; // Nombre de tentatives restantes
+  
     this.authService.getUserByVerificationCode(this.verificationCode).subscribe(
       (data) => {
-       if(data){
-       
-       this.router.navigate(['/']);
-       console.log("shih")
-       }else {
-       // this.authService.de
-       alert("Bad Code ")
-        console.log("tfasakh")
-       // this.router.navigate(['/editProfile']);
-       }
+        if (data) {
+          console.log("data = ", data)
+          alert("ccount activated you can log in")
+          this.router.navigate(['/login']);
+        } else {
+          remainingAttempts--;
+          if (remainingAttempts > 0) {
+            alert("Bad Code. " + remainingAttempts + " attempts remaining");
+          } else {
+            alert("Exceeded maximum attempts. Redirecting to login page.");
+            this.userService.deleteUser().subscribe(
+              ()=>console.log("fet 3 marat code ghalet + tfasakh mel db ")
+            )
+            this.router.navigate(['/register']);
+          }
+        }
       },
       (error) => {
-        //this.router.navigate(['/register']);
-      console.log("mafamechh menou",error)
-       
-     }
-    );
 
+          this.router.navigate(['/login']);
+        
+        console.log("err two way factor", error);
+      }
+    );
   }
+  
 
 }

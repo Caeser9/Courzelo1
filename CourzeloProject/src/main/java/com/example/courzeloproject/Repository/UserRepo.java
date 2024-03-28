@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface UserRepo extends MongoRepository<User,Integer> {
     Optional<User> findByUsername(String username);
 
-    User findById(String id) ;
+    Optional<User> findById(String id) ;
     @Query("{'roles.name': ?0}")
     List<User>  findByRolesName(String role) ;
 
@@ -24,4 +24,9 @@ public interface UserRepo extends MongoRepository<User,Integer> {
     User findByVerificationCode(String code);
 
     User findUserById(String id);
+    User findUserByEmailOrUsername(String email, String Ident);
+//    @Query("{ 'verificationCode' : { $ne : null } }")
+    public void removeAllByVerificationCodeIsNotNull() ;
+    Optional<User> findByResetPasswordToken(String token);
+    User findByEmail(String email);
 }

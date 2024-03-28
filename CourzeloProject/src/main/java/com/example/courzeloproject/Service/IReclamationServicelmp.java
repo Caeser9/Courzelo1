@@ -9,9 +9,10 @@ import java.util.Optional;
 public interface IReclamationServicelmp {
     public Reclamtion addReclamation (Reclamtion reclamtion) ;
     public Reclamtion updateReclamation (Reclamtion reclamtion) ;
-    public void deleteReclamation(int reclamationId);
+    public void deleteReclamation(String reclamationId);
     public List<Reclamtion> getAllReclamations() ;
-    public Optional<Reclamtion> getReclamationById(int reclamationId);
+    public Reclamtion getReclamationById(String reclamationId);
+
     public List<Reclamtion> searchReclamationsByTitle(String title);
     public List<Reclamtion> getAllReclamationsSortedByTitle();
 }

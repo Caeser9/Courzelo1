@@ -1,4 +1,5 @@
 import { Domaine } from "../models/domaine";
+import { User } from "../shared/model/user.model";
 import { Ressource } from "./Ressource";
 
 export class course {
@@ -10,4 +11,5 @@ export class course {
     photo!:string;
     prix!:any
     nomDomaine!:string;
+    user = new User() ;
   }

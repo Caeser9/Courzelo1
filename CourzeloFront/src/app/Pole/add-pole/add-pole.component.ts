@@ -51,7 +51,6 @@ export class AddPoleComponent implements OnInit {
       console.log(res);
       this.submitted=true;
       this.router.navigateByUrl(`/uploadPolePhoto/${res.codePole}`);
-       this.router.navigate(['/getAllPoles']);
 
     },
       

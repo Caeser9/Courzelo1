@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdateQuestionComponent implements OnInit {
   id: string;
   question: Question = new Question();
+  hasFormErrors: string = "";
   //error: string = '';
 
   constructor(
@@ -21,36 +22,39 @@ export class UpdateQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
 
     this.questionService.getQuestionById(this.id).subscribe(
       (data) => {
         this.question = data;
+        console.log(this.question);
       },
       (error) => console.log(error)
     );
   }
 
   onSubmit() {
-   // if (this.validateForm()) {
+   if (this.validateForm()) {
     this.questionService.updateQuestion(this.id, this.question).subscribe(
       (data) => {
         this.goToQuestionList();
       },
       (error) => console.log(error)
     );
-  //}
+  
 }
+  } 
 
   goToQuestionList() {
     this.router.navigate(['/question-list']);
   }
 
- /* validateForm(): boolean {
+ validateForm(): boolean {
     if (!this.question.question_title || !this.question.difficultylevel || !this.question.right_answer) {
-      this.error = 'Veuillez remplir tous les champs.';
+      this.hasFormErrors = 'Veuillez remplir tous les champs.';
       return false;
     }
     return true;
-  }*/
+  }
 
 }

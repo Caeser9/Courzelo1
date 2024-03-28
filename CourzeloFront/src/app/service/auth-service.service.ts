@@ -30,5 +30,30 @@ export class AuthServiceService {
   getUserByVerificationCode(verificationCode: string) {
     return this.http.get(`${this.apiURL}auth/connect/${verificationCode}`)
   }
+  //passsword
+
+
+  getUserByResetPasswordToken(resetPasswordToken: any) {
+    return this.http.get(`${this.apiURL}auth/reset_password/${resetPasswordToken}`)
+  }
+
+
+  resetPassword(resetPasswordToken: any, user: any) {
+    return this.http.post(`${this.apiURL}auth/reset_password/${resetPasswordToken}`, user);
+  }
+
+  forgetPassword(user: any) {
+    return this.http.post(`${this.apiURL}auth/forgot_password`, user);
+  }
+
+  changePassword(user_id: any, password: string, oldPassword: string) {
+    return this.http.post(`${this.apiURL}auth/change-password`, {
+      user_id,
+      oldPassword,
+      password
+    });
+  }
+
+
 
 }

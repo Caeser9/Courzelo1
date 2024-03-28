@@ -47,9 +47,9 @@ public class FaculteController {
     }
 
     @PostMapping("/uploadfaculte/{id}")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("photo") MultipartFile file, @PathVariable("id") String faculteCode) {
-        String fileName = iFaculteService.storeFile(file,faculteCode);
-        return ResponseEntity.ok().body(fileName);
+    public Faculte handleFileUpload(@RequestParam("photo") MultipartFile file, @PathVariable("id") String faculteCode) {
+        return iFaculteService.storeFile(file,faculteCode);
+
     }
 
     @GetMapping("/downloadfaculte/{fileName}")
@@ -64,4 +64,11 @@ public class FaculteController {
     public List<Faculte> getFaculteByPoleId(@PathVariable("codep") String code){
         return iFaculteService.getFaculteByPoleId(code);
     }
+
+    //youssef
+    @GetMapping("/getfaculteByNom/{nom}")
+    public Faculte getfaculteByNom(@PathVariable("nom") String nom){
+        return iFaculteService.getFaculteByName(nom);
+    }
+
 }

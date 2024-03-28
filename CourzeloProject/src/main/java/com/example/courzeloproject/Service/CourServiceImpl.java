@@ -55,7 +55,6 @@ public class CourServiceImpl implements ICourService {
         Date date = new Date();
         c.setDate(date);
         Domaine d=iDomaineRepo.findDomaineByNom(c.getNomDomaine());
-
         c.setDomaine(d);
         List<Ressource> ressourceList = new ArrayList<>();
         ressourceList = c.getRessourceList();

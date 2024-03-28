@@ -10,6 +10,9 @@ import { QuestionService } from 'src/app/service/question.service';
 })
 export class QuestionListComponent implements OnInit {
   questions: Question[] = [];
+  searchTitle: string = '';
+  searchCategory: string = '';
+  searchDifficulty: string = '';
   constructor(private questionService: QuestionService ,private router : Router ) {}
 
   ngOnInit(): void {

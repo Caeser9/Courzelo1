@@ -6,7 +6,6 @@ import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.FaculteRepository;
 import com.example.courzeloproject.Repository.PoleRepository;
 import com.example.courzeloproject.Repository.UserRepo;
-import com.example.courzeloproject.Repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +20,6 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -70,7 +68,7 @@ public class PoleService implements IPoleService{
     }
 
     @Override
-    public String storeFile(MultipartFile file, String poleCode) {
+    public Pole storeFile(MultipartFile file, String poleCode) {
         String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
         String newFileName = generateNewFileName(originalFileName);
 
@@ -86,9 +84,9 @@ public class PoleService implements IPoleService{
 
             Pole pole = poleRepository.findPoleByCodePole(poleCode);
             pole.setPhotoUrl(newFileName);
-            poleRepository.save(pole); // Save the updated blog entity
+            return poleRepository.save(pole); // Save the updated blog entity
 
-            return newFileName;
+
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file: " + newFileName, e);
         }

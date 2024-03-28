@@ -43,9 +43,9 @@ public class PoleController {
         return iPoleService.updatePole(pole,id);
     }
     @PostMapping("/uploadpole/{id}")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("photo") MultipartFile file, @PathVariable("id") String poleCode) {
-        String fileName = iPoleService.storeFile(file,poleCode);
-        return ResponseEntity.ok().body(fileName);
+    public Pole handleFileUpload(@RequestParam("photo") MultipartFile file, @PathVariable("id") String poleCode) {
+        return iPoleService.storeFile(file,poleCode);
+
     }
 
     @GetMapping("/downloadpole/{fileName}")

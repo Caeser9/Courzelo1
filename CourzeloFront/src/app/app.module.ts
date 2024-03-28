@@ -85,6 +85,19 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
 import { CalendarClassComponent } from './calendar-class/calendar-class.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { AddFicheModuleComponent } from './cour/add-fiche-module/add-fiche-module.component';
+import { FilterPipe } from './pipes/filter.pipe';
+
+
+import { RegisterComponent } from './core/front-office/Participant/register/register.component';
+import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
+
+import { AddClassComponent } from './Class/add-class/add-class.component';
+import { ClassListComponent } from './Class/class-list/class-list.component';
+import { MessageService } from 'primeng/api';
+import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
+import { VideoCallComponent } from './video-call/video-call.component';
+import { ChangePasswordComponent } from './core/back-office/User/change-password/change-password.component';
+
 @NgModule({
   declarations: [
     SupportComponent,
@@ -144,14 +157,21 @@ import { AddFicheModuleComponent } from './cour/add-fiche-module/add-fiche-modul
     AddCommentaireComponent,
     ListeCommentaireComponent,
     ListReclamationComponent,
+    LoginParticipantComponent,
+    AddClassComponent,
+    ClassListComponent
     PoleListFrontComponent,
     FaculteListFrontComponent,    
     QuizListComponent,
     MakeQuizComponent,
+    FilterPipe,
     QuizResultsComponent,
     LoginParticipantComponent,
     CalendarClassComponent,
     AddFicheModuleComponent
+    ResetPasswordComponent,
+    VideoCallComponent,
+    ChangePasswordComponent
   ],
   imports: [
     
@@ -178,7 +198,7 @@ import { AddFicheModuleComponent } from './cour/add-fiche-module/add-fiche-modul
     BrowserAnimationsModule,
     PickerModule
   ],
-  providers: [BlogService,VideoService],
+  providers: [BlogService,VideoService, ToastrService,MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

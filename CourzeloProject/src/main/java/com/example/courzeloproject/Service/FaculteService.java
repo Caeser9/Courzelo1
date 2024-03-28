@@ -7,14 +7,12 @@ import com.example.courzeloproject.Repository.FaculteRepository;
 import com.example.courzeloproject.Repository.PoleRepository;
 
 import com.example.courzeloproject.Repository.UserRepo;
-import com.example.courzeloproject.Repository.UserRepository;
 import com.example.courzeloproject.dto.MailDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -73,7 +71,7 @@ PoleRepository poleRepository;
     }
 
     @Override
-    public String storeFile(MultipartFile file, String faculteCode)  {
+    public Faculte storeFile(MultipartFile file, String faculteCode)  {
         String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
         String newFileName = generateNewFileName(originalFileName);
 
@@ -89,9 +87,8 @@ PoleRepository poleRepository;
 
             Faculte faculte = faculteRepository.findFaculteByCodeFaculte(faculteCode);
             faculte.setPhotoUrl(newFileName);
-            faculteRepository.save(faculte); // Save the updated blog entity
+            return faculteRepository.save(faculte); // Save the updated blog entity
 
-            return newFileName;
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file: " + newFileName, e);
         }
@@ -115,27 +112,25 @@ PoleRepository poleRepository;
 
     @Override
     public List<Faculte> getFaculteByPoleId(String codep) {
-
-
         return faculteRepository.findFacultesByPoleCodePole(codep);
     }
 
     @Override
     public Faculte addFaculteToPole(String polec, Faculte faculte) {
         Pole pole = poleRepository.findById(polec).orElse(null);
-        User user1=userRepository.findUserById("user1");
+
 
         if (pole != null) {
             if (pole.getFacultes() == null) {
                 pole.setFacultes(new ArrayList<>());
 
             }
-            faculte.setUser(user1);
+
             faculte.setPole(pole);
             Faculte savedFaculte = faculteRepository.save(faculte);
             pole.getFacultes().add(savedFaculte);
             poleRepository.save(pole);
-           // sendAddedFaculteEmail(user1);
+            sendAddedFaculteEmail(user1);
             return faculte;
         }
 
@@ -151,7 +146,7 @@ PoleRepository poleRepository;
     
     public void sendAddedFaculteEmail(User user) {
         String toAddress = user.getEmail();
-        String senderName = "EDULINK";
+        String senderName = "Courzelo";
         String subject = "Faculte Added";
         String content = "Hello, "
                 + "This email sent to inform you that there is a new added Faculte aded to this pole ." ;
@@ -159,5 +154,11 @@ PoleRepository poleRepository;
 
         MailDto mail = new MailDto(toAddress, senderName, subject, content);
         iServiceEmail.sendEmail(mail);
+    }
+
+//youssef
+    @Override
+    public Faculte getFaculteByName(String nomF) {
+        return faculteRepository.findByNom(nomF);
     }
 }
