@@ -56,6 +56,8 @@ import { UpdateQuestionComponent } from './Question/update-question/update-quest
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { AuthGuard } from './core/Guard/auth.guard';
+import { ClassListComponent } from './Class/class-list/class-list.component';
+import { AddClassComponent } from './Class/add-class/add-class.component';
 
 const routes: Routes = [
   //youssef
@@ -98,6 +100,11 @@ const routes: Routes = [
   { path: "updateBlog/:id", component: UpdateBlogComponent },
   { path: "detailsBlog/:id", component: BlogDetailsComponent },
   { path: "blogsGrids", component: BlogGridsComponent },
+  //kaycer2
+  // { path: "classDetail/:id", component: UpdateBlogComponent },
+  { path: "listClasses/:id", component: ClassListComponent },
+  { path: "addClass", component: AddClassComponent },
+
   //yosra 
   { path: 'getAllFacultes/:id', component: FaculteListComponent },
   { path: 'addFaculte/:id', component: AddFaculteComponent },

@@ -7,7 +7,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Courzelou';
-  
+  title = 'Courzelou'; 
 
 }

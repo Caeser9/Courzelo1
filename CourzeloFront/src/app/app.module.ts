@@ -73,6 +73,8 @@ import { AddPoleComponent } from './Pole/add-pole/add-pole.component';
 import { UpdatePoleComponent } from './Pole/update-pole/update-pole.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
+import { AddClassComponent } from './Class/add-class/add-class.component';
+import { ClassListComponent } from './Class/class-list/class-list.component';
 @NgModule({
   declarations: [
     SupportComponent,
@@ -132,7 +134,9 @@ import { LoginParticipantComponent } from './core/front-office/Participant/login
     AddCommentaireComponent,
     ListeCommentaireComponent,
     ListReclamationComponent,
-    LoginParticipantComponent
+    LoginParticipantComponent,
+    AddClassComponent,
+    ClassListComponent
   ],
   imports: [
     BrowserModule,
