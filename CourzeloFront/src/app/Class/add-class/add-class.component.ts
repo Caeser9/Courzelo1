@@ -61,7 +61,7 @@ export class AddClassComponent implements OnInit {
   }
 
   getFormateurs() {
-    this.userService.getUser("ROLE_FORMATEUR").subscribe(
+    this.userService.getUser("ROLE_PARTICIPANT").subscribe(
       (data: User[]) => {
         this.formateurs = data;
       },
