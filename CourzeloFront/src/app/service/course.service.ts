@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { course } from 'src/app/model/Course';
 import { Observable } from 'rxjs';
 import { Ressource } from '../model/Ressource';
+import { FicheModuleCour } from '../model/ChatMessage';
 import { TokenStorageService } from './token-storage-service.service';
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,10 @@ export class CourseService {
      return this.http.get(this.url+"/getCour",this.httpOptions);
    }
    postCourse(course:course){
-      return this.http.post(this.url+"/ajouterCour",course,this.httpOptions)
+     return this.http.post(this.url+"/ajouterCour",course,this.httpOptions)
+   }
+   ajouterFicheModule(fiche :FicheModuleCour){
+   return  this.http.post("http://localhost:8282/FicheModuleCour/ajouterFicheModule",fiche)
    } 
    deleteCourse(id:string){
     return this.http.delete(`${this.url}/supprimerCour/${id}`,this.httpOptions);
@@ -82,6 +86,13 @@ export class CourseService {
   }
   rechercheMultiCritere(search: String){
     return this.http.get(`${this.url}/findByNomCourOrDescription/${search}`,this.httpOptions);
+
+  }
+  getCourByDomaine(idDomaine : String){
+    return this.http.get(`${this.url}/getCourByDomaine/${idDomaine}`);
+  }
+  PdfGeneratorFicheModule(fiche : FicheModuleCour){
+    return this.http.post(this.url+"/PdfGeneratorFicheModule",fiche);
 
   }
   

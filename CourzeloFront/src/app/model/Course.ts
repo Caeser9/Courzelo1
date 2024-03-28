@@ -1,3 +1,4 @@
+import { Domaine } from "../models/domaine";
 import { User } from "../shared/model/user.model";
 import { Ressource } from "./Ressource";
 
@@ -8,6 +9,7 @@ export class course {
     niveau!:string;
     ressource!:Ressource[];
     photo!:string;
-    prix!:any;
+    prix!:any
+    nomDomaine!:string;
     user = new User() ;
   }

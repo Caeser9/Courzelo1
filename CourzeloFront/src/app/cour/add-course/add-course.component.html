@@ -51,46 +51,58 @@
                                         <h4>Basic Information</h4>
                                     </div>
                                     <div class="add-course-form">
-                                        <form #f="ngForm" (ngSubmit)="save(f)">
+                                        <form #f="ngForm" >
                                             <div class="input-block">
                                                 <label class="add-course-label">Course Title</label>
-                                                <input name="nomCour" type="text" class="form-control" placeholder="Course Title" required ngModel #l="ngModel" [(ngModel)]="course.nomCour">
-                                                <div class="alert alert-danger" *ngIf="l.invalid">
+                                                <input name="nomCour" type="text" class="form-control" placeholder="Course Title" required ngModel #l="ngModel" [(ngModel)]="course.nomCour" [class.is-invalid]="l.invalid && l.touched">
+                                                <div class="invalid-feedback" *ngIf="l.invalid && l.touched">
                                                     the nomCour is a required field !
                                                 
                                                 </div>
                                             </div>
                                             <div class="input-block">
                                                 <label class="add-course-label">Course Description</label> 
-                                                <input name="description" type="text" class="form-control" placeholder="Course Description"  required ngModel #a="ngModel" [(ngModel)]="course.description">
-                                                <div class="alert alert-danger" *ngIf="a.invalid">
+                                                <input name="description" type="text" class="form-control" placeholder="Course Description"  required ngModel #a="ngModel" [(ngModel)]="course.description"[class.is-invalid]="a.invalid && a.touched">
+                                                <div class="invalid-feedback"  *ngIf="a.invalid && a.touched">
                                                     the description is a required field !
                                                 
                                                 </div>
                                             </div>
                                             <div class="input-block">
                                                 <label class="add-course-label">Course Price</label> 
-                                                <input name="prix" type="text" class="form-control" placeholder="Course Price"  required [(ngModel)]="course.prix" pattern="^\d{1,3}$" maxlength="3" ngModel #a="ngModel" >
-                                                <div class="alert alert-danger" *ngIf="a.invalid">
+                                                <input name="prix" type="text" class="form-control" placeholder="Course Price"  required [(ngModel)]="course.prix" pattern="^\d{1,3}$" maxlength="3" ngModel #p="ngModel" [class.is-invalid]="p.invalid && p.touched" >
+                                                <div class="invalid-feedback"  *ngIf=" p.touched">
                                                     the Price is a required field !
                                                 
                                                 </div>
-                                               
+                                                <div class="invalid-feedback"  *ngIf="p.errors && p.errors['pattern']">
+                                                    the Price is a number!
+                                                
+                                                </div>
                                             </div>
                                             <div class="input-block">
-                                                <label class="add-course-label">Courses Category</label>
-                                                <select class="form-control select" [(ngModel)]="course.niveau" name="niveau" required #c="ngModel">
-                                                    <option value="" disabled selected>Select a category</option>
+                                                <label class="label-important" >Courses Category</label>
+                                                <select  class="form-control select" [(ngModel)]="course.niveau" name="niveau" required #c="ngModel">
+                                                    <option value="Courses Category" disabled selected>Select a category</option>
                                                     <option value="PREMIERE">PREMIERE</option>
                                                     <option value="DEUXIEME">DEUXIEME</option>
                                                     <option value="TROISIEME">TROISIEME</option>
                                                     <option value="QUATRIEME">QUATRIEME</option>
                                                     <option value="CINQUIEME">CINQUIEME</option>
                                                 </select>
-                                                <div class="alert alert-danger" *ngIf="c.invalid && c.touched">
+                                                <div class="invalid-feedback"  *ngIf="c.invalid && c.touched">
                                                     the Course Category is a required field!
                                                 </div>
-                                            </div>
+                                                </div>
+                                                
+                                                    <div class="input-block">
+                                                        <label class="label-important" >Courses Category</label>
+                                                        <select  class="form-control select" [(ngModel)]="course.nomDomaine" name="niveau" required #c="ngModel">
+                                                             <option value="" disabled selected>Choisir un domaine</option>
+                                                            <option *ngFor="let d of domaines" value="{{ d.nom }}">{{ d.nom }}</option>
+                                                        </select>
+                                                            </div>
+                                            
                                             
                                             <button [disabled]="f.invalid" class="btn btn-success-dark" type="submit" (click)="ajouter()">save</button>
                                         </form>

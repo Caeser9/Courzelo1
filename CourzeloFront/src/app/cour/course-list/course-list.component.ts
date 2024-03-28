@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { course } from 'src/app/model/Course';
 import { CourseService } from 'src/app/service/course.service';
 
@@ -10,14 +11,17 @@ import { CourseService } from 'src/app/service/course.service';
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
-  constructor(private CourseService:CourseService){}
+  constructor(private CourseService:CourseService , private ac:ActivatedRoute){
+
+  }
   course!:any
   listeCourse!:course[];
   search="";
   courseRecente!:any
-
+idDomaine!:string
   ngOnInit() {
-    this.course=this.CourseService.getCourse().subscribe((data) => {
+    this.idDomaine=this.ac.snapshot.paramMap.get('idDomaine');
+    this.course=this.CourseService.getCourByDomaine(this.idDomaine).subscribe((data) => {
       this.course = data;
     },
     (error) => {

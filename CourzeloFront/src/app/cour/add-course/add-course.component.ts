@@ -5,14 +5,12 @@ import { HttpClient, HttpEventType, HttpHeaders, HttpResponse } from '@angular/c
 import { CourseService } from 'src/app/service/course.service';
 import { RessourceService } from 'src/app/service/ressource.service';
 import { FormsModule } from '@angular/forms';
+import { DomaineService } from 'src/app/services/domaine.service';
+import { Domaine } from 'src/app/models/domaine';
 
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
-  template: `
-  <input type="file" (change)="onFileSelected($event)" multiple>
-  <button (click)="uploadRessource()">Upload Ressource</button>
-`,
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent implements OnInit {
@@ -20,21 +18,31 @@ export class AddCourseComponent implements OnInit {
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
   course!:course
-  constructor(private CourseService:CourseService , private ressourceService:RessourceService , private http:HttpClient){}
+  domaines:Domaine[]
+  constructor(private CourseService:CourseService , private ressourceService:RessourceService , private http:HttpClient ,private domaineService:DomaineService){}
   ngOnInit(){
     this.course=new course();
+    this.domaines=this.getDomaines()
 
   }
-save(f:NgForm){
-  console.log(this.course.niveau)
-  console.log(this.httpOptions)
-}
+  getDomaines(): Domaine[] {
+    this.domaineService.findAll()
+      .subscribe(domaines =>
+        { this.domaines = domaines;
+          console.log(this.course)
+        }
+
+        );
+      return this.domaines;
+  }
+
 
 ajouter() {
   this.CourseService.postCourse(this.course).subscribe(
     () => {
+      console.log(this.course)
       alert("Cour ajouté !!");
-      location.reload();
+    //  location.reload();
     },
     (error) => {
       console.error("Erreur lors de l'ajout de la course :", error);

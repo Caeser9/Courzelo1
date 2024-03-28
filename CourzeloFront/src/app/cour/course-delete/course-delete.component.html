@@ -233,31 +233,32 @@
 													<table class="table table-nowrap mb-0">
 												     <tbody>
                                                             <tr>
-																<td >
+																<div class="sell-table-group d-flex align-items-center"></div>
+																	
 																	<div class="sell-table-group d-flex align-items-center">
 																		<div class="sell-group-img">
-																			<a href="course-details.html">
-																				<img *ngIf="c.photo"
+																				<img *ngIf="c.photo" width="100" height="500"
                                      		   								[src]="getphoto(c.photo)"
                                        									 alt="Blog Photo" class="img-fluid "> 
-																			</a>
+																			
 																		</div>
 																		<div class="sell-tabel-info">
-																			<p> {{c.nomCour}}
+																			<p class="name-field"> {{c.nomCour}}
 																				<br/>
-																				{{c.description}}
+																				{{c.prix}}$
 																			</p>
-																			{{c.prix}}
+																			
 																		</div>
 																		
 																		
 																	</div>
 																
 																	<td > 
-																		<input type="button" value="Supprimer" class="btn btn-danger btn-sm" (click)="delete(c.idCour)"></td>
-																		<td > <a  [routerLink]="'/course-update/' + c.idCour" class="btn btn-primary btn-sm" (click)="modifier(c.idCour)">Modifier</a></td>
-																		<td > <a [routerLink]="'/add-ressource/' + c.idCour" class="btn btn-primary btn-sm" (click)="modifier(c.idCour)">Resource</a></td>
-																		<td > <a [routerLink]="'/ressource-materials/' + c.idCour" class="btn btn-primary btn-sm" (click)="modifier(c.idCour)">List</a></td>
+																		<i class="btn btn-primary btn-sm far fa-trash-can" style="font-size: 24px;" type="button" (click)="delete(c.idCour)"></i>
+																		<td><a [routerLink]="'/course-update/' + c.idCour" class="btn btn-primary btn-sm" (click)="modifier(c.idCour)"><i class="far fa-edit"></i> </a></td>
+																		<td><a [routerLink]="'/add-ressource/' + c.idCour" class="btn btn-primary btn-sm" (click)="modifier(c.idCour)"><i class="far fa-plus-square"></i> Resource</a></td>
+																		<td><a [routerLink]="'/ressource-materials/' + c.idCour" class="btn btn-primary btn-sm" (click)="modifier(c.idCour)"><i class="far fa-list-alt"></i> List</a></td>
+
 																	
 																
                                                                 

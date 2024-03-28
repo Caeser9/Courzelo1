@@ -1,33 +1,21 @@
 package com.example.courzeloproject.Controller;
 
-import com.example.courzeloproject.Entite.ChatMessage;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import com.example.courzeloproject.Entite.Message;
+import com.pusher.rest.Pusher;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Aspect
-@Controller
-@CrossOrigin("http://localhost:4200")
-
+@RequestMapping("api")
+@RestController
 public class ChatController {
+    @PostMapping("/messages")
+    void message(@RequestBody Message message){
+        Pusher pusher = new Pusher("1774582", "b549ae65445917884c97", "526d26540c341758d490");
+        pusher.setCluster("eu");
+        pusher.setEncrypted(true);
+        pusher.trigger("Courzelou", "message", message);
 
-	@MessageMapping("/chat.register")
-	@SendTo("/topic/public")
-	public ChatMessage register(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
-		headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
-		return chatMessage;
-	}
-
-	@MessageMapping("/chat.send")
-	@SendTo("/topic/public")
-	public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
-		return chatMessage;
-	}
-
+    }
 }

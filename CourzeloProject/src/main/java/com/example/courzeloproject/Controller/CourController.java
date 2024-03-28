@@ -40,7 +40,7 @@ import static com.example.courzeloproject.Service.CourServiceImpl.*;
 @Slf4j
 @RestController
 @RequestMapping("/cour")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 public class CourController {
     @Autowired
     ICourService iCourService;
@@ -237,5 +237,9 @@ public class CourController {
     @GetMapping("/findByNomCourOrDescription/{recherche}")
     public List<Cour> findByNomCourOrDescriptions( @PathVariable("recherche") String recherche ) {
         return iCourService.rechercheCour(recherche);
+    }
+    @GetMapping("/getCourByDomaine/{idDomaine}")
+    public List<Cour> getCourByDomaine( @PathVariable("idDomaine") String idDomaine) {
+   return iCourService.getCourByDomaine(idDomaine);
     }
     }

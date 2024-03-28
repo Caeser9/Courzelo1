@@ -60,6 +60,8 @@ import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { AuthGuard } from './core/Guard/auth.guard';
+import { FicheModuleCour } from './model/ChatMessage';
+import { AddFicheModuleComponent } from './cour/add-fiche-module/add-fiche-module.component';
 import { ClassListComponent } from './Class/class-list/class-list.component';
 import { AddClassComponent } from './Class/add-class/add-class.component';
 import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
@@ -103,16 +105,19 @@ const routes: Routes = [
 
 
   //oussema
-  { path: "courselist", component: CourseListComponent , canActivate : [AuthParticipantGuard]},
-  { path: "add-course", component: AddCourseComponent , canActivate : [AuthGuard]},
-  { path: "delete-course", component: CourseDeleteComponent , canActivate : [AuthGuard]},
-  { path: "course-update/:id", component: CourseUpdateComponent , canActivate : [AuthGuard]},
-  { path: "course-stripe/:prix", component: StripeComponent , canActivate : [AuthParticipantGuard]},
-  { path: "add-ressource/:id", component: AddRessourceComponent , canActivate : [AuthGuard]},
-  { path: "ressource-list/:id", component: RessourceListComponent , canActivate : [AuthParticipantGuard]},
-  { path: "ressource-materials/:id", component: RessourceMaterialsComponent , canActivate : [AuthParticipantGuard]},
-  { path: 'listVideo/:nomVideo', component: ListComponent , canActivate : [AuthParticipantGuard]},
-  { path: 'chat', component: ChatComponent , canActivate : [AuthParticipantGuard]},
+  { path: "courselist/:idDomaine", component: CourseListComponent },
+  { path: "add-course", component: AddCourseComponent },
+  { path: "delete-course", component: CourseDeleteComponent },
+  { path: "course-update/:id", component: CourseUpdateComponent },
+  { path: "course-stripe/:prix", component: StripeComponent },
+  { path: "add-ressource/:id", component: AddRessourceComponent },
+  { path: "ressource-list/:id", component: RessourceListComponent },
+  { path: "ressource-materials/:id", component: RessourceMaterialsComponent },
+  { path: 'listVideo/:nomVideo', component: ListComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: "add-ficheCour", component: AddFicheModuleComponent },
+
+
   //kaycer
   { path: "addBlog", component: AddBlogComponent , canActivate : [AuthParticipantGuard]},
   { path: "listBlog", component: ListBlogComponent , canActivate : [AuthParticipantGuard]},
@@ -162,7 +167,7 @@ const routes: Routes = [
   { path: 'quiz/:id', component: MakeQuizComponent , canActivate : [AuthGuard]},
   { path: 'quiz-results', component: QuizResultsComponent , canActivate : [AuthGuard]},
   //404 error
-  { path: '**', pathMatch: 'full', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

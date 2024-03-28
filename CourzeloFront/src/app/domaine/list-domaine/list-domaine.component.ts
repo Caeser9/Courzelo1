@@ -38,13 +38,6 @@ export class ListDomaineComponent implements OnInit{
   }
 
 
-
-
-
-
-
-  
-
   getDomaines(): void {
     this.domaineService.findAll()
       .subscribe(domaines => this.domaines = domaines);

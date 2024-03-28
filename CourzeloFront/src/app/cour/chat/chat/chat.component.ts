@@ -1,28 +1,59 @@
 // chat.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ChatService } from 'src/app/service/chat.service';
-import { ChatMessageDto } from '../ChatMessageDto';
-import { NgForm } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+import Pusher from 'pusher-js';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  
 })
 export class ChatComponent implements OnInit {
-  constructor(public webSocketService: ChatService) { }
+date=new Date();
+username = '';
+message :any = '';
+messages = [];
+emojiSelectionne:any
+showEmojiPicker = false; 
 
-  ngOnInit(): void {
-    this.webSocketService.openWebSocket();
+constructor(private http: HttpClient ,private toastr: ToastrService) {
+}
+addEmoji(event: any) {
+  this.message += event.emoji.native;
+}
+
+ngOnInit(): void {
+  Pusher.logToConsole = true;
+    var pusher = new Pusher('b549ae65445917884c97', {
+      cluster: 'eu'
+    });
+
+    var channel = pusher.subscribe('Courzelou');
+    channel.bind('message', (data) => {
+      this.messages.push(data); // Ajouter le nouveau message à la liste des messages
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+    console.log("aaa"+this.toastr.success);
   }
 
-  ngOnDestroy(): void {
-    this.webSocketService.closeWebSocket();
-  }
+submit(event: Event): void {
+  event.preventDefault();
 
-  sendMessage(sendForm: NgForm) {
-    const chatMessageDto = new ChatMessageDto(sendForm.value.user, sendForm.value.message);
-    this.webSocketService.sendMessage(chatMessageDto);
-//    sendForm.controls.message.reset();
-  }
+  this.http.post('http://localhost:8282/api/messages', {
+    username: this.username,
+    message: this.message
+  }).subscribe(() => this.message = '');
+  this.toastr.success(this.message , this.username +' '+'a envoyé un message ');
+
+}
+
+toggleEmojiPicker(event: Event) {
+  event.preventDefault(); // Empêche le formulaire de se soumettre automatiquement lors de la sélection d'un emoji
+    this.showEmojiPicker = !this.showEmojiPicker;
+
+
+}
 }
