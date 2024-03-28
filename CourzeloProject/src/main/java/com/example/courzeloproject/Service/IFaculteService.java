@@ -20,4 +20,7 @@ public interface IFaculteService {
     Faculte addFaculteToPole(String polec, Faculte faculte) ;
     public void sendAddedFaculteEmail(User user);
 
+    //youssef
+    Faculte getFaculteByName (String nomF);
+
 }

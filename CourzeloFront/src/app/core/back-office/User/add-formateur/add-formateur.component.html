@@ -144,19 +144,27 @@
                                                 </div>
                                             </div>
 
-                                        <!--
+                                        
+                                         <!--   <div class="col-lg-6">
+                                                <div class="input-block">
+                                                    <label class="form-label">Pole</label>
+                                                    <select class="form-select select country-select" name="sellist1" >
+                                                        <option *ngFor="let pole of poles" [value]="pole.codePole">{{ pole.nom }}</option>
+                                                    </select>
+                                                </div>
+                                            </div>-->
                                             <div class="col-lg-6">
                                                 <div class="input-block">
-                                                    <label  class="form-label">Establishment</label>
-                                                    <select class="form-select select country-select"  name="sellist1">
-                                                        <option>Select Establishment</option>
-                                                        <option>Esprit</option>
-                                                        <option>ESB</option>
-                                                        
+                                                    <label class="form-label">Faculte</label>
+                                                    <select class="form-select select country-select" name="Nomfaculte"
+                                                    [(ngModel)]="user.nomFaculte"  [ngModelOptions]="{standalone: true}">
+                                                        <option value="" disabled selected>choisire Faculte</option>
+                                                        <option *ngFor="let faculte of facultes" value="{{ faculte.nom }}">{{ faculte.nom }}</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                        -->	
+                                            
+                                        
 
                                             <div class="update-profile">
                                                 <button type="button" class="btn btn-success" (click)="registerAdmin()">Add</button>

@@ -42,10 +42,10 @@ public class User {
     private String resetPasswordToken;
     private boolean enabled;
     private boolean active;
+//
+//    @DBRef
+//    private List<Cour> courList =new ArrayList<>() ;
 
-
-    @DBRef
-    private List<Cour> courList =new ArrayList<>() ;
     @DBRef
     private Faculte faculte ;
 

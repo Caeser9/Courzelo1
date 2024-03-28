@@ -64,4 +64,11 @@ public class FaculteController {
     public List<Faculte> getFaculteByPoleId(@PathVariable("codep") String code){
         return iFaculteService.getFaculteByPoleId(code);
     }
+
+    //youssef
+    @GetMapping("/getfaculteByNom/{nom}")
+    public Faculte getfaculteByNom(@PathVariable("nom") String nom){
+        return iFaculteService.getFaculteByName(nom);
+    }
+
 }

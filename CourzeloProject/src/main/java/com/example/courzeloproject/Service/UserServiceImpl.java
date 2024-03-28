@@ -128,8 +128,11 @@ public class UserServiceImpl implements IUserService{
         String senderName = "Courzelo";
         String subject = "Welcome To Courzelo";
         String content = "Dear Sir/Madam,\n"
-                + "We are delighted to welcome you to our Courzelo platform! \nYour username is" +
-                " : "+user.getUsername()+" \nyour password is: "+code+"  .\n"
+                + "We are delighted to welcome you to our Courzelo platform! \n" +
+                "we would like to send you my most sincere congratulations on your recent " +
+                "assignment to  <strong>" + user.getFaculte().getNom() + "</strong>."+
+                "\nYour username is: "+user.getUsername()+" " +
+                "\nyour password is:"+code+"\n"
                 + "If you have any questions or need assistance, please don't hesitate to contact us.\n"
                 + "Best regards,\n"
                 + "The Courzelo Team";

@@ -21,7 +21,7 @@ public class SignupRequest {
 
     private Set<String> roles;
 
-
+    private String nomFaculte ;
     private String password;
 
 }

@@ -1,11 +1,13 @@
 package com.example.courzeloproject.Controller;
 
 import com.example.courzeloproject.Entite.ERole;
+import com.example.courzeloproject.Entite.Faculte;
 import com.example.courzeloproject.Entite.Role;
 import com.example.courzeloproject.Entite.User;
 import com.example.courzeloproject.Repository.RoleRepo;
 import com.example.courzeloproject.Repository.UserRepo;
 import com.example.courzeloproject.Security.jwt.JwtUtils;
+import com.example.courzeloproject.Service.IFaculteService;
 import com.example.courzeloproject.Service.UserDetailsImpl;
 import com.example.courzeloproject.Service.UserServiceImpl;
 import com.example.courzeloproject.payload.request.LoginRequest;
@@ -43,6 +45,9 @@ public class FormateurController {
     RoleRepo roleRepository;
     @Autowired
     UserServiceImpl userService;
+
+    @Autowired
+    IFaculteService iFaculteService;
 
     @Autowired
     PasswordEncoder encoder;
@@ -132,7 +137,9 @@ public class FormateurController {
 
          user.setUsername(ident);
         user.setRoles(roles);
-
+        //Affecter a une faculté
+        Faculte faculte =iFaculteService.getFaculteByName(signUpRequest.getNomFaculte());
+        user.setFaculte(faculte);
         userRepository.save(user);
         this.userService.sendInformationEmail(user,randomCode);
 

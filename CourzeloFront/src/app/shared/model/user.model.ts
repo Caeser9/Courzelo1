@@ -1,3 +1,4 @@
+import { Faculte } from "src/app/Faculte/FaculteClass/faculte";
 import { Profile } from "./profile.module";
 import { ERole } from "./role";
 
@@ -9,7 +10,7 @@ export class User {
     roles: [ERole];
     profile:Profile
     verificationCode: string;
-    enabled: boolean;
+    enabled: boolean;s
     active: boolean;
-   // establishmentId: number
+    nomFaculte: string;
 }

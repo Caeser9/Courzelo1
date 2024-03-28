@@ -149,7 +149,7 @@ PoleRepository poleRepository;
     
     public void sendAddedFaculteEmail(User user) {
         String toAddress = user.getEmail();
-        String senderName = "EDULINK";
+        String senderName = "Courzelo";
         String subject = "Faculte Added";
         String content = "Hello, "
                 + "This email sent to inform you that there is a new added Faculte aded to this pole ." ;
@@ -157,5 +157,11 @@ PoleRepository poleRepository;
 
         MailDto mail = new MailDto(toAddress, senderName, subject, content);
         iServiceEmail.sendEmail(mail);
+    }
+
+//youssef
+    @Override
+    public Faculte getFaculteByName(String nomF) {
+        return faculteRepository.findByNom(nomF);
     }
 }
