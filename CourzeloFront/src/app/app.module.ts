@@ -84,6 +84,9 @@ import { FilterPipe } from './pipes/filter.pipe';
 
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
+
+import { AddClassComponent } from './Class/add-class/add-class.component';
+import { ClassListComponent } from './Class/class-list/class-list.component';
 import { MessageService } from 'primeng/api';
 import { ResetPasswordComponent } from './core/front-office/reset-password/reset-password.component';
 import { VideoCallComponent } from './video-call/video-call.component';
@@ -148,6 +151,9 @@ import { ChangePasswordComponent } from './core/back-office/User/change-password
     AddCommentaireComponent,
     ListeCommentaireComponent,
     ListReclamationComponent,
+    LoginParticipantComponent,
+    AddClassComponent,
+    ClassListComponent
     PoleListFrontComponent,
     FaculteListFrontComponent,    
     QuizListComponent,

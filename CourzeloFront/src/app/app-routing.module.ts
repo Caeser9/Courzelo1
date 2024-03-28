@@ -60,6 +60,8 @@ import { FaculteListFrontComponent } from './Faculte/faculte-list-front/faculte-
 import { LoginParticipantComponent } from './core/front-office/Participant/login-participant/login-participant.component';
 import { RegisterComponent } from './core/front-office/Participant/register/register.component';
 import { AuthGuard } from './core/Guard/auth.guard';
+import { ClassListComponent } from './Class/class-list/class-list.component';
+import { AddClassComponent } from './Class/add-class/add-class.component';
 import { QuizListComponent } from './Quiz/quiz-list/quiz-list.component';
 import { MakeQuizComponent } from './Quiz/make-quiz/make-quiz.component';
 import { QuizResultsComponent } from './Quiz/quiz-results/quiz-results.component';
@@ -115,10 +117,15 @@ const routes: Routes = [
   { path: "addBlog", component: AddBlogComponent , canActivate : [AuthParticipantGuard]},
   { path: "listBlog", component: ListBlogComponent , canActivate : [AuthParticipantGuard]},
   { path: "dashboard", component: UserDashboardComponent },
-  { path: "upload/:id", component: UploadFileComponent , canActivate : [AuthParticipantGuard]},
-  { path: "updateBlog/:id", component: UpdateBlogComponent , canActivate : [AuthParticipantGuard]},
-  { path: "detailsBlog/:id", component: BlogDetailsComponent , canActivate : [AuthParticipantGuard]},
-  { path: "blogsGrids", component: BlogGridsComponent , canActivate : [AuthParticipantGuard] },
+  { path: "upload/:id", component: UploadFileComponent },
+  { path: "updateBlog/:id", component: UpdateBlogComponent },
+  { path: "detailsBlog/:id", component: BlogDetailsComponent },
+  { path: "blogsGrids", component: BlogGridsComponent },
+  //kaycer2
+  // { path: "classDetail/:id", component: UpdateBlogComponent },
+  { path: "listClasses/:id", component: ClassListComponent },
+  { path: "addClass", component: AddClassComponent },
+
   //yosra 
   { path: 'getAllFacultes/:id', component: FaculteListComponent , canActivate : [AuthGuard]},
   { path: 'getAllFacultesFront/:id', component: FaculteListFrontComponent , canActivate : [AuthParticipantGuard]},
