@@ -1,5 +1,44 @@
 <body>
+    <p-toast></p-toast>
+    <p-dialog [(visible)]="forgetPasswordDialog" 
+    [style]="{width: '550px','background-color': '#ADD8E6', 'border-radius': '10px'}"
+        header="Vous avez oublié votre mot de passe ?" [draggable]="false" [resizable]="false" [modal]="false"
+        class="welcome-login"
+       >
+        <ng-template pTemplate="content">
+            <p class="text-500">Renseignez l'e-mail utilisé lors de votre inscription afin de recevoir un lien de
+                réinitialisation de mot de passe.</p>
+            <form [formGroup]="resetPasswordForm">
+                <div class="field">
+                    <label for="emailPass">Email</label>
+                    <input type="text" formControlName="email" pInputText id="emailPass"
+                        [(ngModel)]="userResetPassword.email" required autofocus />
+                    <small class="text-red-500"
+                        *ngIf="!resetPasswordForm.controls['email'].valid && resetPasswordForm.controls['email']?.touched "
+                        style="color: #df2e21;">
+                        {{ resetPasswordForm.get("email").hasError("required")? "Ce champ est obligatoire ": ""}}
+                        {{ resetPasswordForm.get("email").hasError("email")? "Veuillez entrer une adresse e-mail valide!
+                        ": ""}}
 
+                    </small>
+                </div>
+
+
+            </form>
+
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="button-container">
+                <button pButton pRipple label="Annuler" class="btn btn-danger"
+                    (click)="hideDialog()"></button>
+            </div>
+            <div class="button-container">
+                <button pButton pRipple label="Réinitialiser " class="btn btn-success"
+                    (click)="forgetPassword()"></button>
+            </div>
+        </ng-template>
+        
+    </p-dialog>
     <!-- Main Wrapper -->
     <div class="main-wrapper log-wrap">
 
@@ -80,7 +119,7 @@
 
                                 </div>
                                 <div class="forgot">
-                                    <span><a class="forgot-link" href="forgot-password.html">Forgot Password
+                                    <span><a class="forgot-link" (click)="forgetPasswordDialog=true">Forgot Password
                                             ?</a></span>
                                 </div>
 
