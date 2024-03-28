@@ -38,8 +38,12 @@ ngOnInit(): void {
     this.toastr.success('Hello world!', 'Toastr fun!');
     console.log("aaa"+this.toastr.success);
   }
+<<<<<<< HEAD
 submit(event: Event): void {
   event.preventDefault();
+=======
+submit(): void {
+>>>>>>> origin/Oussema
   this.http.post('http://localhost:8282/api/messages', {
     username: this.username,
     message: this.message
@@ -47,8 +51,14 @@ submit(event: Event): void {
   this.toastr.success(this.message , this.username +' '+'a envoyé un message ');
 
 }
+<<<<<<< HEAD
 toggleEmojiPicker(event: Event) {
   event.preventDefault(); // Empêche le formulaire de se soumettre automatiquement lors de la sélection d'un emoji
     this.showEmojiPicker = !this.showEmojiPicker;
+=======
+toggleEmojiPicker() {
+  // Inversez l'état pour afficher ou masquer la barre d'emojis
+  this.showEmojiPicker = !this.showEmojiPicker;
+>>>>>>> origin/Oussema
 }
 }
